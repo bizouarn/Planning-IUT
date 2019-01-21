@@ -7,9 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form enctype="multipart/form-data" action="./index.php" method="get">
-        <fieldset>
-            <legend>Formulaire</legend>
+    <form action="./index.php" method="get">
                     <SELECT name="group" size="1">
                         <OPTION/>A1
                         <OPTION/>A2
@@ -25,18 +23,17 @@
                         <OPTION/>2
                     </SELECT>
                     <button type="submit">choisir</button>
-        </fieldset>
     </form>
     <div id="grille">
-        <div class="midi">13h<br><br></div>
-        <div class="p-1 c-1"><br><br></div>
-        <div class="p-1 c0" >8h</div>
+        <div class="p0 HASH noneP"></div>
+        <div class="midi">13h00<br>14h00</div>
+        <div class="p-1 c-1"></div>
+        <div class="p-1 c0" >8h00</div>
         <div class="p-1 c1" >9h45</div>
         <div class="p-1 c2" >11h30</div>
-        <div class="p-1 c3" >14h</div>
+        <div class="p-1 c3" >14h00</div>
         <div class="p-1 c4" >15h45</div>
-        <div class="p-1 c5" >16h30</div>
-        <div class="p-1 c6" >17h</div>
+        <div class="p-1 c6" >17h15</div>
         <div class="border" ></div>
         <?php
         $Dcontenu ="noneP";
@@ -84,28 +81,36 @@
                 // Mise en forme
                 $date = $jour."/".$mois."/".$annee;
                 $horaire = " ".$heure."h".$min."-".$temps1."h".$temps2;
-                $hor = "-".$heure."-";
+                $hor = $heure."-".$min;
                 //list($compet, $rang, $tv) = explode("-",$desc);
-                if($hor=="-8-"){
+                //horaire 1h30
+                if($hor=="8-00"){
                     $c="0";
                 }
-                else if($hor=="-9-"){
+                else if($hor=="9-45"){
                     $c="1";
                 }
-                else if($hor=="-11-"){
+                else if($hor=="11-30"){
                     $c="2";
                 }
-                else if($hor=="-14-"){
+                else if($hor=="14-00"){
                     $c="3";
                 }
-                else if($hor=="-15-"){
+                else if($hor=="15-45" && $temps2==15){
                     $c="4";
                 }
-                else if($hor=="-16-"){
+                else if($hor=="16-30"){
                     $c="5";
                 }
-                else if($hor=="-17-"){
+                else if($hor=="17-15" && $temps2==45){
                     $c="6";
+                }
+                //horaire 45min
+                else if($hor=="17-15" && $temps2==00){
+                    $c="6-2";
+                }
+                else if($hor=="15-45" && $temps2==30){
+                    $c="4-2";
                 }
                 else{
                     $c="-";
