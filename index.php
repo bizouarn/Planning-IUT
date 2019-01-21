@@ -7,22 +7,24 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="./index.php" method="get">
-                    <SELECT name="group" size="1">
-                        <OPTION/>A1
-                        <OPTION/>A2
-                        <OPTION/>B1
-                        <OPTION/>B2
-                        <OPTION/>C1
-                        <OPTION/>C2
-                        <OPTION/>D1
-                        <OPTION/>D2
-                    </SELECT>
-                    <SELECT name="annee" size="1">
-                        <OPTION/>1
-                        <OPTION/>2
-                    </SELECT>
-                    <button type="submit">choisir</button>
+    <form action="./index.php" method="get">    
+        Année :
+        <SELECT name="annee" size="1">
+            <OPTION/>1
+            <OPTION/>2
+        </SELECT>
+        Groupe :
+        <SELECT name="group" size="1">
+            <OPTION/>A1
+            <OPTION/>A2
+            <OPTION/>B1
+            <OPTION/>B2
+            <OPTION/>C1
+            <OPTION/>C2
+            <OPTION/>D1
+            <OPTION/>D2
+        </SELECT>
+        <button type="submit">choisir</button>
     </form>
     <div id="grille">
         <div class="p0 HASH noneP"></div>
@@ -187,15 +189,15 @@
             }
         }
         //afichage date du jour
-        echo "<div id='box' class='p0 c-1 ".$Dcontenu."'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        echo "<div class='p0 c-1 ".$Dcontenu."'>".$tt.'/'.$mois.'/'.$annee."</div>";
         $tt = $tt+1;
-        echo "<div id='box' class='p1 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        echo "<div class='p1 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
         $tt = $tt+1;
-        echo "<div id='box' class='p2 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        echo "<div class='p2 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
         $tt = $tt+1;
-        echo "<div id='box' class='p3 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        echo "<div class='p3 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
         $tt = $tt+1;
-        echo "<div id='box' class='p4 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        echo "<div class='p4 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
         ?>
     </div>
 </body>
