@@ -2,32 +2,46 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <title>Terminal</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>Planning</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
-    <form action="./index.php" method="get">    
-        Année :
-        <SELECT name="annee" size="1">
-            <OPTION/>1
-            <OPTION/>2
-        </SELECT>
-        Groupe :
-        <SELECT name="group" size="1">
-            <OPTION/>A1
-            <OPTION/>A2
-            <OPTION/>B1
-            <OPTION/>B2
-            <OPTION/>C1
-            <OPTION/>C2
-            <OPTION/>D1
-            <OPTION/>D2
-        </SELECT>
-        <button type="submit">choisir</button>
-    </form>
+    <div class="menu">
+        <form action="./index.php" method="get">    
+            Année :
+            <SELECT name="annee" class="styled-select blue semi-square">
+                <OPTION/>1
+                <OPTION/>2
+            </SELECT>
+            Groupe :
+            <SELECT name="group" class="styled-select blue semi-square">
+                <OPTION/>A1
+                <OPTION/>A2
+                <OPTION/>B1
+                <OPTION/>B2
+                <OPTION/>C1
+                <OPTION/>C2
+                <OPTION/>D1
+                <OPTION/>D2
+            </SELECT>
+            Décalage (en jour) :
+            <input name="jD" class="styled-input blue semi-square"/>
+            <button type="submit" class="styled-select blue semi-square">choisir</button>
+        </form>
+        <div id="heure">
+            <script type="text/javascript">        
+            heure();
+            </script>
+        </div>
+        <div id="day">
+            <script type="text/javascript">        
+                date();
+            </script>
+        </div>
+    </div>
     <div id="grille">
-        <div class="p0 HASH noneP"></div>
         <div class="midi">13h00<br>14h00</div>
         <div class="p-1 c-1"></div>
         <div class="p-1 c0" >8h00</div>
@@ -38,8 +52,11 @@
         <div class="p-1 c6" >17h15</div>
         <div class="border" ></div>
         <?php
-        $Dcontenu ="noneP";
+        //variable récuperer méthode GET
+        $Dcontenu =array("noneP","noneP","noneP","noneP","noneP","noneP","noneP");
         $group=$_GET["group"];
+        $jD=$_GET["jD"];
+        
         if($_GET["annee"] === "1"){
             $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002147feaa7994a14fb1e46e84f7c9b78e263799f3e18454a68d7f9e7187a83de3688b2feb32c6fb898ec6388e00a65894b9fae26dd6b71b817bb50b37189fa0b8d2bddf02cf567b7259696298c15bc4f3e24');}
         elseif($_GET["annee"] === "2"){
@@ -60,8 +77,13 @@
         preg_match_all($regExpLoc, $calendrier, $locTableau, PREG_PATTERN_ORDER);
         preg_match_all($regExpDesc, $calendrier, $descTableau, PREG_PATTERN_ORDER);
         preg_match_all($regExpStamp, $calendrier, $StampTableau, PREG_PATTERN_ORDER);
-
-        $tt = (date("d"));
+        
+        //date du jour
+        $tt = (date("d")+$jD);
+        if($tt==date("d")){
+            echo "<div class='p0 HASH noneP'></div>";
+        }
+        
         //affichage cours
         for($d=0 ; $d < 7; ++$d){
             for ($j=0 ; $j < $n ; ++$j){
@@ -130,10 +152,12 @@
                 }
             //affichage selon le groupe
                 //group D
-                if(($jour==$tt+$d && $mois==date("m") && $d!=0)||($jour==$tt+$d && $mois==date("m") && $heure>date("H"))){
-                    if($jour==$tt){
-                        $Dcontenu = "";
+                if(($jour==$tt+$d && $mois==date("m") && $tt+$d!=date("d") )||($jour==$tt+$d && $mois==date("m") && $heure>date("H")-1)){
+                    //si jour vide (ne pas afficher sur portable)
+                    if($jour==$tt+$d){
+                        $Dcontenu[$d] = "";
                     }
+                    // affichage cours
                     if($group == "D1" && (strpos($match,"Gr D") || strpos($match,"Gr D1") || strpos($match,"CM")) && strpos($match,"Gr D2")== FALSE){
                         echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
                         echo $match.$br.$horaire."  ".$loc.$br;
@@ -189,15 +213,19 @@
             }
         }
         //afichage date du jour
-        echo "<div class='p0 c-1 ".$Dcontenu."'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        echo "<div class='p0 c-1 ".$Dcontenu[0]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
         $tt = $tt+1;
-        echo "<div class='p1 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        echo "<div class='p1 c-1 ".$Dcontenu[1]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
         $tt = $tt+1;
-        echo "<div class='p2 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        echo "<div class='p2 c-1 ".$Dcontenu[2]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
         $tt = $tt+1;
-        echo "<div class='p3 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        echo "<div class='p3 c-1 ".$Dcontenu[3]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
         $tt = $tt+1;
-        echo "<div class='p4 c-1'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        echo "<div class='p4 c-1 ".$Dcontenu[4]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        $tt = $tt+1;
+        echo "<div class='p5 c-1 ".$Dcontenu[5]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        $tt = $tt+1;
+        echo "<div class='p6 c-1 ".$Dcontenu[6]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
         ?>
-    </div>
+        </div>
 </body>
