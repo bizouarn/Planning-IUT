@@ -58,7 +58,7 @@
         else{
             $group="";
         }
-        if(isset($_GET["jD"])){
+        if(isset($_GET["annee"])){
             $annee=$_GET["annee"];
         }
         else{

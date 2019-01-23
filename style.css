@@ -101,9 +101,8 @@ body{
     }
     .c-1.noneP{
         grid-row: 2/19;
-        border-width: 0px 1px 0px 1px;
-        border-style: solid;
-        border-color: #363e41;
+        margin-left: 2px;
+        margin-right: 2px;
         background: repeating-linear-gradient(45deg,
           rgba(0, 0, 10, 0),
           rgba(0, 0, 10, 0) 10px,
@@ -148,7 +147,7 @@ body{
         )
     }
     .border{
-        grid-row: 2/19;
+        grid-row: 3/19;
         grid-column: 1;
         background-color: rgba(0, 0, 0, 0.3);
     }
@@ -157,9 +156,10 @@ body{
         grid-column: 1/16;
     }
     .c-1{
+        font-size: 20px;
         border-width: 1px 0px 1px 0px;
         border-style: solid;
-        border-color: #363e41;
+        border-color: #3c6382;
         grid-row: 2;
         background-color: #3c6382;
         margin: 0px;
@@ -168,13 +168,15 @@ body{
     .p-1{
         min-height: 80px;
         border-style: solid;
-        border-width: 1px;
+        border-width: 2px 0px 0px 0px;
         border-color: #363e41;
         text-align: left;
         padding: 5px;
         grid-column: 1/16;
     }
     .p-1.c-1{
+        border-color: #3c6382;
+        background-color: #3c6382;
         min-height: 0px;
     }
     /* affichage colone et ligne*/
