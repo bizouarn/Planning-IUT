@@ -1,47 +1,45 @@
-<!-- autheur Aymeric Bizouarn -->
+<!-- Auteur Aymeric Bizouarn -->
 <!doctype html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1.0">
     <title>Planning</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
 <body>
-    <div class="menu">
-        <form action="./index.php" method="get">    
-            Année :
-            <SELECT name="annee" class="styled-select blue semi-square">
-                <OPTION/>1
-                <OPTION/>2
-            </SELECT>
-            Groupe :
-            <SELECT name="group" class="styled-select blue semi-square">
-                <OPTION/>A1
-                <OPTION/>A2
-                <OPTION/>B1
-                <OPTION/>B2
-                <OPTION/>C1
-                <OPTION/>C2
-                <OPTION/>D1
-                <OPTION/>D2
-            </SELECT>
-            Décalage (en jour) :
-            <input name="jD" class="styled-input blue semi-square"/>
-            <button type="submit" class="styled-select blue semi-square">choisir</button>
-        </form>
-        <div id="heure">
-            <script type="text/javascript">        
-            heure();
-            </script>
-        </div>
-        <div id="day">
-            <script type="text/javascript">        
-                date();
-            </script>
-        </div>
-    </div>
     <div id="grille">
+        <div class="menu c-2">
+            <form action="./index.php" method="get">    
+                Promo :
+                <SELECT name="annee" class="styled-select blue semi-square">
+                    <OPTION/>1
+                    <OPTION/>2
+                </SELECT>
+                <SELECT name="group" class="styled-select blue semi-square">
+                    <OPTION/>A1
+                    <OPTION/>A2
+                    <OPTION/>B1
+                    <OPTION/>B2
+                    <OPTION/>C1
+                    <OPTION/>C2
+                    <OPTION/>D1
+                    <OPTION/>D2
+                </SELECT>
+                <button type="submit" class="styled-select blue semi-square">></button>
+            </form>
+            <div id="day">
+                <script type="text/javascript">        
+                    date();
+                </script>
+            </div>
+            <div id="heure">
+                <script type="text/javascript">        
+                heure();
+                </script>
+            </div>
+        </div>
         <div class="midi">13h00<br>14h00</div>
         <div class="p-1 c-1"></div>
         <div class="p-1 c0" >8h00</div>
@@ -52,39 +50,58 @@
         <div class="p-1 c6" >17h15</div>
         <div class="border" ></div>
         <?php
-        //variable récuperer méthode GET
+        // Variable récuperer méthode GET
         $Dcontenu =array("noneP","noneP","noneP","noneP","noneP","noneP","noneP");
-        $group=$_GET["group"];
-        $jD=$_GET["jD"];
+        if(isset($_GET["group"])){
+            $group=$_GET["group"];
+        }
+        else{
+            $group="";
+        }
+        if(isset($_GET["jD"])){
+            $annee=$_GET["annee"];
+        }
+        else{
+            $annee="";
+        }
+        $promo=$annee.$group;
+        
+        if(isset($_GET["jD"])){
+            $jD=$_GET["jD"];
+        }
+        else{
+            $jD=0;
+        }
+        
+        $tt = (date("d")+$jD); //date du jour
         
         if($_GET["annee"] === "1"){
             $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002147feaa7994a14fb1e46e84f7c9b78e263799f3e18454a68d7f9e7187a83de3688b2feb32c6fb898ec6388e00a65894b9fae26dd6b71b817bb50b37189fa0b8d2bddf02cf567b7259696298c15bc4f3e24');}
         elseif($_GET["annee"] === "2"){
-            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002143b1bc5c15e9c597333135e66642c0dd1c49517ea8b2cbd3c32cc6302479afc71919bff1d45be9ae8f3f538b5e4811620ae26dd6b71b817bb50b37189fa0b8d2bfd0da62a685d5ae129d569558fe3e297bf5d2247571e81da178a078aeae0784c0749c01ddfb19be2cd705b9933add630');} 
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002143b1bc5c15e9c597333135e66642c0dd1c49517ea8b2cbd3c32cc6302479afc71919bff1d45be9ae8f3f538b5e4811620ae26dd6b71b817bb50b37189fa0b8d2bfd0da62a685d5ae129d569558fe3e2977ce7540d959896bb178a078aeae0784c6ad17ef2b6df6255a422892ae67c9785');} 
         
-        //variable type info .ics
+        // Variable type info .ics
         $regExpMatch = '/SUMMARY:(.*)/';
         $regExpDate = '/DTSTART:(.*)/';
         $regExpLoc = '/LOCATION:(.*)/';
         $regExpDesc = '/DESCRIPTION:(.*)/';
         $regExpStamp = '/DTEND:(.*)/';
         
-        //varaible utile balise
+        // Varaible utile balise
         $br='<br>';
-        //variable info .ics
+        // Variable info .ics
         $n = preg_match_all($regExpMatch, $calendrier, $matchTableau, PREG_PATTERN_ORDER);
         preg_match_all($regExpDate, $calendrier, $dateTableau, PREG_PATTERN_ORDER);
         preg_match_all($regExpLoc, $calendrier, $locTableau, PREG_PATTERN_ORDER);
         preg_match_all($regExpDesc, $calendrier, $descTableau, PREG_PATTERN_ORDER);
         preg_match_all($regExpStamp, $calendrier, $StampTableau, PREG_PATTERN_ORDER);
         
-        //date du jour
-        $tt = (date("d")+$jD);
+        // Date du jour
         if($tt==date("d")){
             echo "<div class='p0 HASH noneP'></div>";
         }
         
-        //affichage cours
+        // Affichage cours
         for($d=0 ; $d < 7; ++$d){
             for ($j=0 ; $j < $n ; ++$j){
                 $pos = "p".$d.$j;
@@ -100,13 +117,17 @@
                 $desc = substr($descTableau[0][$j], 12);
                 $temps1 = substr($StampTableau[0][$j], 15, 2)+1;
                 $temps2 = substr($StampTableau[0][$j], 17, 2);
-
+                
+                // si aucune info GET: sortir
+                if($promo==""){
+                    break;
+                }
+        
                 $descTab = explode("\\n",$desc);
                 // Mise en forme
                 $date = $jour."/".$mois."/".$annee;
                 $horaire = " ".$heure."h".$min."-".$temps1."h".$temps2;
                 $hor = $heure."-".$min;
-                //list($compet, $rang, $tv) = explode("-",$desc);
                 //horaire 1h30
                 if($hor=="8-00"){
                     $c="0";
@@ -151,13 +172,13 @@
                     $typeCase = "TP";
                 }
             //affichage selon le groupe
-                //group D
                 if(($jour==$tt+$d && $mois==date("m") && $tt+$d!=date("d") )||($jour==$tt+$d && $mois==date("m") && $heure>date("H")-1)){
                     //si jour vide (ne pas afficher sur portable)
                     if($jour==$tt+$d){
                         $Dcontenu[$d] = "";
                     }
                     // affichage cours
+                    //group D
                     if($group == "D1" && (strpos($match,"Gr D") || strpos($match,"Gr D1") || strpos($match,"CM")) && strpos($match,"Gr D2")== FALSE){
                         echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
                         echo $match.$br.$horaire."  ".$loc.$br;
@@ -212,6 +233,8 @@
                 }
             }
         }
+        ?>
+        <?php
         //afichage date du jour
         echo "<div class='p0 c-1 ".$Dcontenu[0]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
         $tt = $tt+1;
