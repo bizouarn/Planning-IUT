@@ -11,7 +11,7 @@
 <body>
     <div id="grille">
         <div class="menu c-2">
-            <form action="./index.php" method="get">    
+            <form method="get">    
                 Promo :
                 <SELECT name="annee" class="styled-select blue semi-square">
                     <OPTION/>1
@@ -34,7 +34,7 @@
                     date();
                 </script>
             </div>
-            <div id="heure">
+            <div id="heure" class="noneP">
                 <script type="text/javascript">        
                 heure();
                 </script>
@@ -79,7 +79,9 @@
             $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002147feaa7994a14fb1e46e84f7c9b78e263799f3e18454a68d7f9e7187a83de3688b2feb32c6fb898ec6388e00a65894b9fae26dd6b71b817bb50b37189fa0b8d2bddf02cf567b7259696298c15bc4f3e24');}
         elseif($_GET["annee"] === "2"){
             $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002143b1bc5c15e9c597333135e66642c0dd1c49517ea8b2cbd3c32cc6302479afc71919bff1d45be9ae8f3f538b5e4811620ae26dd6b71b817bb50b37189fa0b8d2bfd0da62a685d5ae129d569558fe3e2977ce7540d959896bb178a078aeae0784c6ad17ef2b6df6255a422892ae67c9785');} 
-        
+        else{
+            echo "<meta http-equiv='refresh' content='0; URL=./?annee=1&group=A1'>";
+        }
         // Variable type info .ics
         $regExpMatch = '/SUMMARY:(.*)/';
         $regExpDate = '/DTSTART:(.*)/';
@@ -178,53 +180,27 @@
                         $Dcontenu[$d] = "";
                     }
                     // affichage cours
-                    //group D
-                    if($group == "D1" && (strpos($match,"Gr D") || strpos($match,"Gr D1") || strpos($match,"CM")) && strpos($match,"Gr D2")== FALSE){
-                        echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
-                        echo $match.$br.$horaire."  ".$loc.$br;
-                        echo $descTab[2];
-                        echo "</div>";
+                    if(strpos($match,"Gr")){
+                        // si juste le groupe indiqué
+                        if(strpos($match,$group)){
+                            echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
+                            echo $match.$br.$horaire."  ".$loc.$br;
+                            echo $descTab[2];
+                            echo "</div>";     
+                        }
+                        // si juste la lettre du groupe indiqué
+                        if(strpos($match,"Gr ".substr($group,0,1)) &&
+                           strpos($match,"Gr ".substr($group,0,1)."1")==false &&
+                           strpos($match,"Gr ".substr($group,0,1)."2")==false
+                          ){
+                            echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
+                            echo $match.$br.$horaire."  ".$loc.$br;
+                            echo $descTab[2];
+                            echo "</div>";     
+                        }
                     }
-                    if($group == "D2" && (strpos($match,"Gr D") || strpos($match,"Gr D2") || strpos($match,"CM")) && strpos($match,"Gr D1")== FALSE){
-                        echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
-                        echo $match.$br.$horaire."  ".$loc.$br;
-                        echo $descTab[2];
-                        echo "</div>";
-                    }
-                    // c
-                    if($group == "C1" && (strpos($match,"Gr C") || strpos($match,"Gr C1") || strpos($match,"CM")) && strpos($match,"Gr C2")== FALSE){
-                        echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
-                        echo $match.$br.$horaire."  ".$loc.$br;
-                        echo $descTab[2];
-                        echo "</div>";
-                    }
-                    if($group == "C2" && (strpos($match,"Gr C") || strpos($match,"Gr C2") || strpos($match,"CM")) && strpos($match,"Gr C1")== FALSE){
-                        echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
-                        echo $match.$br.$horaire."  ".$loc.$br;
-                        echo $descTab[2];
-                        echo "</div>";
-                    }
-                    // b
-                    if($group == "B1" && (strpos($match,"Gr B") || strpos($match,"Gr B1") || strpos($match,"CM")) && strpos($match,"Gr B2")== FALSE){
-                        echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
-                        echo $match.$br.$horaire."  ".$loc.$br;
-                        echo $descTab[2];
-                        echo "</div>";
-                    }
-                    if($group == "B2" && (strpos($match,"Gr B") || strpos($match,"Gr B2") || strpos($match,"CM")) && strpos($match,"Gr B1")== FALSE){
-                        echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
-                        echo $match.$br.$horaire."  ".$loc.$br;
-                        echo $descTab[2];
-                        echo "</div>";
-                    }
-                    // a
-                    if($group == "A1" && (strpos($match,"Gr A") || strpos($match,"Gr A1")!== FALSE || strpos($match,"CM")) && strpos($match,"Gr A2")== FALSE){
-                        echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
-                        echo $match.$br.$horaire."  ".$loc.$br;
-                        echo $descTab[2];
-                        echo "</div>";
-                    }
-                    if($group == "A2" && (strpos($match,"Gr A")!== FALSE || strpos($match,"Gr A2")!== FALSE || strpos($match,"CM")!== FALSE) && strpos($match,"Gr A1")== FALSE){
+                    // si aucun groupe indiqué
+                    if(strpos($match,"Gr")== FALSE){
                         echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
                         echo $match.$br.$horaire."  ".$loc.$br;
                         echo $descTab[2];

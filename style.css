@@ -279,8 +279,9 @@ body{
     }
     /* non classé */
     .menu{
+        grid-row: 1;
         display: grid;
-        grid-template-columns: 1fr 1fr 200px;
+        grid-template-columns: 1fr 200px;
         padding: 5px;
         font-size: 25px;
         background-color: #124368;
@@ -312,51 +313,50 @@ body{
         text-align: center;
         grid-column: 2;
     }
-    
     .p0.c-1{
-        grid-row: 000;
-    }
-    .p0.c0{
-        grid-row: 001;
-    }
-    .p0.c0-2{
         grid-row: 002;
     }
-    .p0.c1{
+    .p0.c0{
         grid-row: 003;
     }
-    .p0.c1-2{
+    .p0.c0-2{
         grid-row: 004;
     }
-    .p0.c2{
+    .p0.c1{
         grid-row: 005;
     }
-    .p0.c2-2{
+    .p0.c1-2{
         grid-row: 006;
     }
-    .p0.c3{
+    .p0.c2{
         grid-row: 007;
     }
-    .p0.c3-2{
+    .p0.c2-2{
         grid-row: 008;
     }
-    .p0.c4{
+    .p0.c3{
         grid-row: 009;
     }
-    .p0.c4-2{
+    .p0.c3-2{
         grid-row: 010;
     }
-    .p0.c5{
+    .p0.c4{
         grid-row: 011;
     }
-    .p0.c5-2{
+    .p0.c4-2{
         grid-row: 012;
     }
-    .p0.c6{
+    .p0.c5{
         grid-row: 013;
     }
-    .p0.c6-2{
+    .p0.c5-2{
         grid-row: 014;
+    }
+    .p0.c6{
+        grid-row: 015;
+    }
+    .p0.c6-2{
+        grid-row: 016;
     }
     
     .p1.c-1{
