@@ -29,12 +29,12 @@
                 </SELECT>
                 <button type="submit" class="styled-select blue semi-square">></button>
             </form>
-            <div id="day">
+            <div id="day" class="noneP">
                 <script type="text/javascript">        
                     date();
                 </script>
             </div>
-            <div id="heure" class="noneP">
+            <div id="heure">
                 <script type="text/javascript">        
                 heure();
                 </script>
@@ -74,7 +74,9 @@
         }
         
         $tt = (date("d")+$jD); //date du jour
-        
+        if($tt>31){
+            $tt=(date("d"));
+        }
         if($_GET["annee"] === "1"){
             $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002147feaa7994a14fb1e46e84f7c9b78e263799f3e18454a68d7f9e7187a83de3688b2feb32c6fb898ec6388e00a65894b9fae26dd6b71b817bb50b37189fa0b8d2bddf02cf567b7259696298c15bc4f3e24');}
         elseif($_GET["annee"] === "2"){
@@ -152,6 +154,9 @@
                 else if($hor=="17-15" && $temps2==45){
                     $c="6";
                 }
+                else if($hor=="17-30"){
+                    $c="6";
+                }
                 //horaire 45min
                 else if($hor=="17-15" && $temps2==00){
                     $c="6-2";
@@ -212,19 +217,52 @@
         ?>
         <?php
         //afichage date du jour
-        echo "<div class='p0 c-1 ".$Dcontenu[0]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
-        $tt = $tt+1;
-        echo "<div class='p1 c-1 ".$Dcontenu[1]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
-        $tt = $tt+1;
-        echo "<div class='p2 c-1 ".$Dcontenu[2]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
-        $tt = $tt+1;
-        echo "<div class='p3 c-1 ".$Dcontenu[3]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
-        $tt = $tt+1;
-        echo "<div class='p4 c-1 ".$Dcontenu[4]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
-        $tt = $tt+1;
-        echo "<div class='p5 c-1 ".$Dcontenu[5]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
-        $tt = $tt+1;
-        echo "<div class='p6 c-1 ".$Dcontenu[6]."'>".$tt.'/'.$mois.'/'.$annee."</div>";
+        $moisG=date('m');
+        $jour=$tt;
+        $timestamp = mktime(0, 0, 0, $moisG, $jour, $annee);
+        $jourC = date('D', $timestamp);
+        $moisG = date('m', $timestamp);
+        $jour = date('d', $timestamp);
+        $jourL["Mon"]="Lundi";
+        $jourL["Tue"]="mardi";
+        $jourL["Wed"]="mercredi";
+        $jourL["Thu"]="jeudi";
+        $jourL["Fri"]="Vendredi";
+        $jourL["Sat"]="Samedi";
+        $jourL["Sun"]="Dimanche";
+        $moisL["01"]="Janvier";
+        $moisL["02"]="Février";
+        $moisL["03"]="Mars";
+        $moisL["04"]="Avril";
+        $moisL["05"]="Mai";
+        $moisL["06"]="Juin";
+        $moisL["07"]="Juillet";
+        $moisL["08"]="Août";
+        $moisL["09"]="Septembre";
+        $moisL["10"]="Octobre";
+        $moisL["11"]="Novembre";
+        $moisL["12"]="Décembre";
+        
+        for($d=0 ; $d < 7; ++$d){
+            echo "<div class='p".$d." c-1 ".$Dcontenu[$d]."'>".$jourL[$jourC].' '.$tt.' '.$moisL[$moisG]."</div>";
+            $tt = $tt+1;
+            $jour=$tt;
+            $timestamp = mktime(0, 0, 0, $moisG, $jour, $annee);
+            $jourC = date('D', $timestamp);
+            $moisG = date('m', $timestamp);
+            if($moisG==2 && $jour>28){
+                $tt=1;
+            }
+            if($moisG%2==0 && $jour>30){
+                $tt=1;
+            }
+            if($jour>31){
+                $tt=1;
+            }
+            if($jour>31){
+                $tt=1;
+            }
+        }
         ?>
-        </div>
+    </div>
 </body>
