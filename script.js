@@ -22,31 +22,21 @@ function date(){
 }
 //affichage emploie du temps
 //affiche la date pour chaque jour
-function Setdate(idDiv,d, m, y){
-    var ladate=new Date();
-    var l=ladate.getDay();
-    var jour=new Array(8);
-    jour[1]="Lundi";
-    jour[2]="mardi";
-    jour[3]="mercredi";
-    jour[4]="jeudi";
-    jour[5]="Vendredi";
-    jour[6]="Samedi";
-    jour[7]="Dimanche";
-    
-    var mois=new Array(13);
-    mois[1]="Janvier";
-    mois[2]="Février";
-    mois[3]="Mars";
-    mois[4]="Avril";
-    mois[5]="Mai";
-    mois[6]="Juin";
-    mois[7]="Juillet";
-    mois[8]="Août";
-    mois[9]="Septembre";
-    mois[10]="Octobre";
-    mois[11]="Novembre";
-    mois[12]="Décembre";
-    var text = (jour[l]+" "+d+" "+mois[m]);
-    document.getElementById(idDiv).innerHTML = text;
+function SetSelect(id, option){
+    var text=$_GET(option);
+    document.getElementById(id).innerHTML = text;
+}
+function $_GET(param) {
+	var vars = {};
+	window.location.href.replace( location.hash, '' ).replace( 
+		/[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+		function( m, key, value ) { // callback
+			vars[key] = value !== undefined ? value : '';
+		}
+	);
+
+	if ( param ) {
+		return vars[param] ? vars[param] : null;	
+	}
+	return vars;
 }

@@ -14,10 +14,20 @@
             <form method="get">    
                 Promo :
                 <SELECT name="annee" class="styled-select blue semi-square">
+                    <OPTION id="get1" style="display:none;">
+                        <script>
+                            SetSelect("get1","annee");
+                        </script>
+                    </OPTION>
                     <OPTION/>1
                     <OPTION/>2
                 </SELECT>
                 <SELECT name="group" class="styled-select blue semi-square">
+                    <OPTION id="get2" style="display:none;">
+                        <script>
+                            SetSelect("get2","group");
+                        </script>
+                    </OPTION>
                     <OPTION/>A1
                     <OPTION/>A2
                     <OPTION/>B1
