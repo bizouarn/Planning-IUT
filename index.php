@@ -61,7 +61,7 @@
         <div class="border" ></div>
         <?php
         // Variable récuperer méthode GET
-        $Dcontenu =array("noneP","noneP","noneP","noneP","noneP","noneP","noneP");
+        $Dcontenu =array("vide","vide","vide","vide","vide","vide","vide");
         if(isset($_GET["group"])){
             $group=$_GET["group"];
         }
@@ -198,25 +198,37 @@
                     if(strpos($match,"Gr")){
                         // si juste le groupe indiqué
                         if(strpos($match,$group)){
-                            echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
+                            echo "<div id='box' class='p".$d." c".$c." ".$typeCase." noneP'>";
                             echo $match.$br.$horaire."  ".$loc.$br;
                             echo $descTab[2];
-                            echo "</div>";     
+                            echo "</div>";
+                            echo "<div id='boxP' class='p".$d." c".$c." ".$typeCase." nonePC' style='grid-row: ".($d+1)."0".($c+1).";grid-column:2;'>";
+                            echo $match.$br.$horaire."  ".$loc.$br;
+                            echo $descTab[2];
+                            echo "</div>";   
                         }
                         // si juste la lettre du groupe indiqué
                         if(strpos($match,"Gr ".substr($group,0,1)) &&
                            strpos($match,"Gr ".substr($group,0,1)."1")==false &&
                            strpos($match,"Gr ".substr($group,0,1)."2")==false
                           ){
-                            echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
+                            echo "<div id='box' class='p".$d." c".$c." ".$typeCase." noneP'>";
                             echo $match.$br.$horaire."  ".$loc.$br;
                             echo $descTab[2];
-                            echo "</div>";     
+                            echo "</div>";
+                            echo "<div id='boxP' class='p".$d." c".$c." ".$typeCase." nonePC' style='grid-row: ".($d+1)."0".($c+1).";grid-column:2;'>";
+                            echo $match.$br.$horaire."  ".$loc.$br;
+                            echo $descTab[2];
+                            echo "</div>";  
                         }
                     }
                     // si aucun groupe indiqué
                     if(strpos($match,"Gr")== FALSE){
-                        echo "<div id='box' class='p".$d." c".$c." ".$typeCase."'>";
+                        echo "<div id='box' class='p".$d." c".$c." ".$typeCase." noneP'>";
+                        echo $match.$br.$horaire."  ".$loc.$br;
+                        echo $descTab[2];
+                        echo "</div>";
+                        echo "<div id='boxP' class='p".$d." c".$c." ".$typeCase." nonePC' style='grid-row: ".($d+1)."0".($c+1).";grid-column:2;'>";
                         echo $match.$br.$horaire."  ".$loc.$br;
                         echo $descTab[2];
                         echo "</div>";
@@ -252,9 +264,9 @@
         $moisL["10"]="Octobre";
         $moisL["11"]="Novembre";
         $moisL["12"]="Décembre";
-        
         for($d=0 ; $d < 7; ++$d){
-            echo "<div class='p".$d." c-1 ".$Dcontenu[$d]."'>".$jourL[$jourC].' '.$tt.' '.$moisL[$moisG]."</div>";
+            echo "<div class='p".$d." c-1 noneP ".$Dcontenu[$d]."'>".$jourL[$jourC].' '.$tt.' '.$moisL[$moisG]."</div>";
+            echo "<div class='p".$d." c-1 ".$Dcontenu[$d]." nonePC' style='grid-row: ".($d+1)."00;grid-column:2;'>".$jourL[$jourC].' '.$tt.' '.$moisL[$moisG]."</div>";
             $tt = $tt+1;
             $jour=$tt;
             $timestamp = mktime(0, 0, 0, $moisG, $jour, $annee);
