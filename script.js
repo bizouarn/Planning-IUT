@@ -1,3 +1,4 @@
+var on = false;
 // menu
 function heure(){
     var ladate=new Date()
@@ -12,12 +13,25 @@ function heure(){
     setTimeout(heure,1000);
 }
 function date(){
+    var mois =[
+        "Janvier",
+        "Février",
+        "Mars",
+        "Avril",
+        "Mai",
+        "Juin",
+        "Juillet",
+        "Août",
+        "Septembre",
+        "Octobre",
+        "Novembre",
+        "Décembre"
+    ]
     var ladate=new Date()
     var d=ladate.getDate();
     var m=ladate.getMonth()+1;
-    if (m<10) {m = "0" + m}
     var y=ladate.getFullYear();
-    var text = (d+"/"+m+"/"+y);
+    var text = (d+" "+mois[m]+" "+y);
     document.getElementById('day').innerHTML = text;
 }
 //affichage emploie du temps
@@ -39,4 +53,16 @@ function $_GET(param) {
 		return vars[param] ? vars[param] : null;	
 	}
 	return vars;
+}
+function clickMenu(){
+if(on==false){
+document.getElementById('menuL').setAttribute("style","display:none;");
+document.getElementById('grille').setAttribute("style","grid-column: 1/3;");
+on=true;
+}
+else{
+document.getElementById('menuL').removeAttribute("style");
+document.getElementById('grille').removeAttribute("style"); 
+on=false;
+}
 }
