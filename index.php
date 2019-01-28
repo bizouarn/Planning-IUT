@@ -84,7 +84,7 @@
                                     $desc = substr($descTableau[0][$j], 12);
                                     $temps1 = substr($StampTableau[0][$j], 15, 2)+1;
                                     $temps2 = substr($StampTableau[0][$j], 17, 2);
-                                    if($heure<date("g")-1 && $temps1>date("g")-1 && $jour==date("d") && $mois==date("m")){
+                                    if($heure<=date("g")-1 && $temps1>=date("g")-1 && $jour==date("d") && $mois==date("m")){
                                         $salleL[substr($loc,2,3)]="";
                                     }
                                 }
@@ -155,11 +155,10 @@
             else{
                 $jD=0;
             }
-
-            $tt = (date("d")+$jD); //date du jour
-            if($tt>31){
-                $tt=(date("d"));
-            }
+            //date du jour
+            $tt = (date("d")+$jD);
+            $moisTT=date("m");
+            // récupération des calendrier
             if($_GET["annee"] === "1"){
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002147feaa7994a14fb1e46e84f7c9b78e263799f3e18454a68d7f9e7187a83de3688b2feb32c6fb898ec6388e00a65894b9fae26dd6b71b817bb50b37189fa0b8d2bddf02cf567b7259696298c15bc4f3e24');}
             elseif($_GET["annee"] === "2"){
@@ -190,6 +189,20 @@
 
             // Affichage cours
             for($d=0 ; $d < 7; ++$d){
+                for($i = 0; $i<4 ; $i++){
+                    if($mois==2 && $tt+$d>28){
+                        $tt=$tt-28;
+                        $moisTT=$moisTT+1;
+                    }
+                    if($mois%2==0 && $tt+$d>30){
+                        $tt=$tt-30;
+                        $moisTT=$moisTT+1;
+                    }
+                    if($tt+$d>31){
+                        $tt=$tt-31;
+                        $moisTT=$moisTT+1;
+                    }
+                }
                 for ($j=0 ; $j < $n ; ++$j){
                     $pos = "p".$d.$j;
                     $div1='<div class=$pos id="box">';
@@ -262,7 +275,7 @@
                         $typeCase = "TP";
                     }
                 //affichage selon le groupe
-                    if(($jour==$tt+$d && $mois==date("m") && $tt+$d!=date("d") )||($jour==$tt+$d && $mois==date("m") && $heure>date("H")-1)){
+                    if(($jour==$tt+$d && $mois==$moisTT && $tt+$d!=date("d") )||($jour==$tt+$d && $mois==date("m") && $heure>date("H")-1)){
                         //si jour vide (ne pas afficher sur portable)
                         if($jour==$tt+$d){
                             $Dcontenu[$d] = "";
@@ -311,8 +324,23 @@
             }
             ?>
             <?php
-            //afichage date du jour
+            //date du jour
+            $tt = (date("d")+$jD);
+            $jour = $tt;
             $moisG=date('m');
+            if($moisG==2 && $jour>28){
+                $tt=$tt-28;
+                $moisG=$moisG+1;
+            }
+            if($moisG%2==0 && $jour>30){
+                $tt=$tt-30;
+                $moisG=$moisG+1;
+            }
+            if($jour>31){
+                $tt=$tt-31;
+                $moisG=$moisG+1;
+            }
+            //afichage date du jour
             $jour=$tt;
             $timestamp = mktime(0, 0, 0, $moisG, $jour, $annee);
             $jourC = date('D', $timestamp);
@@ -349,9 +377,6 @@
                     $tt=1;
                 }
                 if($moisG%2==0 && $jour>30){
-                    $tt=1;
-                }
-                if($jour>31){
                     $tt=1;
                 }
                 if($jour>31){
