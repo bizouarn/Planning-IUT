@@ -11,7 +11,7 @@
 <body>
     <div id="base">
         <div id="menuL">
-            <center>
+            <center id="CmenuL">
                 <form class="principale" method="get">
                         Sélection<br>
                         <div class="Fbleu">
@@ -45,55 +45,55 @@
                     <br>
                     <div class="Fbleu">
                         salle libre
-                        <div>
-                            <?php 
-                                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d31fc22145ae5a6cec380acd54f6ef25e1268055ef30541b9a26113b894fb6da29a910ab7215b887c302758449fbd53d8090dc208afc81e5136669d5d81b5e7ff495e3e8910fd4f00234b9d7b7225c8ea1274940c72ac622ccc019f28c3c7ac7d185f78efad292c1dad50f9fd694f7ca66ac3b5bb16186c9fa4f195065c394d2c620cd00283f4678fe6ab6da2293ad64ccf919b9001e989c65927d16c1d48c75726fb359153126e7d1bb95aa76bef7d8d0227a9394e52778fb6e940cb2d3a56888ba8c04e1d259f061540aba384fd665b32d4d8861081fe4aaa7c6ceb5591f3946551e502748cea27c5ae48e50baec33fa071546b18e95a20708d34c57a1da7a7750cf289ce6252e6bd86c85873e1c03b30d31395117d746e7f559b7bccd65af84d53637f997c2bbc0eedfac82f8d3b4da002bcfa505c0761a787b160c28c9a281387a2f046e602bdd2d76016b33c64a702ee0a972bd97defd66a78bd25745edf6150f206ca035a50f8fe6833571a4dc62da66decc7af531d58d0e49222e3438c9ecd866fc6c483b019a969a850bab1d3e80ce50c697a6cbdfec911fef26aa4301a92bd24b3ff5897adb757bc75e7989f8a8107660e456f83281813fc5508b8931158c3605c92f1b555888d70acd5cc474870aa232b90d7dc5b2f46281e2f62068482f72fa02eaa7722c6408a02313ba269e6232c8774b7ed07358d414703280a2af4afcdcd9ed9be971c9a61f4bd352a65d5e30d44e96a8e65f7b70e4ed7ec1728da241243ca80c473dd584ba796ed8f287e3b203dcea3ec25333f96991f10666eebe4cb3d7b137948aacbf38926fd37f0ddabcb03f08cb128c93bc4fcb6de69584c3bcdb178ee67ee5dd161cc423ab504cdf3c1acef8543cfd5b81b930e6b6cec0db97247709248af069ff1fd12df955944ed43e152021893c651df862915e9dacf760c9a92ce180bab4d2ceceb0fc');
-                                $regExpMatch = '/SUMMARY:(.*)/';
-                                $regExpDate = '/DTSTART:(.*)/';
-                                $regExpLoc = '/LOCATION:(.*)/';
-                                $regExpDesc = '/DESCRIPTION:(.*)/';
-                                $regExpStamp = '/DTEND:(.*)/';
-                                //vairable sale
-                                $salleL["126"]="B126 ";
-                                $salleL["141"]="B141 ";
-                                $salleL["024"]="B024 ";
-                                $salleL["029"]="B026 ";
-                                $salleL["003"]="B003 ";
-                                $salleL["005"]="B005 ";
-                                $salleL["022"]="B022 ";
-                                $salleL["028"]="B028 ";
-                                $salleL["035"]="B035 ";
-                                $salleL["037"]="B037 ";
-
-                                // Varaible utile balise
-                                $br='<br>';
-                                // Variable info .ics
-                                $n = preg_match_all($regExpMatch, $calendrier, $matchTableau, PREG_PATTERN_ORDER);
-                                preg_match_all($regExpDate, $calendrier, $dateTableau, PREG_PATTERN_ORDER);
-                                preg_match_all($regExpLoc, $calendrier, $locTableau, PREG_PATTERN_ORDER);
-                                preg_match_all($regExpDesc, $calendrier, $descTableau, PREG_PATTERN_ORDER);
-                                preg_match_all($regExpStamp, $calendrier, $StampTableau, PREG_PATTERN_ORDER);
-                                for ($j=0 ; $j < $n ; ++$j){
-                                    $annee = substr($dateTableau[0][$j], 8, 4);
-                                    $mois = substr($dateTableau[0][$j], 12, 2);
-                                    $jour = substr($dateTableau[0][$j], 14, 2);
-                                    $heure = substr($dateTableau[0][$j], 17, 2)+1;
-                                    $min = substr($dateTableau[0][$j], 19, 2);
-                                    $match = substr($matchTableau[0][$j], 8);
-                                    $loc = substr($locTableau[0][$j], 11);
-                                    $desc = substr($descTableau[0][$j], 12);
-                                    $temps1 = substr($StampTableau[0][$j], 15, 2)+1;
-                                    $temps2 = substr($StampTableau[0][$j], 17, 2);
-                                    if($heure<=date("g")-1 && $temps1>=date("g")-1 && $jour==date("d") && $mois==date("m")){
-                                        $salleL[substr($loc,2,3)]="";
-                                    }
+                    </div>
+                    <div>
+                        <?php 
+                            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d31fc22145ae5a6cec380acd54f6ef25e1268055ef30541b9a26113b894fb6da29a910ab7215b887c302758449fbd53d8090dc208afc81e5136669d5d81b5e7ff495e3e8910fd4f00234b9d7b7225c8ea1274940c72ac622ccc019f28c3c7ac7d185f78efad292c1dad50f9fd694f7ca66ac3b5bb16186c9fa4f195065c394d2c620cd00283f4678fe6ab6da2293ad64ccf919b9001e989c65927d16c1d48c75726fb359153126e7d1bb95aa76bef7d8d0227a9394e52778fb6e940cb2d3a56888ba8c04e1d259f061540aba384fd665b32d4d8861081fe4aaa7c6ceb5591f3946551e502748cea27c5ae48e50baec33fa071546b18e95a20708d34c57a1da7a7750cf289ce6252e6bd86c85873e1c03b30d31395117d746e7f559b7bccd65af84d53637f997c2bbc0eedfac82f8d3b4da002bcfa505c0761a787b160c28c9a281387a2f046e602bdd2d76016b33c64a702ee0a972bd97defd66a78bd25745edf6150f206ca035a50f8fe6833571a4dc62da66decc7af531d58d0e49222e3438c9ecd866fc6c483b019a969a850bab1d3e80ce50c697a6cbdfec911fef26aa4301a92bd24b3ff5897adb757bc75e7989f8a8107660e456f83281813fc5508b8931158c3605c92f1b555888d70acd5cc474870aa232b90d7dc5b2f46281e2f62068482f72fa02eaa7722c6408a02313ba269e6232c8774b7ed07358d414703280a2af4afcdcd9ed9be971c9a61f4bd352a65d5e30d44e96a8e65f7b70e4ed7ec1728da241243ca80c473dd584ba796ed8f287e3b203dcea3ec25333f96991f10666eebe4cb3d7b137948aacbf38926fd37f0ddabcb03f08cb128c93bc4fcb6de69584c3bcdb178ee67ee5dd161cc423ab504cdf3c1acef8543cfd5b81b930e6b6cec0db97247709248af069ff1fd12df955944ed43e152021893c651df862915e9dacf760c9a92ce180bab4d2ceceb0fc');
+                            $regExpMatch = '/SUMMARY:(.*)/';
+                            $regExpDate = '/DTSTART:(.*)/';
+                            $regExpLoc = '/LOCATION:(.*)/';
+                            $regExpDesc = '/DESCRIPTION:(.*)/';
+                            $regExpStamp = '/DTEND:(.*)/';
+                            //vairable sale
+                            $salleL["126"]="B126 ";
+                            $salleL["141"]="B141 ";
+                            $salleL["024"]="B024 ";
+                            $salleL["029"]="B026 ";
+                            $salleL["003"]="B003 ";
+                            $salleL["005"]="B005 ";
+                            $salleL["022"]="B022 ";
+                            $salleL["028"]="B028 ";
+                            $salleL["035"]="B035 ";
+                            $salleL["037"]="B037 ";
+                            // Varaible utile balise
+                            $br='<br>';
+                            // Variable info .ics
+                            $n = preg_match_all($regExpMatch, $calendrier, $matchTableau, PREG_PATTERN_ORDER);
+                            preg_match_all($regExpDate, $calendrier, $dateTableau, PREG_PATTERN_ORDER);
+                            preg_match_all($regExpLoc, $calendrier, $locTableau, PREG_PATTERN_ORDER);
+                            preg_match_all($regExpDesc, $calendrier, $descTableau, PREG_PATTERN_ORDER);
+                            preg_match_all($regExpStamp, $calendrier, $StampTableau, PREG_PATTERN_ORDER);
+                            for ($j=0 ; $j < $n ; ++$j){
+                                $annee = substr($dateTableau[0][$j], 8, 4);
+                                $mois = substr($dateTableau[0][$j], 12, 2);
+                                $jour = substr($dateTableau[0][$j], 14, 2);
+                                $heure = substr($dateTableau[0][$j], 17, 2)+1;
+                                $min = substr($dateTableau[0][$j], 19, 2);
+                                $match = substr($matchTableau[0][$j], 8);
+                                $loc = substr($locTableau[0][$j], 11);
+                                $desc = substr($descTableau[0][$j], 12);
+                                $temps1 = substr($StampTableau[0][$j], 15, 2)+1;
+                                $temps2 = substr($StampTableau[0][$j], 17, 2);
+                                if($heure<=date("g")-1 && $temps1>=date("g")-1 && $jour==date("d") && $mois==date("m")){
+                                    $salleL[substr($loc,2,3)]="";
                                 }
-                                echo implode("",$salleL);
-                            ?>
-                        </div>
+                            }
+                            echo implode("",$salleL);
+                        ?>
                     </div>
                 </form>    
             </center>
+            <div id="footer">© 2016 RYDIN Nathan and LUX Mathieu<br>© 2019 Aymeric Bizouarn All Rights Reserved</div>
         </div>
         <div id="grille">
             <div height="100%" ></div>
