@@ -1,3 +1,4 @@
+<!-- rajouter le formatage automatique des date avec les annee bissextile (date("L") l'année est bissextile 1 si bissextile.) --!>
 <!-- Auteur Aymeric Bizouarn -->
 <!doctype html>
 <html lang="fr">
@@ -111,10 +112,47 @@
                         echo "planning : ".$annee.$group;
                     ?>
                 </div>
-                <div id="day" class="noneP">
-                    <script type="text/javascript">        
-                        date();
-                    </script>
+                <div id='day' class='noneP'>
+                    <?php
+                        //affichage mois annee menu sup
+                        $mois = date("m");
+                        $tt = date("d");
+                        $annee = date("Y");
+                        for($i = 0; $i<12 ; $i++){
+                            if($mois==2 && $tt+3>28){
+                                $tt=$tt-28;
+                                $mois=$mois+1;
+                            }
+                            elseif($mois%2==0 && $tt+3>30){
+                                $tt=$tt-30;
+                                $mois=$mois+1;
+                            }
+                            elseif($tt+3>31){
+                                $tt=$tt-31;
+                                $mois=$mois+1;
+                            }
+                        }
+                        if($mois<10){
+                            $mois="0".$mois;
+                        }
+                        if($mois>12){
+                            $mois="01";
+                            $annee=$annee+1;
+                        }
+                        $moisL["01"]="Janvier";
+                        $moisL["02"]="Février";
+                        $moisL["03"]="Mars";
+                        $moisL["04"]="Avril";
+                        $moisL["05"]="Mai";
+                        $moisL["06"]="Juin";
+                        $moisL["07"]="Juillet";
+                        $moisL["08"]="Août";
+                        $moisL["09"]="Septembre";
+                        $moisL["10"]="Octobre";
+                        $moisL["11"]="Novembre";
+                        $moisL["12"]="Décembre";
+                        echo $moisL[$mois]." ".$annee;
+                    ?>
                 </div>
                 <div id="heure" class="noneP">
                     <script type="text/javascript">        
@@ -159,10 +197,38 @@
             $tt = (date("d")+$jD);
             $moisTT=date("m");
             // récupération des calendrier
-            if($_GET["annee"] === "1"){
-                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002147feaa7994a14fb1e46e84f7c9b78e263799f3e18454a68d7f9e7187a83de3688b2feb32c6fb898ec6388e00a65894b9fae26dd6b71b817bb50b37189fa0b8d2bddf02cf567b7259696298c15bc4f3e24');}
-            elseif($_GET["annee"] === "2"){
-                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002143b1bc5c15e9c597333135e66642c0dd1c49517ea8b2cbd3c32cc6302479afc71919bff1d45be9ae8f3f538b5e4811620ae26dd6b71b817bb50b37189fa0b8d2bfd0da62a685d5ae129d569558fe3e2977ce7540d959896bb178a078aeae0784c6ad17ef2b6df6255a422892ae67c9785');} 
+            if($promo === "1A1"){
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214628e9ee67d520db5e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+            elseif($promo === "1A2"){
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021444b2068d37814033e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+            elseif($promo === "1B1"){
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e3b4fdf609d53024e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+            elseif($promo === "1B2"){
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e7816c0755e34543e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+            elseif($promo === "1C1"){
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021473110dcf0fad1631e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+            elseif($promo === "1C2"){
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002148ac4e83c0ad230abe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+            elseif($promo === "1D1"){
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d5d9f8710563f588e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+            elseif($promo === "1D2"){
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214c281cf3d512a92b6e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b3ed16e4ed8dfec978d3f4109b6629391');}
+            elseif($promo === "2A1"){
+                $calendrier = file_get_contents('');}
+            elseif($promo === "2A2"){
+                $calendrier = file_get_contents('');}
+            elseif($promo === "2B1"){
+                $calendrier = file_get_contents('');}
+            elseif($promo === "2B2"){
+                $calendrier = file_get_contents('');}
+            elseif($promo === "2C1"){
+                $calendrier = file_get_contents('');}
+            elseif($promo === "2C2"){
+                $calendrier = file_get_contents('');}
+            elseif($promo === "2D1"){
+                $calendrier = file_get_contents('');}
+            elseif($promo === "2D2"){
+                $calendrier = file_get_contents('');}
             else{
                 echo "<meta http-equiv='refresh' content='0; URL=./?annee=1&group=A1'>";
             }
@@ -189,16 +255,16 @@
 
             // Affichage cours
             for($d=0 ; $d < 7; ++$d){
-                for($i = 0; $i<4 ; $i++){
+                for($i = 0; $i<12 ; $i++){
                     if($mois==2 && $tt+$d>28){
                         $tt=$tt-28;
                         $moisTT=$moisTT+1;
                     }
-                    if($mois%2==0 && $tt+$d>30){
+                    elseif($mois%2==0 && $tt+$d>30){
                         $tt=$tt-30;
                         $moisTT=$moisTT+1;
                     }
-                    if($tt+$d>31){
+                    elseif($tt+$d>31){
                         $tt=$tt-31;
                         $moisTT=$moisTT+1;
                     }
@@ -226,6 +292,13 @@
                     $descTab = explode("\\n",$desc);
                     // Mise en forme
                     $date = $jour."/".$mois."/".$annee;
+                    if($tt<10){
+                        $tt = "0"+$tt;
+                    }
+                    if($moisTT<10){
+                        $mois = $moisTT;
+                    }
+                    $date2 = ($tt+$d)."/".$moisTT."/".$annee;
                     $horaire = " ".$heure."h".$min."-".$temps1."h".$temps2;
                     $hor = $heure."-".$min;
                     //horaire 1h30
@@ -280,108 +353,41 @@
                         if($jour==$tt+$d){
                             $Dcontenu[$d] = "";
                         }
-                        // affichage cours
-                        if(strpos($match,"Gr")){
-                            // si juste le groupe indiqué
-                            if(strpos($match,$group)){
-                                echo "<div id='box' class='p".$d." c".$c." ".$typeCase." noneP'>";
-                                echo $match.$br.$horaire."  ".$loc.$br;
-                                echo $descTab[2];
-                                echo "</div>";
-                                echo "<div id='boxP' class='p".$d." c".$c." ".$typeCase." nonePC' style='grid-row: ".($d+1)."0".($c+1).";grid-column:2;'>";
-                                echo $match.$br.$horaire."  ".$loc.$br;
-                                echo $descTab[2];
-                                echo "</div>";   
-                            }
-                            // si juste la lettre du groupe indiqué
-                            if(strpos($match,"Gr ".substr($group,0,1)) &&
-                               strpos($match,"Gr ".substr($group,0,1)."1")==false &&
-                               strpos($match,"Gr ".substr($group,0,1)."2")==false
-                              ){
-                                echo "<div id='box' class='p".$d." c".$c." ".$typeCase." noneP'>";
-                                echo $match.$br.$horaire."  ".$loc.$br;
-                                echo $descTab[2];
-                                echo "</div>";
-                                echo "<div id='boxP' class='p".$d." c".$c." ".$typeCase." nonePC' style='grid-row: ".($d+1)."0".($c+1).";grid-column:2;'>";
-                                echo $match.$br.$horaire."  ".$loc.$br;
-                                echo $descTab[2];
-                                echo "</div>";  
-                            }
-                        }
-                        // si aucun groupe indiqué
-                        if(strpos($match,"Gr")== FALSE){
-                            echo "<div id='box' class='p".$d." c".$c." ".$typeCase." noneP'>";
-                            echo $match.$br.$horaire."  ".$loc.$br;
-                            echo $descTab[2];
-                            echo "</div>";
-                            echo "<div id='boxP' class='p".$d." c".$c." ".$typeCase." nonePC' style='grid-row: ".($d+1)."0".($c+1).";grid-column:2;'>";
-                            echo $match.$br.$horaire."  ".$loc.$br;
-                            echo $descTab[2];
-                            echo "</div>";
-                        }
+                        echo "<div id='box' class='p".$d." c".$c." ".$typeCase." noneP'>";
+                        echo $match.$br.$horaire."  ".$loc.$br.$date.$date2;
+                        echo $descTab[2];
+                        echo "</div>";
+                        echo "<div id='boxP' class='p".$d." c".$c." ".$typeCase." nonePC' style='grid-row: ".($d+1)."0".($c+1).";grid-column:2;'>";
+                        echo $match.$br.$horaire."  ".$loc.$br;
+                        echo $descTab[2];
+                        echo "</div>";   
                     }
                 }
-            }
-            ?>
-            <?php
-            //date du jour
-            $tt = (date("d")+$jD);
-            $jour = $tt;
-            $moisG=date('m');
-            if($moisG==2 && $jour>28){
-                $tt=$tt-28;
-                $moisG=$moisG+1;
-            }
-            if($moisG%2==0 && $jour>30){
-                $tt=$tt-30;
-                $moisG=$moisG+1;
-            }
-            if($jour>31){
-                $tt=$tt-31;
-                $moisG=$moisG+1;
-            }
-            //afichage date du jour
-            $jour=$tt;
-            $timestamp = mktime(0, 0, 0, $moisG, $jour, $annee);
-            $jourC = date('D', $timestamp);
-            $moisG = date('m', $timestamp);
-            $jour = date('d', $timestamp);
-            $jourL["Mon"]="Lundi";
-            $jourL["Tue"]="mardi";
-            $jourL["Wed"]="mercredi";
-            $jourL["Thu"]="jeudi";
-            $jourL["Fri"]="Vendredi";
-            $jourL["Sat"]="Samedi";
-            $jourL["Sun"]="Dimanche";
-            $moisL["01"]="Janvier";
-            $moisL["02"]="Février";
-            $moisL["03"]="Mars";
-            $moisL["04"]="Avril";
-            $moisL["05"]="Mai";
-            $moisL["06"]="Juin";
-            $moisL["07"]="Juillet";
-            $moisL["08"]="Août";
-            $moisL["09"]="Septembre";
-            $moisL["10"]="Octobre";
-            $moisL["11"]="Novembre";
-            $moisL["12"]="Décembre";
-            for($d=0 ; $d < 7; ++$d){
-                echo "<div class='p".$d." c-1 noneP ".$Dcontenu[$d]."'>".$jourL[$jourC].' '.$tt.' '.$moisL[$moisG]."</div>";
-                echo "<div class='p".$d." c-1 ".$Dcontenu[$d]." nonePC' style='grid-row: ".($d+1)."00;grid-column:2;'>".$jourL[$jourC].' '.$tt.' '.$moisL[$moisG]."</div>";
-                $tt = $tt+1;
-                $jour=$tt;
-                $timestamp = mktime(0, 0, 0, $moisG, $jour, $annee);
+                // afichage de la date
+                $jourL["Mon"]="Lundi";
+                $jourL["Tue"]="mardi";
+                $jourL["Wed"]="mercredi";
+                $jourL["Thu"]="jeudi";
+                $jourL["Fri"]="Vendredi";
+                $jourL["Sat"]="Samedi";
+                $jourL["Sun"]="Dimanche";
+                $moisL["01"]="Janvier";
+                $moisL["02"]="Février";
+                $moisL["03"]="Mars";
+                $moisL["04"]="Avril";
+                $moisL["05"]="Mai";
+                $moisL["06"]="Juin";
+                $moisL["07"]="Juillet";
+                $moisL["08"]="Août";
+                $moisL["09"]="Septembre";
+                $moisL["10"]="Octobre";
+                $moisL["11"]="Novembre";
+                $moisL["12"]="Décembre";
+                $timestamp = mktime(0, 0, 0, $moisTT, ($tt+$d), $annee);
                 $jourC = date('D', $timestamp);
                 $moisG = date('m', $timestamp);
-                if($moisG==2 && $jour>28){
-                    $tt=1;
-                }
-                if($moisG%2==0 && $jour>30){
-                    $tt=1;
-                }
-                if($jour>31){
-                    $tt=1;
-                }
+                echo "<div class='p".$d." c-1 noneP ".$Dcontenu[$d]."'>".$jourL[$jourC].' '.($tt+$d).' '.$moisL[$moisG]."</div>";
+                echo "<div class='p".$d." c-1 ".$Dcontenu[$d]." nonePC' style='grid-row: ".($d+1)."00;grid-column:2;'>".$jourL[$jourC].' '.($tt+$d).' '.$moisL[$moisG]."</div>";
             }
             ?>
         </div>

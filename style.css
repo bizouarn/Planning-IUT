@@ -11,15 +11,6 @@ body{
 .none{
     display:none;
 }
-div#footer{
-    position: fixed;
-    bottom: 0px;
-    right: 85%;
-    left: 0px;
-    background: #2d3436;
-    font-size: 10px;
-    text-align: center;
-}
 #heure{
     text-align: right;
     margin: 0px;
@@ -64,6 +55,15 @@ div#footer{
 }
 /* affichage pc */
 @media only screen and (min-width:700px){
+    div#footer{
+        position: fixed;
+        bottom: 0px;
+        right: 85%;
+        left: 0px;
+        background: #2d3436;
+        font-size: 10px;
+        text-align: center;
+    }
     #CmenuL{
         position: fixed;
         right: 85%;
@@ -295,6 +295,15 @@ div#footer{
 }
 /* affichage portable */
 @media only screen and (max-width:700px){
+    div#footer{
+        position: fixed;
+        bottom: 15px;
+        right: 30%;
+        left: 0px;
+        background: #2d3436;
+        font-size: 10px;
+        text-align: center;
+    }
     #CmenuL{
         position: fixed;
         right: 30%;
