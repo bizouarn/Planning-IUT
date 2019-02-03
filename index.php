@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="Fbleu">
-                            <SELECT name="annee" class="styled-select blue semi-square">
+                            <SELECT id="get3" name="annee" class="styled-select blue semi-square">
                                 <OPTION id="get1" style="display:none;">
                                     <script>
                                 SetSelect("get1","annee");
@@ -32,7 +32,7 @@
                                 <OPTION/>1
                                 <OPTION/>2
                             </SELECT>
-                            <SELECT name="group" class="styled-select blue semi-square">
+                            <SELECT id="get4" name="group" class="styled-select blue semi-square">
                                 <OPTION id="get2" style="display:none;">
                                     <script>
                                 SetSelect("get2","group");
@@ -49,28 +49,8 @@
                             </SELECT>    
                         </div>
                         <button type="submit" class="styled-select blue semi-square">Valider</button>
-                        <form>
-                        <button name="save" value="true" class="styled-select blue semi-square">Sauvegarder</button>
-                        <?php
-                            if($_GET["save"]="true"){
-                                if(isset($_GET["group"])){
-                                $group=$_GET["group"];
-                                }
-                                else{
-                                    $group="";
-                                }
-                                if(isset($_GET["annee"])){
-                                    $annee=$_GET["annee"];
-                                }
-                                else{
-                                    $annee="";
-                                }
-                                $promo= "annee=".$annee."&group=".$group;
-                                setcookie("planning",$promo);
-                            }
-                        ?>
                     </form>
-                    </form>
+                    <button onclick="SaveTab()" class="styled-select blue semi-square">Sauvegarder</button>
                     <br>
                     <h2>
                         <div class="Fbleu">
@@ -114,7 +94,7 @@
                                     $desc = substr($descTableau[0][$j], 12);
                                     $temps1 = substr($StampTableau[0][$j], 15, 2)+1;
                                     $temps2 = substr($StampTableau[0][$j], 17, 2);
-                                    if($heure<=date("g")-1 && $temps1>=date("g")-1 && $jour==date("d") && $mois==date("m")){
+                                    if($heure<=date("g") && $temps1>=date("g") && $jour==date("d") && $mois==date("m")){
                                         $salleL[substr($loc,2,3)]="";
                                     }
                                 }

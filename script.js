@@ -65,17 +65,41 @@ document.getElementById('menuL').removeAttribute("style");
 document.getElementById('menuL').setAttribute("style","z-index: 2;background-color:black;grid-row:1;left:-200px;");
 on=false;
 }
-
-function save(){
-    var group = $_GET(group) ;
-    var annee = $_GET(annee);
-    setCookie("planning",group,annee,99);
 }
-
+    
+function creerCookie(nom, valeur, jours) {
+// Le nombre de jours est spécifié
+        if (jours) {
+var date = new Date();
+                // Converti le nombre de jour en millisecondes
+date.setTime(date.getTime()+(jours*24*60*60*1000));
+var expire = "; expire="+date.toGMTString();
 }
-function setCookie(cname, cvalue1,cvalue2, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  var expires = "expires="+ d.toUTCString();
-  document.cookie = cname + "=" + cvalue1 + cvalue2 + ";" + expires + ";path=/";
+        // Aucune valeur de jours spécifiée
+else var expire = "";
+document.cookie = nom+"="+valeur+expire+"; path=/";
+}
+function lireCookie(nom) {
+// Ajoute le signe égale virgule au nom
+        // pour la recherche
+        var nom2 = nom + "=";
+        // Array contenant tous les cookies
+var arrCookies = document.cookie.split(';');
+        // Cherche l'array pour le cookie en question
+for(var i=0;i < arrCookies.length;i++) {
+var a = arrCookies[i];
+// Si c'est un espace, enlever
+                while (a.charAt(0)==' ') {
+                  a = a.substring(1,a.length);
+                }
+if (c.andexOf(nom2) == 0) {
+                  return a.substring(nom2.length,a.length);
+                }
+}
+        // Aucun cookie trouvé
+return null;
+}
+function SaveTab(){
+    Vcookie="annee="+document.getElementById("get3").value+"&group="+document.getElementById("get4").value;
+    creerCookie("planning",Vcookie,60);
 }
