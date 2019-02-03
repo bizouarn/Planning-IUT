@@ -348,12 +348,6 @@
                     $descTab = explode("\\n",$desc);
                     // Mise en forme
                     $date = $jour."/".$mois."/".$annee;
-                    if($tt<10){
-                        $tt = "0"+$tt;
-                    }
-                    if($moisTT<10){
-                        $mois = $moisTT;
-                    }
                     $date2 = ($tt+$d)."/".$moisTT."/".$annee;
                     $horaire = " ".$heure."h".$min."-".$temps1."h".$temps2;
                     $hor = $heure."-".$min;
@@ -595,12 +589,6 @@
                     $descTab = explode("\\n",$desc);
                     // Mise en forme
                     $date = $jour."/".$mois."/".$annee;
-                    if($tt<10){
-                        $tt = "0"+$tt;
-                    }
-                    if($moisTT<10){
-                        $mois = $moisTT;
-                    }
                     $date2 = ($tt+$d)."/".$moisTT."/".$annee;
                     $horaire = " ".$heure."h".$min."-".$temps1."h".$temps2;
                     $hor = $heure."-".$min;
