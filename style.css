@@ -1,4 +1,17 @@
 /* autheur Aymeric Bizouarn */
+img.menu-b{
+        background-color: #365976;
+}
+img.menu-b:hover{
+        background-color: #092234;
+}
+.bannerM{
+    display: grid;
+}
+center#CmenuL{
+    height: 100%;
+    background-color: #365976;
+}
 body{
     background-color: #2d3436;
     color: white;
@@ -54,10 +67,10 @@ body{
     }
 }
 /* affichage pc */
-@media only screen and (min-width:700px){
+@media only screen and (min-width:800px){
     div#footer{
         position: fixed;
-        bottom: 0px;
+        bottom: 15px;
         right: 85%;
         left: 0px;
         background: #2d3436;
@@ -70,9 +83,6 @@ body{
         left: 0px;
     }
     form.principale{
-        position: absolute;
-        height: 200px;
-        top:6px;
         width: 100%;
     }
     #menuL{
@@ -90,6 +100,8 @@ body{
         position: absolute;
         top: 0px;
         bottom: 0px;
+        left: 0px;
+        right: 0px;
     }
     /* element à chaché sur pc */
     .nonePC{
@@ -98,7 +110,6 @@ body{
     /* form */
     @media{
         form{
-            height: 100%;
             font-size: 30px;
         }
         .styled-select {
@@ -154,9 +165,6 @@ body{
         left:0px;
         height: 30px;
         padding: 0px;
-    }
-    img.menu-b:hover{
-        background-color: rgba(0,0,0,0.2);
     }
     .c-1.vide{
         grid-row: 2/19;
@@ -294,7 +302,7 @@ body{
     }
 }
 /* affichage portable */
-@media only screen and (max-width:700px){
+@media only screen and (max-width:800px){
     div#footer{
         position: fixed;
         bottom: 15px;
@@ -317,7 +325,6 @@ body{
     /* form */
     @media{
         form{
-            height: 100%;
             font-size: 20px;
         }
         .styled-select {
@@ -394,9 +401,6 @@ body{
         top: 0px;
         left:0px;
         height: 35px;
-    }
-    img.menu-b:hover{
-        background-color: rgba(0,0,0,0.2);
     }
     .noneP{display: none}
     .border{display: none;}
