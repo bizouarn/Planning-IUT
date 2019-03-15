@@ -8,6 +8,31 @@
     <title>Planning</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <?php
+        if(isset($_GET["group"])){
+            $group=$_GET["group"];
+        }
+        else{
+            $group="";
+        }
+        if(isset($_GET["annee"])){
+            $annee=$_GET["annee"];
+        }
+        else{
+            $annee="";
+        }
+        $promo=$annee.$group;
+        if($promo==""){
+            if($_COOKIE["planning"]!="annee=&group=" && $_COOKIE["planning"]!=null){
+                echo "<meta http-equiv='refresh' content='0; URL=./?".$_COOKIE["planning"]."'>";
+                exit();
+            }
+                else{
+                echo "<meta http-equiv='refresh' content='0; URL=./?annee=1&group=A1'>";
+                exit();
+            }
+        }
+    ?>
 </head>
 <body>
     <div id="base">
@@ -18,7 +43,7 @@
                     <form method="get">
                         <div class="bannerM">
                             <div style="grid-column: 1/3;grid-row: 1;">Sélection</div>
-                            <div id="menu-b" class="menu-b" onclick="clickMenu()" style="grid-column: 2;margin-left: 100%;grid-row: 1;margin-top:-15px;">
+                            <div id="menu-b" class="menu-b" onclick="clickMenu()" style="grid-column: 2;margin-left: 100%;grid-row: 1;margin-top:-16px;">
                                 <img class="menu-b" src="menu_toggle.png">
                             </div>
                         </div>
@@ -108,24 +133,24 @@
             <div id="footer">© 2016 RYDIN Nathan and LUX Mathieu<br>© 2019 Aymeric Bizouarn All Rights Reserved</div>
         </div>
         <div id="grille">
-            <div height="100%" ></div>
-            <div class="menu c-2">
-                <div class="menu-b" onclick="clickMenu()">
-                    <img class="menu-b" src="menu_toggle.png" >
-                </div>
-                <script>
-                    clickMenu();
-                </script>
-                <div>
-                    <?php
-                        if($_GET["group"]!=null && $_GET["annee"]!=null){
-                            $group=$_GET["group"];
-                            $annee=$_GET["annee"];
-                            echo "planning : ".$annee.$group;
-                        }
-                    ?>
-                </div>
-                <div id='day' class='noneP'>
+            <div class="c-2" style="grid-column: 1/16;">
+                <div class="menu">
+                    <div class="menu-b" onclick="clickMenu()">
+                        <img class="menu-b" src="menu_toggle.png" >
+                    </div>
+                    <script>
+                        clickMenu();
+                    </script>
+                    <div>
+                        <?php
+                            if($_GET["group"]!=null && $_GET["annee"]!=null){
+                                $group=$_GET["group"];
+                                $annee=$_GET["annee"];
+                                echo "planning : ".$annee.$group;
+                            }
+                        ?>
+                    </div>
+                    <div id='day' class='noneP'>
                     <?php
                         //affichage mois annee menu sup
                         $moisA = date("m");
@@ -171,6 +196,7 @@
                     <script type="text/javascript">        
                     heure();
                     </script>
+                </div>
                 </div>
             </div>
             <div class="p-1 c-1">
@@ -245,16 +271,6 @@
                 elseif($promo === "2D2"){
                     $calendrier = file_get_contents('');}
             }
-            else{
-                if($_COOKIE["planning"]!="annee=&group=" && $_COOKIE["planning"]!=null){
-                    echo "<meta http-equiv='refresh' content='0; URL=./?".$_COOKIE["planning"]."'>";
-                    exit();
-                }
-                else{
-                    echo "<meta http-equiv='refresh' content='0; URL=./?annee=1&group=A1'>";
-                    exit();
-                }
-            }
             // Variable type info .ics
             $regExpMatch = '/SUMMARY:(.*)/';
             $regExpDate = '/DTSTART:(.*)/';
@@ -271,20 +287,15 @@
             preg_match_all($regExpDesc, $calendrier, $descTableau, PREG_PATTERN_ORDER);
             preg_match_all($regExpStamp, $calendrier, $StampTableau, PREG_PATTERN_ORDER);
 
-            // Date du jour
-            if($tt==date("d")){
-                echo "<div class='p0 HASH noneP'></div>";
-            }
-
             // Affichage cours
             for($d=0 ; $d < 7; ++$d){
                 // compression jour/mois
                 for($i = 0; $i<12 ; $i++){
-                    if($mois==2 && $tt+$d<=0){
+                    if($mois==1 && $tt+$d<=0){
                         $tt=$tt+28;
                         $moisTT=$moisTT-1;
                     }
-                    elseif($mois%2==0 && $tt+$d<=0){
+                    elseif($mois%2==1 && $tt+$d<=0){
                         $tt=$tt+30;
                         $moisTT=$moisTT-1;
                     }
@@ -292,11 +303,11 @@
                         $tt=$tt+31;
                         $moisTT=$moisTT-1;
                     }
-                    if($mois==2 && $tt+$d>28){
+                    if($mois==1 && $tt+$d>28){
                         $tt=$tt-28;
                         $moisTT=$moisTT+1;
                     }
-                    elseif($mois%2==0 && $tt+$d>30){
+                    elseif($mois%2==1 && $tt+$d>30){
                         $tt=$tt-30;
                         $moisTT=$moisTT+1;
                     }
@@ -414,9 +425,7 @@
                 $moisG = date('m', $timestamp);
                 echo "<div class='p".$d." c-1 ".$Dcontenu[$d]." nonePC' style='grid-row: ".($d+1)."00;grid-column:2;'>".$jourL[$jourC].' '.($tt+$d).' '.$moisL[$moisG]."</div>";
             }
-            ?>
-        <!-- affichage PC --!>
-            <?php
+        //<!-- affichage PC --!>
             // Variable récuperer méthode GET
             $Dcontenu =array("vide","vide","vide","vide","vide","vide","vide");
             if(isset($_GET["group"])){
@@ -451,81 +460,16 @@
             //date du jour
             $tt = (date("d")+$jD);
             $moisTT=date("m");
-            // récupération des calendrier
-            if($promo!=null){
-                if($promo === "1A1"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214628e9ee67d520db5e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1A2"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021444b2068d37814033e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1B1"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e3b4fdf609d53024e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1B2"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e7816c0755e34543e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1C1"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021473110dcf0fad1631e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1C2"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002148ac4e83c0ad230abe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1D1"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d5d9f8710563f588e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1D2"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214c281cf3d512a92b6e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b3ed16e4ed8dfec978d3f4109b6629391');}
-                elseif($promo === "2A1"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2A2"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2B1"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2B2"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2C1"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2C2"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2D1"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2D2"){
-                    $calendrier = file_get_contents('');}
-            }
-            else{
-                if($_COOKIE["planning"]!="annee=&group=" && $_COOKIE["planning"]!=null){
-                    echo "<meta http-equiv='refresh' content='0; URL=./?".$_COOKIE["planning"]."'>";
-                    exit();
-                }
-                else{
-                    echo "<meta http-equiv='refresh' content='0; URL=./?annee=1&group=A1'>";
-                    exit();
-                }
-            }
-            // Variable type info .ics
-            $regExpMatch = '/SUMMARY:(.*)/';
-            $regExpDate = '/DTSTART:(.*)/';
-            $regExpLoc = '/LOCATION:(.*)/';
-            $regExpDesc = '/DESCRIPTION:(.*)/';
-            $regExpStamp = '/DTEND:(.*)/';
-
-            // Varaible utile balise
-            $br='<br>';
-            // Variable info .ics
-            $n = preg_match_all($regExpMatch, $calendrier, $matchTableau, PREG_PATTERN_ORDER);
-            preg_match_all($regExpDate, $calendrier, $dateTableau, PREG_PATTERN_ORDER);
-            preg_match_all($regExpLoc, $calendrier, $locTableau, PREG_PATTERN_ORDER);
-            preg_match_all($regExpDesc, $calendrier, $descTableau, PREG_PATTERN_ORDER);
-            preg_match_all($regExpStamp, $calendrier, $StampTableau, PREG_PATTERN_ORDER);
-
-            // Date du jour
-            if($tt==date("d")){
-                echo "<div class='p0 HASH noneP'></div>";
-            }
 
             // Affichage cours
-            for($d=0 ; $d < 7; ++$d){
+            for($d=0 ; $d < 5; ++$d){
                 // compression jour/mois
                 for($i = 0; $i<12 ; $i++){
-                    if($mois==2 && $tt+$d<=0){
+                    if($mois==1 && $tt+$d<=0){
                         $tt=$tt+28;
                         $moisTT=$moisTT-1;
                     }
-                    elseif($mois%2==0 && $tt+$d<=0){
+                    elseif($mois%2==1 && $tt+$d<=0){
                         $tt=$tt+30;
                         $moisTT=$moisTT-1;
                     }
@@ -533,11 +477,11 @@
                         $tt=$tt+31;
                         $moisTT=$moisTT-1;
                     }
-                    if($mois==2 && $tt+$d>28){
+                    if($mois==1 && $tt+$d>28){
                         $tt=$tt-28;
                         $moisTT=$moisTT+1;
                     }
-                    elseif($mois%2==0 && $tt+$d>30){
+                    elseif($mois%2==1 && $tt+$d>30){
                         $tt=$tt-30;
                         $moisTT=$moisTT+1;
                     }
@@ -619,7 +563,7 @@
                         $typeCase = "TP";
                     }
                 //affichage cours
-                    if(($jour==$tt+$d && $mois==$moisTT && $tt+$d!=date("d") )||($jour==$tt+$d && $mois==date("m") && $heure>date("H")-1)){
+                    if(($jour==$tt+$d && $mois==$moisTT)){
                         //si jour vide (ne pas afficher sur portable)
                         if($jour==$tt+$d){
                             $Dcontenu[$d] = "";
@@ -630,26 +574,6 @@
                         echo "</div>"; 
                     }
                 }
-                // afichage de la date
-                $jourL["Mon"]="Lundi";
-                $jourL["Tue"]="mardi";
-                $jourL["Wed"]="mercredi";
-                $jourL["Thu"]="jeudi";
-                $jourL["Fri"]="Vendredi";
-                $jourL["Sat"]="Samedi";
-                $jourL["Sun"]="Dimanche";
-                $moisL["01"]="Janvier";
-                $moisL["02"]="Février";
-                $moisL["03"]="Mars";
-                $moisL["04"]="Avril";
-                $moisL["05"]="Mai";
-                $moisL["06"]="Juin";
-                $moisL["07"]="Juillet";
-                $moisL["08"]="Août";
-                $moisL["09"]="Septembre";
-                $moisL["10"]="Octobre";
-                $moisL["11"]="Novembre";
-                $moisL["12"]="Décembre";
                 $timestamp = mktime(0, 0, 0, $moisTT, ($tt+$d), $annee);
                 $jourC = date('D', $timestamp);
                 $moisG = date('m', $timestamp);
