@@ -1,4 +1,4 @@
-var on = false;
+var on = true;
 // menu
 function heure(){
     var ladate=new Date()
@@ -58,11 +58,12 @@ function clickMenu(){
 if(on==false){
 document.getElementById('menuL').setAttribute("style","display:none;");
 document.getElementById('grille').setAttribute("style","grid-column: 1/3;grid-row:1;");
+document.getElementById('grille').removeAttribute("class");
 on=true;
 }
 else{
 document.getElementById('menuL').removeAttribute("style");
-document.getElementById('menuL').setAttribute("style","z-index: 2;background-color:black;grid-row:1;left:-200px;");
+document.getElementById('grille').setAttribute("class","on");
 on=false;
 }
 }
