@@ -3,101 +3,71 @@
     function getcalendar($promo) {
             // récupération des calendrier
             if($promo!=null){
-                if($promo === "1A1"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214628e9ee67d520db5e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1A2"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021444b2068d37814033e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1B1"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e3b4fdf609d53024e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1B2"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e7816c0755e34543e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1C1"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021473110dcf0fad1631e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1C2"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002148ac4e83c0ad230abe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1D1"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d5d9f8710563f588e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
-                elseif($promo === "1D2"){
-                    $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214c281cf3d512a92b6e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b3ed16e4ed8dfec978d3f4109b6629391');}
-                elseif($promo === "2A1"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2A2"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2B1"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2B2"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2C1"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2C2"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2D1"){
-                    $calendrier = file_get_contents('');}
-                elseif($promo === "2D2"){
-                    $calendrier = file_get_contents('');}
+                if(file_exists ( "ics/$promo.ics") && (date("F d Y H", filemtime( "ics/$promo.ics"))==date("F d Y H"))){
+                    $calendrier = file_get_contents("ics/$promo.ics");
+                }else{
+                    if($promo === "1A1"){
+                        $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214628e9ee67d520db5e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+                    elseif($promo === "1A2"){
+                        $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021444b2068d37814033e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');
+                    }
+                    elseif($promo === "1B1"){
+                        $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e3b4fdf609d53024e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+                    elseif($promo === "1B2"){
+                        $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e7816c0755e34543e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+                    elseif($promo === "1C1"){
+                        $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021473110dcf0fad1631e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+                    elseif($promo === "1C2"){
+                        $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002148ac4e83c0ad230abe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+                    elseif($promo === "1D1"){
+                        $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d5d9f8710563f588e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
+                    elseif($promo === "1D2"){
+                        $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214c281cf3d512a92b6e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b3ed16e4ed8dfec978d3f4109b6629391');}
+                    elseif($promo === "2A1"){
+                        $calendrier = file_get_contents('');}
+                    elseif($promo === "2A2"){
+                        $calendrier = file_get_contents('');}
+                    elseif($promo === "2B1"){
+                        $calendrier = file_get_contents('');}
+                    elseif($promo === "2B2"){
+                        $calendrier = file_get_contents('');}
+                    elseif($promo === "2C1"){
+                        $calendrier = file_get_contents('');}
+                    elseif($promo === "2C2"){
+                        $calendrier = file_get_contents('');}
+                    elseif($promo === "2D1"){
+                        $calendrier = file_get_contents('');}
+                    elseif($promo === "2D2"){
+                        $calendrier = file_get_contents('');}
+                    file_put_contents ( "ics/$promo.ics" ,$calendrier);
+                }
             }
             return $calendrier;
         }
-    function compressionJM(&$tt,&$d,&$moisTT,&$annee) {
-        // compression jour/mois
-        while((($tt+$d)>31)||($moisTT==2 && $tt+$d>28)||($moisTT%2==1 && $tt+$d>30)){
-            if($moisTT==2 && $tt+$d>28){
-                $tt=$tt-28;
-                $moisTT=$moisTT+1;
-            }
-            elseif($moisTT%2==1 && $tt+$d>30){
-                $tt=$tt-30;
-                $moisTT=$moisTT+1;
-            }
-            elseif($tt+$d>31){
-                $tt=$tt-31;
-                $moisTT=$moisTT+1;
-            }
-        }
-        while($tt<0){
-            if($moisTT==2 && $tt<0){
-                $tt=$tt+28;
-                $moisTT=$moisTT-1;
-            }
-            elseif($moisTT%2==1 && $tt<0){
-                $tt=$tt+31;
-                $moisTT=$moisTT-1;
-            }
-            elseif($tt<0){
-                $tt=$tt+30;
-                $moisTT=$moisTT-1;
-            }
-            
-            if($tt==0){
-                $tt=1;
-            }
-            
-        }
-        
-        if($moisTT>12){
-            $annee=$annee+1;
-            $moisTT=$moisTT-12;
-        }
-        if($moisTT<=0){
-            $annee=$annee-1;
-            $moisTT=12+$moisTT;
-        }
+    function compressionJM(&$jour,&$mois,&$annee,&$Sjour) {
+        $timestamp = mktime(0, 0, 0, $mois , $jour, $annee);
+        $jour=date("j" , $timestamp);
+        $mois=date("m" , $timestamp);
+        $annee=date("Y" , $timestamp);
+        $Sjour=date("N" , $timestamp);
     }
     function horaire($hor,$temps2) {
                     $c=(10+$hor)*100+$temps2;
                     return $c;
         }
     function getJour(){
-            $jourL["Mon"]="Lundi";
-            $jourL["Tue"]="Mardi";
-            $jourL["Wed"]="Mercredi";
-            $jourL["Thu"]="Jeudi";
-            $jourL["Fri"]="Vendredi";
-            $jourL["Sat"]="Samedi";
-            $jourL["Sun"]="Dimanche";
+            $jourL["0"]="err";
+            $jourL["1"]="Lundi";
+            $jourL["2"]="Mardi";
+            $jourL["3"]="Mercredi";
+            $jourL["4"]="Jeudi";
+            $jourL["5"]="Vendredi";
+            $jourL["6"]="Samedi";
+            $jourL["7"]="Dimanche";
             return $jourL;
         }
     function getMois(){
+            $jourL["0"]="err";
             $moisL["1"]="Janvier";
             $moisL["2"]="Février";
             $moisL["3"]="Mars";
@@ -157,17 +127,19 @@
         $jourA=intval(date("d")+$jD);
         $moisA=date("m");
         $anneeA=date("Y");
-        $jD=0;
-        compressionJM($jourA,$jD,$moisA,$anneeA);
+        $Sjour=0;
+        compressionJM($jourA,$moisA,$anneeA,$Sjour);
         $moisL=getMois();
         $moisA=intval($moisA);
-        return $moisL[$moisA]." ".$anneeA;
+        $timestamp = mktime(0, 0, 0, $moisA, $jourA, $anneeA);
+        $nSem=date("W",$timestamp);
+        return $moisL[$moisA]." ".$anneeA." | Semaine ".$nSem;
     }
     function getGroup(){
         if($_GET["group"]!=null && $_GET["annee"]!=null){
             $group=$_GET["group"];
             $annee=$_GET["annee"];
-            return "planning : ".$annee.$group;
+            return "Planning : ".$annee.$group;
         }
         else{
             return "";
@@ -216,6 +188,7 @@
 
     //function principale
     function testDataPost(){
+        $ret = false;
         if(isset($_GET["group"])){
             $group=$_GET["group"];
         }
@@ -230,15 +203,14 @@
         }
         $promo=$annee.$group;
         if($promo==""){
-            if($_COOKIE["planning"]!="annee=&group=" && $_COOKIE["planning"]!=null){
+           $ret = true; if($_COOKIE["planning"]!="annee=&group=" && $_COOKIE["planning"]!=null){
                 echo "<meta http-equiv='refresh' content='0; URL=./?".$_COOKIE["planning"]."'>";
-                exit();
             }
                 else{
                 echo "<meta http-equiv='refresh' content='0; URL=./?annee=1&group=A1'>";
-                exit();
             }
         }
+        return $ret;
     }
     function affichage(){
         // si aucune info GET: sortir
@@ -249,12 +221,12 @@
             $group="";
         }
         if(isset($_GET["annee"])){
-            $annee=$_GET["annee"];
+            $Gannee=$_GET["annee"];
         }
         else{
-            $annee="";
+            $Gannee="";
         }
-        $promo=$annee.$group;
+        $promo=$Gannee.$group;
         // récupère jD
         if(isset($_GET["D"])){
             $jD=$_GET["D"]*7;
@@ -262,29 +234,20 @@
         else{
             $jD=0;
         }
-        if($jD<0){
-            $jD=$jD+1;
-        }
-        
-        // Variable récuperer méthode GET
-        $Dcontenu =array("vide","vide","vide","vide","vide","vide","vide");
-        //date du jour
-        $jourTT=(date("d")+$jD);
-        $moisTT=date("m");
-        $année=date("Y");
-        $calendrier = getcalendar($promo);
-        // décalge pour afficher à partir du lundi.
-        $jDL=date("N")-1;
-        if($jDL>4){
-            $jDL=7-$jDL+$jD;
+        $jour=date("j")+$jD+1;
+        $mois=date("n");
+        $annee=date("Y");
+        $Sjour=date("N");
+        if($Sjour>4){
+            $Sjour=7-$Sjour;
         }
         else{
-            $jDL=$jDL*(-1);
+            $Sjour=$Sjour*(-1);
         }
-        compressionJM($jourTT,$jDL,$moisTT,$annee);
-        $tt=$jDL;
-        $jDL=0;
-        compressionJM($jourTT,$jDL,$moisTT,$annee);
+        $jour=$jour+$Sjour;
+        compressionJM($jour,$mois,$annee,$Sjour);
+        
+        $calendrier = getcalendar($promo);
         
         // Variable type info .ics
         $regExpMatch = '/SUMMARY:(.*)/';
@@ -304,74 +267,75 @@
         $jourL=getJour();
         $moisL=getMois();
         
-        $tt=$jourTT;
+        $Dcontenu =array("vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide");
+        $DcontenuP =array("vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide","vide");
         
-        for($d=0 ; $d < 7; ++$d){
+        for($d=0 ; $d < 15; ++$d){
             // compression jour/mois
-            compressionJM($tt,$d,$moisTT,$annee);
-            if(intval($moisTT)>=4){
+        $Sjour=0;
+        compressionJM($jour,$mois,$annee,$Sjour);
+            if(intval($mois)>=4){
                 $Hdécalage=2;
             }
             else{
                 $Hdécalage=1;
             }
             for ($j=0 ; $j < $n ; ++$j){
-                $pos = "p".$d.$j;
-                $div1='<div class=$pos id="box">';
                 // Récupération des données
-                $annee = substr($dateTableau[0][$j], 8, 4);
-                $mois = substr($dateTableau[0][$j], 12, 2);
-                $jour = substr($dateTableau[0][$j], 14, 2);
-                $heure = substr($dateTableau[0][$j], 17, 2)+$Hdécalage;
-                $min = substr($dateTableau[0][$j], 19, 2);
-                $match = substr($matchTableau[0][$j], 8);
-                $loc = substr($locTableau[0][$j], 11);
-                $desc = substr($descTableau[0][$j], 12);
-                $temps1 = substr($StampTableau[0][$j], 15, 2)+$Hdécalage;
-                $temps2 = substr($StampTableau[0][$j], 17, 2);
-                $descTab = explode("\\n",$desc);
+                $anneeC = substr($dateTableau[0][$j], 8, 4);
+                $moisC = substr($dateTableau[0][$j], 12, 2);
+                $jourC = substr($dateTableau[0][$j], 14, 2);
+                $heureC = substr($dateTableau[0][$j], 17, 2)+$Hdécalage;
+                $minC = substr($dateTableau[0][$j], 19, 2);
+                $matchC = substr($matchTableau[0][$j], 8);
+                $locC = substr($locTableau[0][$j], 11);
+                $descC = substr($descTableau[0][$j], 12);
+                $heureFC = substr($StampTableau[0][$j], 15, 2)+$Hdécalage;
+                $minFC = substr($StampTableau[0][$j], 17, 2);
+                $descTab = explode("\\n",$descC);
                 // Mise en forme
-                $date = $jour."/".$mois."/".$annee;
-                $date2 = ($tt+$d)."/".$moisTT."/".$annee;
-                $horaire = " ".$heure."h".$min."-".$temps1."h".$temps2;
-                $hor = $heure."-".$min;
+                $date = $jourC."/".$moisC."/".$anneeC;
+                $horaire = " ".$heureC."h".$minC."-".$heureFC."h".$minFC;
+                $hor = $heureC."-".$minC;
                 //horaire 1h30
-                $c=horaire($hor,$temps2);
+                $c=horaire($hor,$minC);
                 //couleur case
-                $typeCase = typeCase($match);
+                $typeCase = typeCase($matchC);
                 //affichage cours
-                if($annee==$année){
-                    if(($jour==$tt+$d && $mois==$moisTT)){
-                        //si jour vide (ne pas afficher sur portable)
-                        if($jour==$tt+$d){
+                if($annee==$anneeC){
+                    if(($jourC==$jour && $moisC==$mois)&&($d<5)){
+                        //si jour vide
+                        if($jour==$jourC){
                             $Dcontenu[$d] = "";
                         }
-                        echo "<div id='boxP' class='p".$d." c".$c." ".$typeCase." nonePC' style='order: ".($d+1)."0".($c+1).";grid-column: 1;'>";
-                        echo $match.$br.$horaire."  ".$loc.$br;
-                        echo $descTab[2];
-                        echo "</div>";   
-                    }
-                    if(($jour==$tt+$d && $mois==$moisTT)&&($d<5)){
-                        //si jour vide (ne pas afficher sur portable)
-                        if($jour==$tt+$d){
-                            $Dcontenu[$d] = "";
-                        }
-                        $emp=getEmplacement($heure,$min,$temps1,$temps2);
+                        $emp=getEmplacement($heureC,$minC,$heureFC,$minFC);
                         echo "<div id='box' class='p".$d." ".$typeCase." noneP'".$emp.">";
-                        echo $match.$br.$horaire."  ".$loc.$br;
+                        echo $matchC.$br.$horaire."  ".$locC.$br;
                         echo $descTab[2];
                         echo "</div>"; 
                     }
                 }
+                if($jour==$jourC && ($jourC>=date("d") || $moisC!=date("m")) && $mois==$moisC &&( $jourC!=date("j")||(date("G")+date("i")/60)<=($heureFC+$minFC/60))){
+                        //si jour vide (ne pas afficher sur portable)
+                        if($jour==$jourC){
+                            $DcontenuP[$d] = "";
+                        }
+                        echo "<div id='boxP' class='p".$d." c".$c." ".$typeCase." nonePC' style='order: ".($d+1)."0".($c+1).";grid-column: 1;'>";
+                        echo "<strong>";
+                        echo $matchC."</strong><br>".$horaire."  ".$locC.$br;
+                        echo $descTab[2];
+                        echo "</div>";   
+                }
             }
-            $timestamp = mktime(0, 0, 0, $moisTT, ($tt+$d), $annee);
-            $jourC = date('D', $timestamp);
-            $moisG = date('m', $timestamp);
-            $moisG=intval($moisG);
-            echo "<div class='p".$d." c-1 ".$Dcontenu[$d]." nonePC' style='order: ".($d+1)."00000;grid-column: 1; '>".$jourL[$jourC].' '.($tt+$d).' '.$moisL[$moisG]."</div>";
+            echo "<div class='p".$d." c-1 ".$DcontenuP[$d]." nonePC' style='order: ".($d+1)."00000;grid-column: 1; '>".$jourL[$Sjour].' '.($jour).' '.$moisL[intval($mois)]."</div>";
+            $dateCara="";
+            if(($jour)==date("j")){
+                $dateCara="HASH";
+            }
             if($d<5){
-                echo "<div class='p".$d." c-1 ".$Dcontenu[$d]." noneP'>".$jourL[$jourC].' '.($tt+$d).' '.$moisL[$moisG]."</div>";
+                echo "<div class='p".$d." ".$dateCara." c-1 ".$Dcontenu[$d]." noneP'>".$jourL[$Sjour].' '.($jour).' '.$moisL[intval($mois)]."</div>";
             }
+            $jour=$jour+1;
         }
     } 
 ?>

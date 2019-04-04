@@ -1,4 +1,15 @@
 /* autheur Aymeric Bizouarn */
+.loader {
+    position : fixed;
+    z-index: 9999;
+    background : url('image/icon-loader.webp') 50% 50% no-repeat;
+    background-color: black;
+    top : 0px;
+    left : 0px;
+    height : 100%;
+    width : 100%;
+    cursor : wait;
+}
 .main{
     position: absolute;
     top:0px;
@@ -69,15 +80,24 @@ img.menu-b:hover{
 }
 /* affichage portable */
 @media only screen and (max-width:800px){
+    #titre{
+        text-align: center;
+    } 
+    body{
+        background-image: url(image/portableBG.png);
+    }
     .c-1{
         font-size: 20px;
         border-width: 1px 0px 1px 0px;
         border-style: solid;
         border-color: #3c6382;
         background-color: #3c6382;
-        margin: 15px;
+        margin-left: 5px;
         margin-bottom: 0px;
         text-align: center;
+        max-height: 30px;
+        border-radius: 15px 0px 0px 15px;
+        padding: 5px;
     }
     .p1{
         grid-column: 1;
@@ -108,10 +128,13 @@ img.menu-b:hover{
     .midi{display: none;}
     #boxP{
         padding: 15px;
-        margin: 25px;
-        margin-top: 0px;
-        margin-bottom: 0px;
+        margin-left: 30px;
+        margin-top: 6px;
+        margin-bottom: 6px;
         text-align: center;
+        max-height: 300px;
+        border-radius: 5px 0px 0px 5px;
+        text-align: left;
     }
     #grille {
         display: grid;
@@ -120,6 +143,7 @@ img.menu-b:hover{
         grid-auto-flow: row;
         height: 100%;
         width: 100%;
+        grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
     }
     /*fixed*/
     @media{
@@ -129,12 +153,13 @@ img.menu-b:hover{
             z-index: 10;
         }
         .contenu{
-            margin-top:28px; 
+            margin-top:50px; 
         }
         center#CmenuL{
             position: fixed;
-            min-width: 300px;
+            min-width: 200px;
             width: 200px;
+            top:18px;
             /*
             transition: ease-in-out 0.5s;
             transform: translateX(150px);
@@ -148,7 +173,8 @@ img.menu-b:hover{
             margin-left: 200px;
         }
         #footer{
-            display: none;            
+            display: contents;
+            font-size: 9px;
         }
     }
 }
@@ -247,7 +273,7 @@ img.menu-b:hover{
         padding: 0px;
     }
     .c-1.vide{
-        grid-row: 1/51;
+        grid-row: 1/1;
         margin-left: 2px;
         margin-right: 2px;
         background: repeating-linear-gradient(45deg,
@@ -320,12 +346,14 @@ img.menu-b:hover{
 @media{
     .styled-select{
         font-size: 20px;
+        border: none;
     }
     #footer{
-        top: 100%;
-        margin-bottom: 15px;
+        display: block;
+        font-size: 9px;
         position: sticky;
-        background-color: #1f2426;
+        top: 95%;
+        
     }
     .principale button{
         width: 80%;

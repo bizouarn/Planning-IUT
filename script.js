@@ -1,5 +1,5 @@
-var on = true;
-// menu
+var on = true;//menu overt ou fermer.
+//affiche la date pour chaque jour
 function heure(){
     var ladate=new Date()
     var h=ladate.getHours();
@@ -35,11 +35,13 @@ function date(){
     document.getElementById('day').innerHTML = text;
 }
 //affichage emploie du temps
-//affiche la date pour chaque jour
+
 function SetSelect(id, option){
     var text=$_GET(option);
     document.getElementById(id).innerHTML = text;
 }
+
+// get mtéthode
 function $_GET(param) {
 	var vars = {};
 	window.location.href.replace( location.hash, '' ).replace( 
@@ -54,6 +56,8 @@ function $_GET(param) {
 	}
 	return vars;
 }
+
+//menu overt ou fermer.
 function clickMenu(){
 if(on==false){
 document.getElementById('menuL').setAttribute("style","display:none;");
@@ -67,7 +71,8 @@ document.getElementById('grille').setAttribute("class","on");
 on=false;
 }
 }
-    
+
+//création de cookie pour enregistrer et lire le planning favory.
 function creerCookie(nom, valeur, jours) {
 // Le nombre de jours est spécifié
         if (jours) {
@@ -101,6 +106,14 @@ if (c.andexOf(nom2) == 0) {
 return null;
 }
 function SaveTab(){
-    Vcookie="annee="+document.getElementById("get3").value+"&group="+document.getElementById("get4").value;
+ Vcookie="annee="+document.getElementById("get3").value+"&group="+document.getElementById("get4").value;
     creerCookie("planning",Vcookie,60);
+}
+
+//actualisation du contenu de page.
+function deleteContenu(){
+    var item = document.getElementById("grille");
+    item.parentNode.removeChild(item);
+    var text="<div class='p-1 c-1'></div><div class='p-1 c0'>8h</div><div class='p-1 c1' >9h</div><div class='p-1 c2'>10h</div><div class='p-1 c3' >11h</div><div class='p-1 c4' >12h</div>div class='midi'>13h</div><div class='p-1 c5' >14h</div><div class='p-1 c6' >15h</div><div class='p-1 c7' >16h</div><div class='p-1 c8' >17h</div><div class='p-1 c9' >18h</div><div class='p-1 c10' ></div><div class='border' ></div><?php affichage(); ?>";
+    document.getElementById('body').innerHTML(text);
 }

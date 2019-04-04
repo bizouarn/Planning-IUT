@@ -8,25 +8,39 @@
     <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <title>Planning</title>
-    <link rel="stylesheet" href="style.css">
+    <link id="stylesheet" rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+</head>
+<body>
+<!-- loading page -->
+<div id="loader" class="loader"></div>
+<SCRIPT LANGUAGE="JavaScript">
+        function chargement(){ document.getElementById('loader').setAttribute("style","display:none;");
+        }
+</SCRIPT>
+</body>
+<!-- page -->
+<body id="body">
     <?php
         //link fichier contenant les fonction php
         require("function.php");
         //redirige par default vers planning 1A1
-        testDataPost();
+        $ret = testDataPost();
+        if($ret==false){
+            echo "<script>
+                    chargement();
+                </script>";
+        }
     ?>
-</head>
-<body>
     <div class=main>
         <div class="menu">
             <div class="menu-b" onclick="clickMenu();">
-                <img class="menu-b" src="menu_toggle.png" >
+                <img class="menu-b" src="image/menu_toggle.png" >
             </div>
             <script>
                 clickMenu();
             </script>
-            <div>
+            <div id='titre'>
                 <?php
                     echo getGroup();
                 ?>
@@ -79,13 +93,13 @@
                                 </div>
                                 <button type="submit" class="styled-select blue semi-square">Valider</button>
                             </form>
-                            <br>
+                            <br class="noneP">
                             <button onclick="SaveTab()" class="styled-select blue semi-square">Sauvegarder</button>
                             <br>
                             <br>
                         </form>
                     </div>
-                    <br>
+                    <br class="noneP">
                     <div class="borderM">
                         <div>
                             <h1>Salle libre</h1>
@@ -99,7 +113,7 @@
                             </h2>
                         </div>
                     </div>
-                    <br>
+                    <br class="noneP">
                     <div id="footer">© 2016 RYDIN Nathan and LUX Mathieu<br>© 2019 Aymeric Bizouarn All Rights Reserved</div>  
                 </center>
             </div>
