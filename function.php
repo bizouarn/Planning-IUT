@@ -5,7 +5,7 @@
             if($promo!=null){
                 if(file_exists ( "ics/$promo.ics") && (date("F d Y H", filemtime( "ics/$promo.ics"))==date("F d Y H"))){
                     $calendrier = file_get_contents("ics/$promo.ics");
-                }else{
+                } else {
                     if($promo === "1A1"){
                         $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214628e9ee67d520db5e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');}
                     elseif($promo === "1A2"){
@@ -40,6 +40,9 @@
                     elseif($promo === "2D2"){
                         $calendrier = file_get_contents('');}
                     file_put_contents ( "ics/$promo.ics" ,$calendrier);
+                }
+                if(isset($_GET["local"])){
+                    $calendrier = file_get_contents("ics/$promo.ics");
                 }
             }
             return $calendrier;
@@ -238,7 +241,7 @@
         $mois=date("n");
         $annee=date("Y");
         $Sjour=date("N");
-        if($Sjour>4){
+        if($Sjour>5){
             $Sjour=7-$Sjour;
         }
         else{

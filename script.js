@@ -1,5 +1,9 @@
-var on = true;//menu overt ou fermer.
-//affiche la date pour chaque jour
+//affichage titre emploie du temps
+function SetSelect(id, option){
+    var text=$_GET(option);
+    document.getElementById(id).innerHTML = text;
+}
+    //affiche la date pour chaque jour
 function heure(){
     var ladate=new Date()
     var h=ladate.getHours();
@@ -34,14 +38,46 @@ function date(){
     var text = (d+" "+mois[m]+" "+y);
     document.getElementById('day').innerHTML = text;
 }
-//affichage emploie du temps
 
-function SetSelect(id, option){
-    var text=$_GET(option);
-    document.getElementById(id).innerHTML = text;
+//cookies
+    //création de cookie pour enregistrer et lire le planning favory.
+function creerCookie(nom, valeur, jours) {
+// Le nombre de jours est spécifié
+        if (jours) {
+var date = new Date();
+                // Converti le nombre de jour en millisecondes
+date.setTime(date.getTime()+(jours*24*60*60*1000));
+var expire = "; expire="+date.toGMTString();
 }
-
-// get mtéthode
+        // Aucune valeur de jours spécifiée
+else var expire = "";
+document.cookie = nom+"="+valeur+expire+"; path=/";
+}
+function lireCookie(nom) {
+// Ajoute le signe égale virgule au nom
+    // pour la recherche
+    var nom2 = nom + "=";
+    // Array contenant tous les cookies
+var arrCookies = document.cookie.split(';');
+    // Cherche l'array pour le cookie en question
+for(var i=0;i < arrCookies.length;i++) {
+var a = arrCookies[i];
+// Si c'est un espace, enlever
+    while (a.charAt(0)==' ') {
+        a = a.substring(1,a.length);
+    }
+    if (c.andexOf(nom2) == 0) {
+        return a.substring(nom2.length,a.length);
+    }
+}
+// Aucun cookie trouvé
+return null;
+}
+function SaveTab(){
+    Vcookie="annee="+document.getElementById("get3").value+"&group="+document.getElementById("get4").value;
+    creerCookie("planning",Vcookie,60);
+}
+    //GET mtéthode
 function $_GET(param) {
 	var vars = {};
 	window.location.href.replace( location.hash, '' ).replace( 
@@ -50,7 +86,6 @@ function $_GET(param) {
 			vars[key] = value !== undefined ? value : '';
 		}
 	);
-
 	if ( param ) {
 		return vars[param] ? vars[param] : null;	
 	}
@@ -58,18 +93,19 @@ function $_GET(param) {
 }
 
 //menu overt ou fermer.
+var on = true;//menu overt ou fermer.
 function clickMenu(){
-if(on==false){
-document.getElementById('menuL').setAttribute("style","display:none;");
-document.getElementById('grille').setAttribute("style","grid-column: 1/3;grid-row:1;");
-document.getElementById('grille').removeAttribute("class");
-on=true;
-}
-else{
-document.getElementById('menuL').removeAttribute("style");
-document.getElementById('grille').setAttribute("class","on");
-on=false;
-}
+    if(on==false){
+        document.getElementById('menuL').setAttribute("style","display:none;");
+        document.getElementById('grille').setAttribute("style","grid-column: 1/3;grid-row:1;");
+        document.getElementById('grille').removeAttribute("class");
+        on=true;
+    }
+    else{
+        document.getElementById('menuL').removeAttribute("style");
+        document.getElementById('grille').setAttribute("class","on");
+        on=false;
+    }
 }
 
 //création de cookie pour enregistrer et lire le planning favory.
@@ -87,30 +123,30 @@ document.cookie = nom+"="+valeur+expire+"; path=/";
 }
 function lireCookie(nom) {
 // Ajoute le signe égale virgule au nom
-        // pour la recherche
-        var nom2 = nom + "=";
-        // Array contenant tous les cookies
+    // pour la recherche
+    var nom2 = nom + "=";
+    // Array contenant tous les cookies
 var arrCookies = document.cookie.split(';');
-        // Cherche l'array pour le cookie en question
+    // Cherche l'array pour le cookie en question
 for(var i=0;i < arrCookies.length;i++) {
 var a = arrCookies[i];
 // Si c'est un espace, enlever
-                while (a.charAt(0)==' ') {
-                  a = a.substring(1,a.length);
-                }
-if (c.andexOf(nom2) == 0) {
-                  return a.substring(nom2.length,a.length);
-                }
+    while (a.charAt(0)==' ') {
+        a = a.substring(1,a.length);
+    }
+    if (c.andexOf(nom2) == 0) {
+        return a.substring(nom2.length,a.length);
+    }
 }
-        // Aucun cookie trouvé
+// Aucun cookie trouvé
 return null;
 }
 function SaveTab(){
- Vcookie="annee="+document.getElementById("get3").value+"&group="+document.getElementById("get4").value;
+    Vcookie="annee="+document.getElementById("get3").value+"&group="+document.getElementById("get4").value;
     creerCookie("planning",Vcookie,60);
 }
 
-//actualisation du contenu de page.
+//actualisation du contenu de page. (non impémenter)
 function deleteContenu(){
     var item = document.getElementById("grille");
     item.parentNode.removeChild(item);
