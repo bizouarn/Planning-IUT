@@ -153,3 +153,22 @@ function deleteContenu(){
     var text="<div class='p-1 c-1'></div><div class='p-1 c0'>8h</div><div class='p-1 c1' >9h</div><div class='p-1 c2'>10h</div><div class='p-1 c3' >11h</div><div class='p-1 c4' >12h</div>div class='midi'>13h</div><div class='p-1 c5' >14h</div><div class='p-1 c6' >15h</div><div class='p-1 c7' >16h</div><div class='p-1 c8' >17h</div><div class='p-1 c9' >18h</div><div class='p-1 c10' ></div><div class='border' ></div><?php affichage(); ?>";
     document.getElementById('body').innerHTML(text);
 }
+
+//changement semaine
+function semaine(i) {
+    var url = document.location.href;
+    if(i==0){
+        var j = url.indexOf("&D=");
+        url = url.substring(0,j);
+    }
+    if(url.indexOf("&D=")!=-1){
+        var j = url.indexOf("&D=");
+        url.substring(j);
+        i=parseInt(url.substring(j+3))+i;
+        url = url.substring(0,j)+"&D="+i;
+    }
+    else {
+        url = url+"&D="+i;
+    }
+    document.location.replace(url);
+}
