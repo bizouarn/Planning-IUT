@@ -7,37 +7,37 @@ function getcalendar($promo)
         if (file_exists("ics/$promo.ics") && (date("F d Y H", filemtime("ics/$promo.ics")) == date("F d Y H"))) {
             $calendrier = file_get_contents("ics/$promo.ics");
         } else {
-            if ($promo === "1A1") {
+            if ($promo === "INFO1A1") {
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214628e9ee67d520db5e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');
-            } elseif ($promo === "1A2") {
+            } elseif ($promo === "INFO1A2") {
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021444b2068d37814033e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');
-            } elseif ($promo === "1B1") {
+            } elseif ($promo === "INFO1B1") {
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e3b4fdf609d53024e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');
-            } elseif ($promo === "1B2") {
+            } elseif ($promo === "INFO1B2") {
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e7816c0755e34543e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');
-            } elseif ($promo === "1C1") {
+            } elseif ($promo === "INFO1C1") {
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021473110dcf0fad1631e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');
-            } elseif ($promo === "1C2") {
+            } elseif ($promo === "INFO1C2") {
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002148ac4e83c0ad230abe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');
-            } elseif ($promo === "1D1") {
+            } elseif ($promo === "INFO1D1") {
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d5d9f8710563f588e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b470ee97407c72c318d3f4109b6629391');
-            } elseif ($promo === "1D2") {
+            } elseif ($promo === "INFO1D2") {
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214c281cf3d512a92b6e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b3ed16e4ed8dfec978d3f4109b6629391');
-            } elseif ($promo === "2A1") {
+            } elseif ($promo === "INFO2A1") {
                 $calendrier = file_get_contents('');
-            } elseif ($promo === "2A2") {
+            } elseif ($promo === "INFO2A2") {
                 $calendrier = file_get_contents('');
-            } elseif ($promo === "2B1") {
+            } elseif ($promo === "INFO2B1") {
                 $calendrier = file_get_contents('');
-            } elseif ($promo === "2B2") {
+            } elseif ($promo === "INFO2B2") {
                 $calendrier = file_get_contents('');
-            } elseif ($promo === "2C1") {
+            } elseif ($promo === "INFO2C1") {
                 $calendrier = file_get_contents('');
-            } elseif ($promo === "2C2") {
+            } elseif ($promo === "INFO2C2") {
                 $calendrier = file_get_contents('');
-            } elseif ($promo === "2D1") {
+            } elseif ($promo === "INFO2D1") {
                 $calendrier = file_get_contents('');
-            } elseif ($promo === "2D2") {
+            } elseif ($promo === "INFO2D2") {
                 $calendrier = file_get_contents('');
             }
             file_put_contents("ics/$promo.ics", $calendrier);
@@ -210,6 +210,11 @@ function getSalleLibre()
 function testDataPost()
 {
     $ret = false;
+    if (isset($_GET["dept"])) {
+        $dept = $_GET["dept"];
+    } else {
+        $dept = "";
+    }
     if (isset($_GET["group"])) {
         $group = $_GET["group"];
     } else {
@@ -220,10 +225,10 @@ function testDataPost()
     } else {
         $annee = "";
     }
-    $promo = $annee . $group;
+    $promo = $dept . $annee . $group;
     if ($promo == "") {
         $ret = true;
-        if ($_COOKIE["planning"] != "annee=&group=" && $_COOKIE["planning"] != null) {
+        if ($_COOKIE["planning"] != "dept=&annee=&group=" && $_COOKIE["planning"] != null) {
             echo "<meta http-equiv='refresh' content='0; URL=./?" . $_COOKIE["planning"] . "'>";
         } else {
             echo "<meta http-equiv='refresh' content='0; URL=./?dept=INFO&annee=1&group=A1'>";
@@ -235,17 +240,22 @@ function testDataPost()
 function affichage()
 {
     // si aucune info GET: sortir
+    if (isset($_GET["dept"])) {
+        $dept = $_GET["dept"];
+    } else {
+        $dept = "";
+    }
     if (isset($_GET["group"])) {
         $group = $_GET["group"];
     } else {
         $group = "";
     }
     if (isset($_GET["annee"])) {
-        $Gannee = $_GET["annee"];
+        $annee = $_GET["annee"];
     } else {
-        $Gannee = "";
+        $annee = "";
     }
-    $promo = $Gannee . $group;
+    $promo = $dept . $annee . $group;
     // récupère jD
     if (isset($_GET["D"])) {
         $jD = $_GET["D"] * 7;
