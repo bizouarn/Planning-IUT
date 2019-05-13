@@ -74,7 +74,7 @@ if ($ret == false) {
             <center id="CmenuL">
                 <br>
                 <div class="borderM">
-                    <h1>Séléction promo</h1>
+                    <h1>Séléction</h1>
                     <form class="principale">
                         <form method="get">
                             <div class="selectG">
@@ -88,6 +88,8 @@ if ($ret == false) {
                                     INFO
                                     <OPTION/>
                                     GEA
+                                    <OPTION/>
+                                    TC
                                 </SELECT>
                                 <SELECT id="get3" name="annee" class="styled-select blue semi-square">
                                     <OPTION id="get1" style="display:none;">
@@ -126,7 +128,6 @@ if ($ret == false) {
                             </div>
                             <button type="submit" class="styled-select blue semi-square">Valider</button>
                         </form>
-                        <br class="noneP">
                         <button onclick="SaveTab()" class="styled-select blue semi-square">Sauvegarder</button>
                         <br>
                         <br>
