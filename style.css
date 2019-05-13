@@ -450,6 +450,10 @@ img.menu-b:hover {
         background: white;
     }
 
+    #CmenuL button:active {
+        background: #a7a7a7;
+    }
+
     .selectG {
         padding: 5px;
         background-color: white;
