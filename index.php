@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device.width, initial-scale=1.0">
     <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
-    <title>Planning V3</title>
+    <title>Planning</title>
     <link id="stylesheet" rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
@@ -74,10 +74,21 @@ if ($ret == false) {
             <center id="CmenuL">
                 <br>
                 <div class="borderM">
-                    <h1>Séléction groupe</h1>
+                    <h1>Séléction promo</h1>
                     <form class="principale">
                         <form method="get">
                             <div class="selectG">
+                                <SELECT id="get6" name="dept" class="styled-select blue semi-square">
+                                    <OPTION id="get5" style="display:none;">
+                                        <script>
+                                            SetSelect("get5", "dept");
+                                        </script>
+                                    </OPTION>
+                                    <OPTION/>
+                                    INFO
+                                    <OPTION/>
+                                    GEA
+                                </SELECT>
                                 <SELECT id="get3" name="annee" class="styled-select blue semi-square">
                                     <OPTION id="get1" style="display:none;">
                                         <script>

@@ -482,15 +482,18 @@ img.menu-b:hover {
         height: 25px;
         margin-top: -3px;
     }
-    .semaine.right{
+
+    .semaine.right {
         border-radius: 0 50px 50px 0;
         margin-right: 10px;
     }
-    .semaine.center{
+
+    .semaine.center {
         margin-left: -7px;
         margin-right: -7px;
     }
-    .semaine.left{
+
+    .semaine.left {
         border-radius: 50px 0 0 50px;
     }
 }
