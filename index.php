@@ -74,7 +74,7 @@ if ($ret == false) {
             <center id="CmenuL">
                 <br>
                 <div class="borderM">
-                    <h1>Séléction</h1>
+                    <h1>Sélection</h1>
                     <form class="principale">
                         <form method="get">
                             <div class="selectG">
