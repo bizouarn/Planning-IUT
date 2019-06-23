@@ -4,7 +4,7 @@ function getcalendar($promo)
 {
     // récupération des calendrier
     if ($promo != null) {
-        if (file_exists("ics/$promo.ics") && (date("F d Y H", filemtime("ics/$promo.ics")) == date("F d Y H"))) {
+        if (file_exists("ics/$promo.ics") && (date("F d Y H i", filemtime("ics/$promo.ics")) == date("F d Y H i"))) {
             $calendrier = file_get_contents("ics/$promo.ics");
         } else {
             if ($promo === "INFO1A1") {
@@ -24,21 +24,21 @@ function getcalendar($promo)
             } elseif ($promo === "INFO1D2") {
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214c281cf3d512a92b6e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f1049521e5a8e68029dc8c2973627c2eb073b3ed16e4ed8dfec978d3f4109b6629391');
             } elseif ($promo === "INFO2A1") {
-                $calendrier = file_get_contents('');
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002140684f27d200af967e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152b71afa816f3244e10b0fe1de1a6826fac2973627c2eb073b7d67a8d3d7529c488d3f4109b6629391');
             } elseif ($promo === "INFO2A2") {
-                $calendrier = file_get_contents('');
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214fa1b59eb843d4b74e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152b71afa816f3244e10b0fe1de1a6826fac2973627c2eb073b41b114e94beae6fd8d3f4109b6629391');
             } elseif ($promo === "INFO2B1") {
-                $calendrier = file_get_contents('');
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002140c58e1ebb26d9256e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152b71afa816f3244e10b0fe1de1a6826fac2973627c2eb073b41b114e94beae6fd8d3f4109b6629391');
             } elseif ($promo === "INFO2B2") {
-                $calendrier = file_get_contents('');
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021424d4a82d60d96e19e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861527a3ef22c78080a024b2c2a9e21a084f7c2973627c2eb073b41b114e94beae6fd8d3f4109b6629391');
             } elseif ($promo === "INFO2C1") {
-                $calendrier = file_get_contents('');
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d1a70d2981c233ffe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152b71afa816f3244e10b0fe1de1a6826fac2973627c2eb073bc6ba595ea089297d8d3f4109b6629391');
             } elseif ($promo === "INFO2C2") {
-                $calendrier = file_get_contents('');
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002145adfee73768645fce0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152b71afa816f3244e10b0fe1de1a6826fac2973627c2eb073b9e185cd458a43a4a8d3f4109b6629391');
             } elseif ($promo === "INFO2D1") {
-                $calendrier = file_get_contents('');
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002141882cdcc4853ac78e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152b71afa816f3244e10b0fe1de1a6826fac2973627c2eb073b8f877ce5c4fd7da98d3f4109b6629391');
             } elseif ($promo === "INFO2D2") {
-                $calendrier = file_get_contents('');
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214c6b88e35ecb85deae0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f104970d3221b992403bec2973627c2eb073b227604b07387181d8d3f4109b6629391');
             }
             file_put_contents("ics/$promo.ics", $calendrier);
         }
