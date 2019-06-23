@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width"/>
     <title>Planning</title>
     <link id="stylesheet" rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="image/iut-vannes2.png" />
     <script src="script.js"></script>
 </head>
 <body>
