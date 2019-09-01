@@ -86,9 +86,11 @@ if ($ret == false) {
                                     </OPTION>
                                     <OPTION/>
                                     INFO
-                                    <OPTION/>
+                                    <OPTION disabled />
                                     GEA
-                                    <OPTION/>
+                                    <OPTION disabled />
+                                    STID
+                                    <OPTION disabled />
                                     TC
                                 </SELECT>
                                 <SELECT id="get3" name="annee" class="styled-select blue semi-square">
