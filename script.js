@@ -114,7 +114,7 @@ function lireCookie(nom) {
 
 function SaveTab() {
     Vcookie = "dept=" + document.getElementById("get6").value + "&annee=" + document.getElementById("get3").value + "&group=" + document.getElementById("get4").value;
-    creerCookie("planning", Vcookie, 60);
+    creerCookie("planning", Vcookie, 120);
 }
 
 //actualisation du contenu de page. (non impémenter)

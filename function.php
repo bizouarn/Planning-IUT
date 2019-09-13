@@ -4,6 +4,7 @@ function getcalendar($promo)
 {
     // récupération des calendrier
     if ($promo != null) {
+        //test d'éxistance de fichier .ics en local sur le serveur et test de connexion avec le serveur de l'UBS.
         if (file_exists("ics/$promo.ics") && (date("F d Y H i", filemtime("ics/$promo.ics")) == date("F d Y H i"))) {
             $calendrier = file_get_contents("ics/$promo.ics");
         } else {
@@ -127,7 +128,7 @@ function typeCase($match)
 
 function getEmplacement($heure, $min, $temps1, $temps2)
 {
-    $ret = (2 + ($heure - 8) * 4 + $min / 15) . "/" . (3 + ($temps1 - 8) * 4 + $temps2 / 15);
+    $ret = (2 + ($heure - 8) * 4 + $min / 15) . "/" . (2 + ($temps1 - 8) * 4 + $temps2 / 15);
     if ((2 + ($heure - 8) * 4 + $min / 15) < 0)
         $ret = "0/0";
     return "style='grid-row:" . $ret . ";'";
@@ -173,10 +174,8 @@ function getSalleLibre()
     $regExpLoc = '/LOCATION:(.*)/';
     $regExpDesc = '/DESCRIPTION:(.*)/';
     $regExpStamp = '/DTEND:(.*)/';
-    //vairable sale
+    //vairable salle
     $salleL = getSalle();
-    // Varaible utile balise
-    $br = '<br>';
     // Variable info .ics
     $n = preg_match_all($regExpMatch, $calendrier, $matchTableau, PREG_PATTERN_ORDER);
     preg_match_all($regExpDate, $calendrier, $dateTableau, PREG_PATTERN_ORDER);
@@ -282,8 +281,7 @@ function affichage()
     $regExpLoc = '/LOCATION:(.*)/';
     $regExpDesc = '/DESCRIPTION:(.*)/';
     $regExpStamp = '/DTEND:(.*)/';
-    // Varaible utile balise
-    $br = '<br>';
+
     // Variable info .ics
     $n = preg_match_all($regExpMatch, $calendrier, $matchTableau, PREG_PATTERN_ORDER);
     preg_match_all($regExpDate, $calendrier, $dateTableau, PREG_PATTERN_ORDER);
@@ -336,7 +334,7 @@ function affichage()
                     }
                     $emp = getEmplacement($heureC, $minC, $heureFC, $minFC);
                     echo "<div id='box' class='p" . $d . " " . $typeCase . " noneP'" . $emp . ">";
-                    echo $matchC . $br . $horaire . "  " . $locC . $br;
+                    echo $matchC . $horaire . "  " . $locC ;
                     echo $descTab[2];
                     echo "</div>";
                 }
@@ -348,7 +346,7 @@ function affichage()
                 }
                 echo "<div id='boxP' class='p" . $d . " c" . $c . " " . $typeCase . " nonePC' style='order: " . ($d + 1) . "0" . ($c + 1) . ";grid-column: 1;'>";
                 echo "<strong>";
-                echo $matchC . "</strong><br>" . $horaire . "  " . $locC . $br;
+                echo $matchC . "</strong><br>" . $horaire . "  " . $locC;
                 echo $descTab[2];
                 echo "</div>";
             }

