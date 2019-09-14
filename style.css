@@ -427,7 +427,6 @@ img.menu-b:hover {
     .styled-select {
         font-size: 18px;
         border: none;
-        padding-right: 5px;
     }
 
     #footer {
@@ -464,7 +463,8 @@ img.menu-b:hover {
         box-shadow: #18886d 0px 1px 0px, #177f66 0px 2px 0px, #15765f 0px 3px 0px, #146e58 0px 4px 0px;
         border-radius: 5px;
         margin: 7px;
-        display: flex;
+        display: grid;
+        width: 70%;
     }
 
     .borderM {

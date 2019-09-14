@@ -78,8 +78,7 @@ if ($ret == false) {
                     <form class="principale">
                         <form method="get">
                             <div class="selectG">
-                                <SELECT id="get6" name="dept" class="styled-select blue semi-square"
-                                        onchange="refreshMenu()">
+                                <SELECT id="get6" name="dept" class="styled-select blue semi-square">
                                     <OPTION id="get5" style="display:none;">
                                         <script>
                                             SetSelect("get5", "dept");
@@ -87,15 +86,14 @@ if ($ret == false) {
                                     </OPTION>
                                     <OPTION/>
                                     INFO
-                                    <OPTION/>
+                                    <OPTION disabled/>
                                     GEA
                                     <OPTION/>
                                     STID
-                                    <OPTION/>
+                                    <OPTION disabled/>
                                     TC
                                 </SELECT>
-                                <SELECT id="get3" name="annee" class="styled-select blue semi-square"
-                                        onchange="refreshMenu()">
+                                <SELECT id="get3" name="annee" class="styled-select blue semi-square">
                                     <OPTION id="get1" style="display:none;">
                                         <script>
                                             SetSelect("get1", "annee");
@@ -107,8 +105,8 @@ if ($ret == false) {
                                     2
                                 </SELECT>
                                 <SELECT id="get4" name="group" class="styled-select blue semi-square"
-                                        onchange="refreshMenu()">
-                                    <OPTION id="get2" style="display:none;">
+                                        onclick="refreshMenu()" required>
+                                    <OPTION id="get2" style="display: none">
                                         <script>
                                             SetSelect("get2", "group");
                                         </script>
@@ -141,8 +139,26 @@ if ($ret == false) {
                                     5
                                     <OPTION class="selectGea1"/>
                                     6
-                                    <OPTION class="selectGea1"/>
-                                    Soutien
+                                    <OPTION class="selectGea2"/>
+                                    GCF A
+                                    <OPTION class="selectGea2"/>
+                                    GCF B
+                                    <OPTION class="selectGea2"/>
+                                    GCF C
+                                    <OPTION class="selectGea2"/>
+                                    GMO 1
+                                    <OPTION class="selectGea2"/>
+                                    GMO 2
+                                    <OPTION class="selectGea2"/>
+                                    GRH
+                                    <OPTION class="selectTc1"/>
+                                    1
+                                    <OPTION class="selectTc1"/>
+                                    2
+                                    <OPTION class="selectTc1"/>
+                                    3
+                                    <OPTION class="selectTc1"/>
+                                    4
                                 </SELECT>
                             </div>
                             <button type="submit" class="styled-select blue semi-square">Valider</button>
@@ -191,6 +207,3 @@ if ($ret == false) {
     </div>
 </div>
 </body>
-<script>
-    refreshMenu();
-</script>

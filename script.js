@@ -144,11 +144,11 @@ function semaine(i) {
 }
 
 //changment des select du menu autre que le département.
+var oneActivation = true;
 function refreshMenu() {
     var newDept = document.getElementById("get6").value;
     var newAnnee = document.getElementById("get3").value;
-    document.getElementById("get2").setAttribute("style","display:none");
-    if (newDept != "INFO" && newDept != "STID") {
+    if (newDept != "INFO" && newDept != "STID" && !(newDept == "TC" && newAnnee==2)) {
         changeElementsStyle(document.getElementsByClassName("selectInfo"), "display:none");
     } else {
         removeElementsStyle(document.getElementsByClassName("selectInfo"));
@@ -158,10 +158,19 @@ function refreshMenu() {
     } else {
         removeElementsStyle(document.getElementsByClassName("selectGea1"));
     }
-    if (newDept != "TC") {
-        changeElementsStyle(document.getElementsByClassName("selectTc"), "display:none");
+    if (!(newDept == "GEA" && newAnnee==2)) {
+        changeElementsStyle(document.getElementsByClassName("selectGea2"), "display:none");
     } else {
-        removeElementsStyle(document.getElementsByClassName("selectTc"));
+        removeElementsStyle(document.getElementsByClassName("selectGea2"));
+    }
+    if (!(newDept == "TC" && newAnnee==1)) {
+        changeElementsStyle(document.getElementsByClassName("selectTc1"), "display:none");
+    } else {
+        removeElementsStyle(document.getElementsByClassName("selectTc1"));
+    }
+    if(oneActivation) {
+        oneActivation = false;
+        document.getElementById("get4").value = "";
     }
 }
 
