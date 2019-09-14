@@ -142,3 +142,37 @@ function semaine(i) {
     }
     document.location.replace(url);
 }
+
+//changment des select du menu autre que le département.
+function refreshMenu() {
+    var newDept = document.getElementById("get6").value;
+    var newAnnee = document.getElementById("get3").value;
+    document.getElementById("get2").setAttribute("style","display:none");
+    if (newDept != "INFO" && newDept != "STID") {
+        changeElementsStyle(document.getElementsByClassName("selectInfo"), "display:none");
+    } else {
+        removeElementsStyle(document.getElementsByClassName("selectInfo"));
+    }
+    if (!(newDept == "GEA" && newAnnee==1)) {
+        changeElementsStyle(document.getElementsByClassName("selectGea1"), "display:none");
+    } else {
+        removeElementsStyle(document.getElementsByClassName("selectGea1"));
+    }
+    if (newDept != "TC") {
+        changeElementsStyle(document.getElementsByClassName("selectTc"), "display:none");
+    } else {
+        removeElementsStyle(document.getElementsByClassName("selectTc"));
+    }
+}
+
+function changeElementsStyle(list, value) {
+    for (var i = 0; i < list.length; i++) {
+        list[i].setAttribute("style", value);
+    }
+}
+
+function removeElementsStyle(list) {
+    for (var i = 0; i < list.length; i++) {
+        list[i].removeAttribute("style");
+    }
+}

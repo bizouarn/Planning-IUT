@@ -5,7 +5,7 @@ function getcalendar($promo)
     // récupération des calendrier
     if ($promo != null) {
         //test d'éxistance de fichier .ics en local sur le serveur et test de connexion avec le serveur de l'UBS.
-        if (file_exists("ics/$promo.ics") && (date("F d Y H i", filemtime("ics/$promo.ics")) == date("F d Y H i"))&&!$sock = @fsockopen('https://planning.univ-ubs.fr/ade/index.jsp',80)) {
+        if ((file_exists("ics/$promo.ics") && (date("F d Y H i", filemtime("ics/$promo.ics")) == date("F d Y H i")))|| !$sock = @fsockopen('https://planning.univ-ubs.fr/ade/index.jsp',80)) {
             $calendrier = file_get_contents("ics/$promo.ics");
         } else {
             if ($promo === "INFO1A1") {
