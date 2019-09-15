@@ -197,7 +197,8 @@ img.menu-b:hover {
 
         center#CmenuL {
             position: fixed;
-            min-width: 200px;
+            min-width: 225px;
+            max-width: 280px;
             width: 200px;
             top: 18px;
             /*
