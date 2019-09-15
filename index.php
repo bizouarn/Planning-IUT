@@ -168,7 +168,6 @@ if ($ret == false) {
                         <br>
                     </form>
                 </div>
-                <br class="noneP">
                 <div class="borderM">
                     <!--<div>
                         <h1>Salle libre</h1>
