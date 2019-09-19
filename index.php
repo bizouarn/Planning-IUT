@@ -105,7 +105,7 @@ if ($ret == false) {
                                     2
                                 </SELECT>
                                 <SELECT id="get4" name="group" class="styled-select blue semi-square"
-                                        onclick="refreshMenu()" required>
+                                        onclick="refreshMenu(true)" required onmouseover="refreshMenu(false)">
                                     <OPTION id="get2" style="display: none">
                                         <script>
                                             SetSelect("get2", "group");
