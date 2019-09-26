@@ -65,7 +65,7 @@ img.menu-b:hover {
     position: fixed;
     height: 100%;
     grid-row: 1/3;
-    background-color: #365976;
+    background-color: rgba(18, 67, 104, 0.91);
     animation: animationMenu 500ms;
 }
 @keyframes animationMenu {
@@ -119,6 +119,7 @@ img.menu-b:hover {
         margin-bottom: -4px;
     }
     #titre {
+        margin: auto;
         text-align: center;
     }
 
@@ -497,7 +498,7 @@ img.menu-b:hover {
         min-width: 225px;
         max-width: 280px;
         height: 100%;
-        background-color: #365976;
+        background-color: rgba(54, 89, 118, 0.47);
     }
 }
 
