@@ -66,10 +66,12 @@ function $_GET(param) {
 var on = true;//menu overt ou fermer.
 function clickMenu() {
     if (on == false) {
+        document.getElementById('menuBlack').setAttribute("style", "display:none;");
         document.getElementById('menuL').setAttribute("style", "display:none;");
         document.getElementById('grille').removeAttribute("class");
         on = true;
     } else {
+        document.getElementById('menuBlack').removeAttribute("style");
         document.getElementById('menuL').removeAttribute("style");
         document.getElementById('grille').setAttribute("class", "on");
         on = false;

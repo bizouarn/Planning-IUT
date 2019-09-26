@@ -33,6 +33,7 @@ if ($ret == false) {
     </script>";
 }
 ?>
+<div id="menuBlack" onclick="clickMenu()" style="display: none;"></div>
 <div id="menuL" style="display:none;">
     <div class="grey-bg">
         <img class="menu-b menuL" src="image/menu_toggle.png" alt="erreur de chargement" onclick="clickMenu()">
@@ -128,9 +129,7 @@ if ($ret == false) {
                     </div>
                     <button type="submit" class="styled-select blue semi-square">Valider</button>
                 </form>
-                <button onclick="SaveTab()" class="styled-select blue semi-square">Sauvegarder</button>
-                <br>
-                <br>
+                <button onclick="SaveTab()" class="styled-select blue semi-square noneP">Sauvegarder</button>
             </form>
         </div>
         <div>
@@ -149,6 +148,7 @@ if ($ret == false) {
             include "config/data/actu.php";
             ?>
         </div>
+        <div class="credit">Copyright (c) 2019 Aymeric Bizouarn <br> 2016 RYDIN Nathan and LUX Mathieu.</div>
     </center>
 </div>
 <div class=main>
