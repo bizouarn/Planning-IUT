@@ -33,14 +33,127 @@ if ($ret == false) {
     </script>";
 }
 ?>
+<div id="menuL" style="display:none;">
+    <div class="grey-bg">
+        <img class="menu-b menuL" src="image/menu_toggle.png" alt="erreur de chargement" onclick="clickMenu()">
+    </div>
+    <center id="CmenuL">
+        <div class="borderM">
+            <h1>Sélection</h1>
+            <form class="principale">
+                <form method="get">
+                    <div class="selectG">
+                        <SELECT id="get6" name="dept" class="styled-select blue semi-square">
+                            <OPTION id="get5" style="display:none;">
+                                <script>
+                                    SetSelect("get5", "dept");
+                                </script>
+                            </OPTION>
+                            <OPTION/>
+                            INFO
+                            <OPTION disabled/>
+                            GEA
+                            <OPTION/>
+                            STID
+                            <OPTION disabled/>
+                            TC
+                        </SELECT>
+                        <SELECT id="get3" name="annee" class="styled-select blue semi-square">
+                            <OPTION id="get1" style="display:none;">
+                                <script>
+                                    SetSelect("get1", "annee");
+                                </script>
+                            </OPTION>
+                            <OPTION/>
+                            1
+                            <OPTION/>
+                            2
+                        </SELECT>
+                        <SELECT id="get4" name="group" class="styled-select blue semi-square"
+                                onclick="refreshMenu(true)" required onmouseover="refreshMenu(false)">
+                            <OPTION id="get2" style="display: none">
+                                <script>
+                                    SetSelect("get2", "group");
+                                </script>
+                            </OPTION>
+                            <OPTION class="selectInfo"/>
+                            A1
+                            <OPTION class="selectInfo"/>
+                            A2
+                            <OPTION class="selectInfo"/>
+                            B1
+                            <OPTION class="selectInfo"/>
+                            B2
+                            <OPTION class="selectInfo"/>
+                            C1
+                            <OPTION class="selectInfo"/>
+                            C2
+                            <OPTION class="selectInfo"/>
+                            D1
+                            <OPTION class="selectInfo"/>
+                            D2
+                            <OPTION class="selectGea1"/>
+                            1
+                            <OPTION class="selectGea1"/>
+                            2
+                            <OPTION class="selectGea1"/>
+                            3
+                            <OPTION class="selectGea1"/>
+                            4
+                            <OPTION class="selectGea1"/>
+                            5
+                            <OPTION class="selectGea1"/>
+                            6
+                            <OPTION class="selectGea2"/>
+                            GCF A
+                            <OPTION class="selectGea2"/>
+                            GCF B
+                            <OPTION class="selectGea2"/>
+                            GCF C
+                            <OPTION class="selectGea2"/>
+                            GMO 1
+                            <OPTION class="selectGea2"/>
+                            GMO 2
+                            <OPTION class="selectGea2"/>
+                            GRH
+                            <OPTION class="selectTc1"/>
+                            1
+                            <OPTION class="selectTc1"/>
+                            2
+                            <OPTION class="selectTc1"/>
+                            3
+                            <OPTION class="selectTc1"/>
+                            4
+                        </SELECT>
+                    </div>
+                    <button type="submit" class="styled-select blue semi-square">Valider</button>
+                </form>
+                <button onclick="SaveTab()" class="styled-select blue semi-square">Sauvegarder</button>
+                <br>
+                <br>
+            </form>
+        </div>
+        <div>
+            <!--<div>
+                        <h1>Salle libre</h1>
+                    </div>
+                    <div>
+                        <h2 style="width:80%;">
+                            <?php
+            //affiche salle libre
+            echo getSalleLibre();
+            ?>
+                        </h2>
+                    </div>-->
+            <?php
+            include "config/data/actu.php";
+            ?>
+        </div>
+    </center>
+</div>
 <div class=main>
     <div class="menu">
-        <div class="menu-b" onclick="clickMenu();">
-            <img class="menu-b" src="image/menu_toggle.png" alt="erreur de chargement">
-        </div>
-        <script>
-            clickMenu();
-        </script>
+        <img class="menu-b" src="image/menu_toggle.png" alt="erreur de chargement" onclick="clickMenu()">
         <div class="noneP">
             <button class="semaine left" onclick="semaine(-1);">
                 <
@@ -70,121 +183,6 @@ if ($ret == false) {
         </div>
     </div>
     <div class="contenu">
-        <div id="menuL" style="display:none;">
-            <center id="CmenuL">
-                <div class="borderM">
-                    <h1>Sélection</h1>
-                    <form class="principale">
-                        <form method="get">
-                            <div class="selectG">
-                                <SELECT id="get6" name="dept" class="styled-select blue semi-square">
-                                    <OPTION id="get5" style="display:none;">
-                                        <script>
-                                            SetSelect("get5", "dept");
-                                        </script>
-                                    </OPTION>
-                                    <OPTION/>
-                                    INFO
-                                    <OPTION disabled/>
-                                    GEA
-                                    <OPTION/>
-                                    STID
-                                    <OPTION disabled/>
-                                    TC
-                                </SELECT>
-                                <SELECT id="get3" name="annee" class="styled-select blue semi-square">
-                                    <OPTION id="get1" style="display:none;">
-                                        <script>
-                                            SetSelect("get1", "annee");
-                                        </script>
-                                    </OPTION>
-                                    <OPTION/>
-                                    1
-                                    <OPTION/>
-                                    2
-                                </SELECT>
-                                <SELECT id="get4" name="group" class="styled-select blue semi-square"
-                                        onclick="refreshMenu(true)" required onmouseover="refreshMenu(false)">
-                                    <OPTION id="get2" style="display: none">
-                                        <script>
-                                            SetSelect("get2", "group");
-                                        </script>
-                                    </OPTION>
-                                    <OPTION class="selectInfo"/>
-                                    A1
-                                    <OPTION class="selectInfo"/>
-                                    A2
-                                    <OPTION class="selectInfo"/>
-                                    B1
-                                    <OPTION class="selectInfo"/>
-                                    B2
-                                    <OPTION class="selectInfo"/>
-                                    C1
-                                    <OPTION class="selectInfo"/>
-                                    C2
-                                    <OPTION class="selectInfo"/>
-                                    D1
-                                    <OPTION class="selectInfo"/>
-                                    D2
-                                    <OPTION class="selectGea1"/>
-                                    1
-                                    <OPTION class="selectGea1"/>
-                                    2
-                                    <OPTION class="selectGea1"/>
-                                    3
-                                    <OPTION class="selectGea1"/>
-                                    4
-                                    <OPTION class="selectGea1"/>
-                                    5
-                                    <OPTION class="selectGea1"/>
-                                    6
-                                    <OPTION class="selectGea2"/>
-                                    GCF A
-                                    <OPTION class="selectGea2"/>
-                                    GCF B
-                                    <OPTION class="selectGea2"/>
-                                    GCF C
-                                    <OPTION class="selectGea2"/>
-                                    GMO 1
-                                    <OPTION class="selectGea2"/>
-                                    GMO 2
-                                    <OPTION class="selectGea2"/>
-                                    GRH
-                                    <OPTION class="selectTc1"/>
-                                    1
-                                    <OPTION class="selectTc1"/>
-                                    2
-                                    <OPTION class="selectTc1"/>
-                                    3
-                                    <OPTION class="selectTc1"/>
-                                    4
-                                </SELECT>
-                            </div>
-                            <button type="submit" class="styled-select blue semi-square">Valider</button>
-                        </form>
-                        <button onclick="SaveTab()" class="styled-select blue semi-square">Sauvegarder</button>
-                        <br>
-                        <br>
-                    </form>
-                </div>
-                <div>
-                    <!--<div>
-                        <h1>Salle libre</h1>
-                    </div>
-                    <div>
-                        <h2 style="width:80%;">
-                            <?php
-                    //affiche salle libre
-                    echo getSalleLibre();
-                    ?>
-                        </h2>
-                    </div>-->
-                    <?php
-                    include "config/data/actu.php";
-                    ?>
-                </div>
-            </center>
-        </div>
         <div id="grille">
             <div class="p-1 c-1"></div>
             <div class="p-1 c0">8h</div>
