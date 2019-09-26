@@ -72,8 +72,7 @@ function getcalendar($promo)
             $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002149b4a7395d720c451324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a68fa32040f5bd2dd8b9c9c60da67e1cdd9834081c5882554cd59d94de6c8d1a4');
         } elseif ($promo == "STID2D2") {
             $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214754509b38d4d7efe324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a68fa32040f5bd2dd8b9c9c60da67e1cdd9834081c5882554cd59d94de6c8d1a4');
-        }
-        else $calendrier = null;
+        } else $calendrier = null;
         file_put_contents("ics/$promo.ics", $calendrier);
     }
     return $calendrier;
@@ -342,7 +341,7 @@ function affichage()
             $minC = substr($dateTableau[0][$j], 19, 2);
             $matchC = substr($matchTableau[0][$j], 8);
             $locC = substr($locTableau[0][$j], 11);
-            $descC = substr($descTableau[0][$j], 12);
+            $descC = substr($descTableau[0][$j], 14);
             $heureFC = substr($StampTableau[0][$j], 15, 2) + $Hdécalage;
             $minFC = substr($StampTableau[0][$j], 17, 2);
             $descTab = explode("\\n", $descC);
@@ -361,10 +360,15 @@ function affichage()
                     if ($jour == $jourC) {
                         $Dcontenu[$d] = "";
                     }
+
+                    if (strstr($descTab[2], '(Exporté le:')) {
+                        $descTab[2] = "";
+                    }
+
                     $emp = getEmplacement($heureC, $minC, $heureFC, $minFC);
                     echo "<div id='box' class='p" . $d . " " . $typeCase . " noneP'" . $emp . ">";
-                    echo $matchC . $horaire . "  " . $locC;
-                    echo $descTab[2];
+                    echo "<Strong>".$matchC."</Strong><br>".$horaire . "  " . $locC;
+                    echo $descTab[1] . " " . $descTab[2];
                     echo "</div>";
                 }
             }

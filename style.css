@@ -12,18 +12,17 @@
 }
 
 .main {
-    display: block;
+    display: grid;
     position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left:0px;
-    right: 0px;
+    grid-template-rows: min-content auto;
+    height: 100%;
+    width: 100%;
 }
 
 .contenu {
-    display: grid;
-    grid-template-columns: min-content auto;
     height: 100%;
+    display: contents;
+    row: 2;
 }
 
 body {
@@ -98,9 +97,9 @@ img.menu-b:hover {
     top: 0px;
     left: 0px;
     right: 0px;
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.26);
-    animation: animationMenu 700ms;
+    animation: animationMenu 150ms;
 }
 
 /* affichage couleur cours */
@@ -135,6 +134,9 @@ img.menu-b:hover {
 
 /* affichage portable */
 @media only screen and (max-width: 800px) {
+    .main {
+        display: initial;
+    }
     .grey-bg{
         margin-bottom: -4px;
     }
@@ -356,7 +358,6 @@ img.menu-b:hover {
     }
 
     .menu {
-        grid-column: 2;
         grid-row: 1;
         display: inline-grid;
         grid-template-columns: 45px auto 1fr 1fr 200px 15px;
@@ -398,7 +399,6 @@ img.menu-b:hover {
         grid-auto-columns: auto;
         grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto 7px 7px 7px 7px auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
         width: 100%;
-        grid-column: 2;
     }
 
     #box {
@@ -413,6 +413,7 @@ img.menu-b:hover {
         padding-top: 10px;
         margin-bottom: 0px;
         margin-top: 0px;
+        font-size: 13px;
     }
 
     .midi {
