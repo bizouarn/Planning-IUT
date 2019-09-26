@@ -72,7 +72,6 @@ if ($ret == false) {
     <div class="contenu">
         <div id="menuL" style="display:none;">
             <center id="CmenuL">
-                <br>
                 <div class="borderM">
                     <h1>Sélection</h1>
                     <form class="principale">

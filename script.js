@@ -67,7 +67,6 @@ var on = true;//menu overt ou fermer.
 function clickMenu() {
     if (on == false) {
         document.getElementById('menuL').setAttribute("style", "display:none;");
-        document.getElementById('grille').setAttribute("style", "grid-column: 1/3;grid-row:1;");
         document.getElementById('grille').removeAttribute("class");
         on = true;
     } else {
