@@ -168,7 +168,7 @@ if ($ret == false) {
                         <br>
                     </form>
                 </div>
-                <div class="borderM">
+                <div>
                     <!--<div>
                         <h1>Salle libre</h1>
                     </div>
@@ -180,9 +180,9 @@ if ($ret == false) {
                     ?>
                         </h2>
                     </div>-->
-                </div>
-                <br class="noneP">
-                <div id="footer">© 2016 RYDIN Nathan and LUX Mathieu<br>© 2019 Aymeric Bizouarn All Rights Reserved
+                    <?php
+                    include "config/data/actu.php";
+                    ?>
                 </div>
             </center>
         </div>

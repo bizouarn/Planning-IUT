@@ -1,4 +1,7 @@
 /* autheur Aymeric Bizouarn */
+marquee{
+    background-color: #262b2d;
+}
 .loader {
     position: fixed;
     z-index: 9999;
