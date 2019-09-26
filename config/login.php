@@ -3,7 +3,7 @@
         <img src="../image/iut-vannes2.png">
         <h1>Planning IUT</h1>
     </center>
-    <form method="post">
+    <form method="post" action="VLogin.php">
         <p>Identifiant<br>
             <input type="text" name="login" class="input"></p>
         <p>Mot de passe<br>

@@ -93,6 +93,18 @@ body {
         height: 100%;
         grid-row: 1;
         background-color: #4d8ebd;
+        text-align: right;
+    }
+
+    .title button{
+        color: white;
+        background-color: #4580aa;
+        border: none;
+        height: 100%;
+        font-size: 20px;
+    }
+    .title button:hover{
+        background-color: #4e8cbb;
     }
 
     .homeClick{

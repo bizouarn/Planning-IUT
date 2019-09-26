@@ -13,11 +13,7 @@
 </head>
 <body>
 <?php
-if(isset($_POST['login']) && isset($_POST['password'])){
-    if(strcmp($_POST['login'],'admin')==0 && strcmp($_POST['password'],'admin')==0){
-        $_SESSION['id']=$_POST['login'];
-    }
-}
+session_start();
 if(!isset($_SESSION['id'])) {
     include "login.php";
 } else {
