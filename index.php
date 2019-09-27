@@ -35,7 +35,7 @@ if ($ret == false) {
 ?>
 <div id="menuBlack" onclick="clickMenu()" style="display: none;"></div>
 <div id="menuL" style="display:none;">
-    <div class="grey-bg">
+    <div class="blue-bg">
         <img class="menu-b menuL" src="image/menu_toggle.png" alt="erreur de chargement" onclick="clickMenu()">
     </div>
     <center id="CmenuL">

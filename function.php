@@ -377,10 +377,13 @@ function affichage()
                 if ($jour == $jourC) {
                     $DcontenuP[$d] = "";
                 }
+                if (strstr($descTab[2], '(Exporté le:')) {
+                    $descTab[2] = "";
+                }
                 echo "<div id='boxP' class='p" . $d . " c" . $c . " " . $typeCase . " nonePC' style='order: " . ($d + 1) . "0" . ($c + 1) . ";grid-column: 1;'>";
                 echo "<strong>";
                 echo $matchC . "</strong><br>" . $horaire . "  " . $locC;
-                echo $descTab[2];
+                echo $descTab[1] . " " . $descTab[2];
                 echo "</div>";
             }
         }
