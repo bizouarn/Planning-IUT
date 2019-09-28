@@ -509,13 +509,11 @@ img.menu-b:hover {
 
     .borderM {
         margin-top: 15px;
-        border-right: solid;
-        border-left: solid;
         margin-left: 10px;
         margin-right: 10px;
         padding: 5px;
         padding-bottom: 15px;
-        background: rgba(255, 255, 255, 0.17);
+        background: rgba(255, 255, 255, 0.04);
     }
 
     center#CmenuL {
