@@ -52,7 +52,7 @@ if ($ret == false) {
                             </OPTION>
                             <OPTION/>
                             INFO
-                            <OPTION disabled/>
+                            <OPTION/>
                             GEA
                             <OPTION/>
                             STID
@@ -94,29 +94,45 @@ if ($ret == false) {
                             <OPTION class="selectInfo"/>
                             D2
                             <OPTION class="selectGea1"/>
-                            1
+                            G1
                             <OPTION class="selectGea1"/>
-                            2
+                            G2
                             <OPTION class="selectGea1"/>
-                            3
+                            G3
                             <OPTION class="selectGea1"/>
-                            4
+                            G4
                             <OPTION class="selectGea1"/>
-                            5
+                            G5
                             <OPTION class="selectGea1"/>
-                            6
+                            G6 All
+                            <OPTION class="selectGea1"/>
+                            G6 Esp
+                            <OPTION class="selectGea1"/>
+                            G7 All
+                            <OPTION class="selectGea1"/>
+                            G7 esp
                             <OPTION class="selectGea2"/>
-                            GCF A
+                            GCF A All
+                            <OPTION class="selectGea2"/>
+                            GCF A esp
                             <OPTION class="selectGea2"/>
                             GCF B
                             <OPTION class="selectGea2"/>
                             GCF C
                             <OPTION class="selectGea2"/>
-                            GMO 1
+                            GMO 1 All
+                            <OPTION class="selectGea2"/>
+                            GMO 1 esp
                             <OPTION class="selectGea2"/>
                             GMO 2
                             <OPTION class="selectGea2"/>
-                            GRH
+                            GRH All
+                            <OPTION class="selectGea2"/>
+                            GRH esp
+                            <OPTION class="selectGea2"/>
+                            GMO 7 All
+                            <OPTION class="selectGea2"/>
+                            GMO 7 esp
                             <OPTION class="selectTc1"/>
                             G1.1
                             <OPTION class="selectTc1"/>
