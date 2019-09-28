@@ -72,6 +72,38 @@ function getcalendar($promo)
             $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002149b4a7395d720c451324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a68fa32040f5bd2dd8b9c9c60da67e1cdd9834081c5882554cd59d94de6c8d1a4');
         } elseif ($promo == "STID2D2") {
             $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214754509b38d4d7efe324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a68fa32040f5bd2dd8b9c9c60da67e1cdd9834081c5882554cd59d94de6c8d1a4');
+        } elseif ($promo == "TC1G1.1") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214419b2023522019dde0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f104985a0a3f75ee8b61ec2973627c2eb073b43b00c8d695a723a8d3f4109b6629391');
+        } elseif ($promo == "TC1G1.2") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002146f532e7d1de5620fe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f104985a0a3f75ee8b61ec2973627c2eb073b43b00c8d695a723a8d3f4109b6629391');
+        } elseif ($promo == "TC1G2.1") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002143da2396ba7678ad1e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f104985a0a3f75ee8b61ec2973627c2eb073b6294401ebd0343058d3f4109b6629391');
+        } elseif ($promo == "TC1G2.2") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002147763cd1fd0ef5523e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f104985a0a3f75ee8b61ec2973627c2eb073b43b00c8d695a723a8d3f4109b6629391');
+        } elseif ($promo == "TC1G3.1") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021426b91675987b09d3e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f104985a0a3f75ee8b61ec2973627c2eb073b43b00c8d695a723a8d3f4109b6629391');
+        } elseif ($promo == "TC1G3.2") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021477f56a4ee094fc88e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f104985a0a3f75ee8b61ec2973627c2eb073b6294401ebd0343058d3f4109b6629391');
+        } elseif ($promo == "TC1G4.1") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021468db34082f11e4f6e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f104985a0a3f75ee8b61ec2973627c2eb073bbc769bd960c176308d3f4109b6629391');
+        } elseif ($promo == "TC1G4.2") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e541967672301e36e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f104985a0a3f75ee8b61ec2973627c2eb073b43b00c8d695a723a8d3f4109b6629391');
+        } elseif ($promo == "TC2A1") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214c9093fcd7412108ce0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aee1b3a1aabd134b19fe215384c1edd6c2973627c2eb073b6294401ebd0343058d3f4109b6629391');
+        } elseif ($promo == "TC2A2") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e15caf47edbd9640e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aee1b3a1aabd134b19fe215384c1edd6c2973627c2eb073b6294401ebd0343058d3f4109b6629391');
+        } elseif ($promo == "TC2B1") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214c572741ec015ed0ae0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aee1b3a1aabd134b19fe215384c1edd6c2973627c2eb073b6294401ebd0343058d3f4109b6629391');
+        } elseif ($promo == "TC2B2") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002145dcf84c7f2a660b9e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aee1b3a1aabd134b19fe215384c1edd6c2973627c2eb073b1729db8f66a919558d3f4109b6629391');
+        } elseif ($promo == "TC2C1") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021432916a9d93a2cb39e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aee1b3a1aabd134b19fe215384c1edd6c2973627c2eb073b6294401ebd0343058d3f4109b6629391');
+        } elseif ($promo == "TC2C2") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002149717221d18344fe6e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aee1b3a1aabd134b19fe215384c1edd6c2973627c2eb073b6294401ebd0343058d3f4109b6629391');
+        } elseif ($promo == "TC2D1") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002145549d5972c97c12ce0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aee1b3a1aabd134b19fe215384c1edd6c2973627c2eb073b6294401ebd0343058d3f4109b6629391');
+        } elseif ($promo == "TC2D2") {
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214ee360c22a5c1fe4ae0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aee1b3a1aabd134b19fe215384c1edd6c2973627c2eb073b6294401ebd0343058d3f4109b6629391');
         } else $calendrier = null;
         file_put_contents("ics/$promo.ics", $calendrier);
     }
@@ -142,13 +174,13 @@ function getSalle()
 function typeCase($match)
 {
     $typeCase = "NUL";
-    if (strpos($match, "CM")) {
+    if (strstr($match, "CM")||strstr($match, "Amphi")) {
         $typeCase = "CM";
     }
-    if (strpos($match, "TD")) {
+    if (strstr($match, "TD")) {
         $typeCase = "TD";
     }
-    if (strpos($match, "TP")) {
+    if (strstr($match, "TP")) {
         $typeCase = "TP";
     }
     return $typeCase;
@@ -361,14 +393,16 @@ function affichage()
                         $Dcontenu[$d] = "";
                     }
 
-                    if (strstr($descTab[2], '(Exporté le:')) {
-                        $descTab[2] = "";
-                    }
-
                     $emp = getEmplacement($heureC, $minC, $heureFC, $minFC);
                     echo "<div id='box' class='p" . $d . " " . $typeCase . " noneP'" . $emp . ">";
                     echo "<Strong>".$matchC."</Strong><br>".$horaire . "  " . $locC;
-                    echo $descTab[1] . " " . $descTab[2];
+                    echo $descTab[1];
+                    if(isset($descTab[2])) {
+                        if (strstr($descTab[2], '(Exporté le:')) {
+                            $descTab[2] = "";
+                        }
+                        echo " " . $descTab[2];
+                    }
                     echo "</div>";
                 }
             }
@@ -377,13 +411,16 @@ function affichage()
                 if ($jour == $jourC) {
                     $DcontenuP[$d] = "";
                 }
-                if (strstr($descTab[2], '(Exporté le:')) {
-                    $descTab[2] = "";
-                }
                 echo "<div id='boxP' class='p" . $d . " c" . $c . " " . $typeCase . " nonePC' style='order: " . ($d + 1) . "0" . ($c + 1) . ";grid-column: 1;'>";
                 echo "<strong>";
                 echo $matchC . "</strong><br>" . $horaire . "  " . $locC;
-                echo $descTab[1] . " " . $descTab[2];
+                echo $descTab[1];
+                if(isset($descTab[2])) {
+                    if (strstr($descTab[2], '(Exporté le:')) {
+                        $descTab[2] = "";
+                    }
+                    echo " " . $descTab[2];
+                }
                 echo "</div>";
             }
         }

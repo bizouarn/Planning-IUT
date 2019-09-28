@@ -44,7 +44,7 @@ if ($ret == false) {
             <form class="principale">
                 <form method="get">
                     <div class="selectG">
-                        <SELECT id="get6" name="dept" class="styled-select blue semi-square">
+                        <SELECT id="get6" name="dept" class="styled-select blue semi-square" onchange="refreshMenu(true)">
                             <OPTION id="get5" style="display:none;">
                                 <script>
                                     SetSelect("get5", "dept");
@@ -56,10 +56,10 @@ if ($ret == false) {
                             GEA
                             <OPTION/>
                             STID
-                            <OPTION disabled/>
+                            <OPTION/>
                             TC
                         </SELECT>
-                        <SELECT id="get3" name="annee" class="styled-select blue semi-square">
+                        <SELECT id="get3" name="annee" class="styled-select blue semi-square" onchange="refreshMenu(true)">
                             <OPTION id="get1" style="display:none;">
                                 <script>
                                     SetSelect("get1", "annee");
@@ -118,13 +118,21 @@ if ($ret == false) {
                             <OPTION class="selectGea2"/>
                             GRH
                             <OPTION class="selectTc1"/>
-                            1
+                            G1.1
                             <OPTION class="selectTc1"/>
-                            2
+                            G1.2
                             <OPTION class="selectTc1"/>
-                            3
+                            G2.1
                             <OPTION class="selectTc1"/>
-                            4
+                            G2.2
+                            <OPTION class="selectTc1"/>
+                            G3.1
+                            <OPTION class="selectTc1"/>
+                            G3.2
+                            <OPTION class="selectTc1"/>
+                            G4.1
+                            <OPTION class="selectTc1"/>
+                            G4.2
                         </SELECT>
                     </div>
                     <button type="submit" class="styled-select blue semi-square">Valider</button>
