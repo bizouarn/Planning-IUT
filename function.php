@@ -217,10 +217,11 @@ function getTitre()
 
 function getGroup()
 {
-    if ($_GET["group"] != null && $_GET["annee"] != null) {
+    if ($_GET['dept']!=null && $_GET["group"] != null && $_GET["annee"] != null) {
+        $dept = $_GET['dept'];
         $group = $_GET["group"];
         $annee = $_GET["annee"];
-        return "Planning : " . $annee . $group;
+        return $dept . $annee . $group;
     } else {
         return "";
     }
