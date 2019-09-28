@@ -10,6 +10,16 @@
     <link id="stylesheet" rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="image/iut-vannes2.png"/>
     <script src="script.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQP7MZKTR7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-CQP7MZKTR7');
+    </script>
+    <script data-ad-client="ca-pub-5785233369369949" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 <!-- loading page -->
@@ -168,6 +178,7 @@ if ($ret == false) {
             ?>
                         </h2>
                     </div>-->
+            <br>
             <?php
             include "config/data/actu.php";
             ?>

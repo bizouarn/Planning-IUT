@@ -5,10 +5,16 @@
         <button onclick="redirection('deconnexion.php')">Deconnection</button>
     </div>
     <div class="menu">
-        <button>MainPage</button>
+        <button onclick="redirection('?page=main')">MainPage</button>
     </div>
     <div class="contenu">
-
+        <?php
+        if(isset($_GET['page'])){
+            include "panel/".$_GET['page'].".php";
+        } else {
+            include "panel/main.php";
+        }
+        ?>
     </div>
 </div>
 </body>
