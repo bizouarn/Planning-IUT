@@ -19,7 +19,6 @@
 
         gtag('config', 'G-CQP7MZKTR7');
     </script>
-    <script data-ad-client="ca-pub-5785233369369949" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 <!-- loading page -->
