@@ -5,7 +5,9 @@ function getcalendar($promo)
     // récupération des calendrier
     if ($promo != null) {
         //test d'éxistance de fichier .ics en local sur le serveur et test de connexion avec le serveur de l'UBS.
-        if (file_exists("ics/$promo.ics") && ((date("F d Y H i", filemtime("ics/$promo.ics")) == date("F d Y H i"))) || !$sock = @fsockopen('https://planning.univ-ubs.fr/ade/index.jsp', 80)) {
+        $fp = @fsockopen("planning.univ-ubs.fr", 80, $errno, $errstr, 30);
+
+        if ((file_exists("ics/$promo.ics") && ((date("F d Y H i", filemtime("ics/$promo.ics")) == date("F d Y H i")))) ||(file_exists("ics/$promo.ics") && !$fp)) {
             $calendrier = file_get_contents("ics/$promo.ics");
         } else {
             //planning INFO
@@ -219,7 +221,7 @@ function getSalle()
 function typeCase($match)
 {
     $typeCase = "NUL";
-    if (strstr($match, "CM")||strstr($match, "Amphi")) {
+    if (strstr($match, "CM") || strstr($match, "Amphi")) {
         $typeCase = "CM";
     }
     if (strstr($match, "TD")) {
@@ -262,7 +264,7 @@ function getTitre()
 
 function getGroup()
 {
-    if ($_POST['dept']!=null && $_POST["group"] != null && $_POST["annee"] != null) {
+    if ($_POST['dept'] != null && $_POST["group"] != null && $_POST["annee"] != null) {
         $dept = $_POST['dept'];
         $group = $_POST["group"];
         $annee = $_POST["annee"];
@@ -339,9 +341,9 @@ function testDataPost()
             $group = $_COOKIE["group"];
             echo "
             <script>
-                post('annee','".$annee."');
-                post('dept','".$dept."');
-                post('group','".$group."');
+                post('annee','" . $annee . "');
+                post('dept','" . $dept . "');
+                post('group','" . $group . "');
                 post_url();
             </script>";
             $ret = true;
@@ -458,19 +460,19 @@ function affichage()
 
                     $emp = getEmplacement($heureC, $minC, $heureFC, $minFC);
                     echo "<div id='box' class='p" . $d . " " . $typeCase . " noneP'" . $emp . ">";
-                    echo "<Strong>".$matchC."</Strong><br>".$horaire . "  " . $locC;
+                    echo "<Strong>" . $matchC . "</Strong><br>" . $horaire . "  " . $locC;
                     echo $descTab[1];
-                    if(isset($descTab[2])) {
+                    if (isset($descTab[2])) {
                         if (strstr($descTab[2], '(Exporté le:')) {
-                            $descTab[2] = "";
+                           // $descTab[2] = "";
                         }
                         echo " " . $descTab[2];
                     }
                     echo "</div>";
                 }
             }
-            if ($jour == $jourC && ($jourC >= date("d")|| $moisC != date("m")) && $mois == $moisC && ($jourC != date("j") || (date("G") + date("i") / 60) <= ($heureFC + $minFC / 60))) {
-                if((int)$moisC>=(int)date("n")){
+            if ($jour == $jourC && ($jourC >= date("d") || $moisC != date("m")) && $mois == $moisC && ($jourC != date("j") || (date("G") + date("i") / 60) <= ($heureFC + $minFC / 60))) {
+                if ((int)$moisC >= (int)date("n")) {
                     //si jour vide (ne pas afficher sur portable)
                     if ($jour == $jourC) {
                         $DcontenuP[$d] = "";
@@ -479,7 +481,7 @@ function affichage()
                     echo "<strong>";
                     echo $matchC . "</strong><br>" . $horaire . "  " . $locC;
                     echo $descTab[1];
-                    if(isset($descTab[2])) {
+                    if (isset($descTab[2])) {
                         if (strstr($descTab[2], '(Exporté le:')) {
                             $descTab[2] = "";
                         }
