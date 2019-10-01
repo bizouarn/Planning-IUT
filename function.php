@@ -335,15 +335,15 @@ function testDataPost()
     $promo = $dept . $annee . $group;
     if ($promo == "") {
         $ret = true;
-        if ($_COOKIE["planning"] != "dept=&annee=&group=" && $_COOKIE["planning"] != null) {
+        if ($_COOKIE["annee"] != null && $_COOKIE["dept"] != null && $_COOKIE["group"] != null) {
             $annee = $_COOKIE["annee"];
             $dept = $_COOKIE["dept"];
             $group = $_COOKIE["group"];
             echo "
             <script>
-                post('annee',1);
-                post('dept','INFO');
-                post('group','A1');
+                post('annee','".$annee."');
+                post('dept','".$dept."');
+                post('group','".$group."');
                 post_url();
             </script>";
             $ret = true;
