@@ -245,8 +245,8 @@ function getEmplacement($heure, $min, $temps1, $temps2)
 function getTitre()
 {
     //affichage mois annee menu sup
-    if (isset($_GET["D"])) {
-        $jD = $_GET["D"] * 7 + 1;
+    if (isset($_POST["D"])) {
+        $jD = $_POST["D"] * 7 + 1;
     } else {
         $jD = 0;
     }
@@ -264,10 +264,10 @@ function getTitre()
 
 function getGroup()
 {
-    if ($_GET['dept']!=null && $_GET["group"] != null && $_GET["annee"] != null) {
-        $dept = $_GET['dept'];
-        $group = $_GET["group"];
-        $annee = $_GET["annee"];
+    if ($_POST['dept']!=null && $_POST["group"] != null && $_POST["annee"] != null) {
+        $dept = $_POST['dept'];
+        $group = $_POST["group"];
+        $annee = $_POST["annee"];
         return $dept . $annee . $group;
     } else {
         return "";
@@ -317,18 +317,18 @@ function getSalleLibre()
 function testDataPost()
 {
     $ret = false;
-    if (isset($_GET["dept"])) {
-        $dept = $_GET["dept"];
+    if (isset($_POST["dept"])) {
+        $dept = $_POST["dept"];
     } else {
         $dept = "";
     }
-    if (isset($_GET["group"])) {
-        $group = $_GET["group"];
+    if (isset($_POST["group"])) {
+        $group = $_POST["group"];
     } else {
         $group = "";
     }
-    if (isset($_GET["annee"])) {
-        $annee = $_GET["annee"];
+    if (isset($_POST["annee"])) {
+        $annee = $_POST["annee"];
     } else {
         $annee = "";
     }
@@ -336,9 +336,26 @@ function testDataPost()
     if ($promo == "") {
         $ret = true;
         if ($_COOKIE["planning"] != "dept=&annee=&group=" && $_COOKIE["planning"] != null) {
-            echo "<meta http-equiv='refresh' content='0; URL=./?" . $_COOKIE["planning"] . "'>";
+            $annee = $_COOKIE["annee"];
+            $dept = $_COOKIE["dept"];
+            $group = $_COOKIE["group"];
+            echo "
+            <script>
+                post('annee',1);
+                post('dept','INFO');
+                post('group','A1');
+                post_url();
+            </script>";
+            $ret = true;
         } else {
-            echo "<meta http-equiv='refresh' content='0; URL=./?dept=INFO&annee=1&group=A1'>";
+            echo "
+            <script>
+                post('annee',1);
+                post('dept','INFO');
+                post('group','A1');
+                post_url();
+            </script>";
+            $ret = true;
         }
     }
     return $ret;
@@ -347,25 +364,25 @@ function testDataPost()
 function affichage()
 {
     // si aucune info GET: sortir
-    if (isset($_GET["dept"])) {
-        $dept = $_GET["dept"];
+    if (isset($_POST["dept"])) {
+        $dept = $_POST["dept"];
     } else {
         $dept = "";
     }
-    if (isset($_GET["group"])) {
-        $group = $_GET["group"];
+    if (isset($_POST["group"])) {
+        $group = $_POST["group"];
     } else {
         $group = "";
     }
-    if (isset($_GET["annee"])) {
-        $annee = $_GET["annee"];
+    if (isset($_POST["annee"])) {
+        $annee = $_POST["annee"];
     } else {
         $annee = "";
     }
     $promo = $dept . $annee . $group;
     // récupère jD
-    if (isset($_GET["D"])) {
-        $jD = $_GET["D"] * 7;
+    if (isset($_POST["D"])) {
+        $jD = $_POST["D"] * 7;
     } else {
         $jD = 0;
     }

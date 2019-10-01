@@ -1,6 +1,6 @@
 //affichage titre emploie du temps
 function SetSelect(id, option) {
-    var text = $_GET(option);
+    let text = $_POST(option);
     document.getElementById(id).innerHTML = text;
 }
 
@@ -47,18 +47,9 @@ function date() {
     document.getElementById('day').innerHTML = text;
 }
 
-//GET mtéthode
-function $_GET(param) {
-    var vars = {};
-    window.location.href.replace(location.hash, '').replace(
-        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-        function (m, key, value) { // callback
-            vars[key] = value !== undefined ? value : '';
-        }
-    );
-    if (param) {
-        return vars[param] ? vars[param] : null;
-    }
+//POST mtéthode
+function $_POST(param) {
+    let vars = document.getElementById(param).value;
     return vars;
 }
 
@@ -114,8 +105,9 @@ function lireCookie(nom) {
 }
 
 function SaveTab() {
-    Vcookie = "dept=" + document.getElementById("get6").value + "&annee=" + document.getElementById("get3").value + "&group=" + document.getElementById("get4").value;
-    creerCookie("planning", Vcookie, 120);
+    creerCookie("annee", $_POST("annee"), 120);
+    creerCookie("dept", $_POST("dept"), 120);
+    creerCookie("group", $_POST("group"), 120);
 }
 
 //actualisation du contenu de page. (non impémenter)
@@ -128,20 +120,12 @@ function deleteContenu() {
 
 //changement semaine
 function semaine(i) {
-    var url = document.location.href;
-    if (i == 0) {
-        var j = url.indexOf("&D=");
-        url = url.substring(0, j);
+    let val = parseInt($_POST("D"))+i;
+    if(i==0){
+        val = 0;
     }
-    if (url.indexOf("&D=") != -1) {
-        var j = url.indexOf("&D=");
-        url.substring(j);
-        i = parseInt(url.substring(j + 3)) + i;
-        url = url.substring(0, j) + "&D=" + i;
-    } else {
-        url = url + "&D=" + i;
-    }
-    document.location.replace(url);
+    post("D",val);
+    post_url();
 }
 
 //changment des select du menu autre que le département.
@@ -188,4 +172,12 @@ function removeElementsStyle(list) {
     for (var i = 0; i < list.length; i++) {
         list[i].removeAttribute("style");
     }
+}
+//générer requète post
+function post(id,value) {
+    document.getElementById(id).value=value;
+}
+function post_url(p) {
+//Création dynamique du formulaire
+    document.getElementById("jsPost").submit();
 }

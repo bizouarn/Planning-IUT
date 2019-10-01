@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width"/>
     <title>Planning</title>
     <?php
-    if(isset($_GET["white"])){
+    if (isset($_GET["white"])) {
         echo "<link id=\"stylesheet\" rel=\"stylesheet\" href=\"style white.css\">";
     } else {
         echo "<link id=\"stylesheet\" rel=\"stylesheet\" href=\"style black.css\">";
@@ -31,6 +31,33 @@
     </script>
 </head>
 <body>
+<form id="jsPost" method="post" style="display: none;">
+    <?php if (isset($_POST['dept'])) {
+        echo "<input type='text' name='dept' id='dept' value='" . $_POST['dept'] . "'></input>";
+    } else {
+        echo "<input type='text' name='dept' id='dept'></input>";
+    } ?>
+    <?php if (isset($_POST['annee'])) {
+        echo "<input type='text' name='annee' id='annee' value='" . $_POST['annee'] . "''></input>";
+    } else {
+        echo "<input type='text' name='annee' id='annee'></input>";
+    } ?>
+    <?php if (isset($_POST['group'])) {
+        echo "<input type='text' name='group' id='group' value='" . $_POST['group'] . "''></input>";
+    } else {
+        echo "<input type='text' name='group' id='group'></input>";
+    } ?>
+    <?php if (isset($_POST['D'])) {
+        echo "<input type='text' name='D' id='D' value='" . $_POST['D'] . "''></input>";
+    } else {
+        echo "<input type='text' name='D' id='D'></input>";
+    } ?>
+
+    <input type="text" name="white" id="white"><?php if (isset($_POST['white'])) {
+            echo $_POST['white'];
+        } ?></input>
+    <input type="submit">
+</form>
 <!-- loading page -->
 <div id="loader" class="loader"></div>
 <SCRIPT LANGUAGE="JavaScript">
@@ -47,9 +74,7 @@ require("function.php");
 //redirige par default vers planning 1A1
 $ret = testDataPost();
 if ($ret == false) {
-    echo "<script>
-           chargement();
-    </script>";
+    echo "<script>chargement();</script>";
 }
 ?>
 <div id="menuBlack" onclick="clickMenu()" style="display: none;"></div>
@@ -60,8 +85,8 @@ if ($ret == false) {
     <center id="CmenuL">
         <div class="borderM">
             <h1>Sélection</h1>
-            <form class="principale">
-                <form method="get">
+            <form class="principale" method="post">
+                <form method="post">
                     <div class="selectG">
                         <SELECT id="get6" name="dept" class="styled-select blue semi-square"
                                 onchange="refreshMenu(true)">

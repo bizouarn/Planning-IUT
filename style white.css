@@ -105,7 +105,7 @@ img.menu-b:hover {
 /* affichage couleur cours */
 @media {
     .CM {
-        background-color: #eb9b00;
+        background-color: #d34d38;
     }
 
     .TD {
@@ -117,7 +117,7 @@ img.menu-b:hover {
     }
 
     .NUL {
-        background-color: #d34d38;
+        background-color: #eb9b00;
     }
 
     .HASH {
