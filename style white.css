@@ -105,19 +105,19 @@ img.menu-b:hover {
 /* affichage couleur cours */
 @media {
     .CM {
-        background-color: #d4bc57;
+        background-color: #eb9b00;
     }
 
     .TD {
-        background-color: #4abb87;
+        background-color: #36a458;
     }
 
     .TP {
-        background-color: #2d9ed6;
+        background-color: #48c1f0;
     }
 
     .NUL {
-        background-color: #5363b8;
+        background-color: #d34d38;
     }
 
     .HASH {
@@ -406,7 +406,7 @@ img.menu-b:hover {
         margin: 5px;
         border-style: solid;
         border-width: 1px;
-        border-color: #999999ab;
+        border-color: white;
         text-align: center;
         display: table-cell;
         font-size: 14px;
