@@ -14,7 +14,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQP7MZKTR7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'G-CQP7MZKTR7');
@@ -53,7 +57,8 @@ if ($ret == false) {
             <form class="principale">
                 <form method="get">
                     <div class="selectG">
-                        <SELECT id="get6" name="dept" class="styled-select blue semi-square" onchange="refreshMenu(true)">
+                        <SELECT id="get6" name="dept" class="styled-select blue semi-square"
+                                onchange="refreshMenu(true)">
                             <OPTION id="get5" style="display:none;">
                                 <script>
                                     SetSelect("get5", "dept");
@@ -68,7 +73,8 @@ if ($ret == false) {
                             <OPTION/>
                             TC
                         </SELECT>
-                        <SELECT id="get3" name="annee" class="styled-select blue semi-square" onchange="refreshMenu(true)">
+                        <SELECT id="get3" name="annee" class="styled-select blue semi-square"
+                                onchange="refreshMenu(true)">
                             <OPTION id="get1" style="display:none;">
                                 <script>
                                     SetSelect("get1", "annee");
@@ -162,7 +168,7 @@ if ($ret == false) {
                     </div>
                     <button type="submit" class="styled-select blue semi-square">Valider</button>
                 </form>
-                <button onclick="SaveTab()" class="styled-select blue semi-square noneP">Sauvegarder</button>
+                <button onclick="SaveTab()" class="styled-select blue semi-square">Sauvegarder</button>
             </form>
         </div>
         <div>
@@ -182,10 +188,10 @@ if ($ret == false) {
             include "config/data/actu.php";
             ?>
         </div>
-        <div class="credit">Copyright (c) 2019 Aymeric Bizouarn <br> 2016 RYDIN Nathan and LUX Mathieu.</div>
+        <div class="credit">© 2019 Aymeric Bizouarn</div>
     </center>
 </div>
-<div class=main>
+<div id='main' class=main>
     <div class="menu">
         <img class="menu-b" src="image/menu_toggle.png" alt="erreur de chargement" onclick="clickMenu()">
         <div class="noneP">
@@ -237,3 +243,4 @@ if ($ret == false) {
     </div>
 </div>
 </body>
+</html>

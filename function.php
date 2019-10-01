@@ -454,22 +454,24 @@ function affichage()
                     echo "</div>";
                 }
             }
-            if ($jour == $jourC && ($jourC >= date("d") || $moisC != date("m")) && $mois == $moisC && ($jourC != date("j") || (date("G") + date("i") / 60) <= ($heureFC + $minFC / 60))) {
-                //si jour vide (ne pas afficher sur portable)
-                if ($jour == $jourC) {
-                    $DcontenuP[$d] = "";
-                }
-                echo "<div id='boxP' class='p" . $d . " c" . $c . " " . $typeCase . " nonePC' style='order: " . ($d + 1) . "0" . ($c + 1) . ";grid-column: 1;'>";
-                echo "<strong>";
-                echo $matchC . "</strong><br>" . $horaire . "  " . $locC;
-                echo $descTab[1];
-                if(isset($descTab[2])) {
-                    if (strstr($descTab[2], '(Exporté le:')) {
-                        $descTab[2] = "";
+            if ($jour == $jourC && ($jourC >= date("d")|| $moisC != date("m")) && $mois == $moisC && ($jourC != date("j") || (date("G") + date("i") / 60) <= ($heureFC + $minFC / 60))) {
+                if((int)$moisC>=(int)date("n")){
+                    //si jour vide (ne pas afficher sur portable)
+                    if ($jour == $jourC) {
+                        $DcontenuP[$d] = "";
                     }
-                    echo " " . $descTab[2];
+                    echo "<div id='boxP' class='p" . $d . " c" . $c . " " . $typeCase . " nonePC' style='order: " . ($d + 1) . "0" . ($c + 1) . ";grid-column: 1;'>";
+                    echo "<strong>";
+                    echo $matchC . "</strong><br>" . $horaire . "  " . $locC;
+                    echo $descTab[1];
+                    if(isset($descTab[2])) {
+                        if (strstr($descTab[2], '(Exporté le:')) {
+                            $descTab[2] = "";
+                        }
+                        echo " " . $descTab[2];
+                    }
+                    echo "</div>";
                 }
-                echo "</div>";
             }
         }
         echo "<div class='p" . $d . " c-1 " . $DcontenuP[$d] . " nonePC' style='order: " . ($d + 1) . "00000;grid-column: 1; '>" . $jourL[$Sjour] . ' ' . ($jour) . ' ' . $moisL[intval($mois)] . "</div>";
