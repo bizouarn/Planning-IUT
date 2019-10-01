@@ -464,7 +464,7 @@ function affichage()
                     echo $descTab[1];
                     if (isset($descTab[2])) {
                         if (strstr($descTab[2], '(Exporté le:')) {
-                           // $descTab[2] = "";
+                           $descTab[2] = "";
                         }
                         echo " " . $descTab[2];
                     }
