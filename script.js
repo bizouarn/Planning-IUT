@@ -120,12 +120,17 @@ function deleteContenu() {
 
 //changement semaine
 function semaine(i) {
-    let val = parseInt($_POST("D"))+i;
+    let dval = parseInt($_POST("D"));
+    if(dval==null){
+        dval=0;
+    }
+    let val = parseInt(dval)+i;
     if(i==0){
         val = 0;
     }
     post("D",val);
     post_url();
+    return val;
 }
 
 //changment des select du menu autre que le département.

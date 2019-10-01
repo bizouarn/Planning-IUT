@@ -48,9 +48,9 @@
         echo "<input type='text' name='group' id='group'></input>";
     } ?>
     <?php if (isset($_POST['D'])) {
-        echo "<input type='text' name='D' id='D' value='" . $_POST['D'] . "''></input>";
+        echo "<input type='number' name='D' id='D' value='" . $_POST['D'] . "''></input>";
     } else {
-        echo "<input type='text' name='D' id='D'></input>";
+        echo "<input type='number' name='D' id='D' value='0'></input>";
     } ?>
 
     <input type="text" name="white" id="white"><?php if (isset($_POST['white'])) {
@@ -152,7 +152,7 @@ if ($ret == false) {
                             <OPTION class="selectGea1"/>
                             G6 All
                             <OPTION class="selectGea1"/>
-                            G6 Esp
+                            G6 esp
                             <OPTION class="selectGea1"/>
                             G7 All
                             <OPTION class="selectGea1"/>
