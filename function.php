@@ -120,7 +120,7 @@ function getcalendar($promo)
         } elseif ($promo == "GEA1G4") {
             $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002141b235d4f221c4539324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a68fa32040f5bd2ddc678a65850584e43d9834081c5882554cd59d94de6c8d1a4');
         } elseif ($promo == "GEA1G5") {
-            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214045a6c310cfefbb4324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a68fa32040f5bd2ddc678a65850584e4329d569558fe3e2974cbb818263402f67');
+            $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214045a6c310cfefbb4324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a68fa32040f5bd2ddc678a65850584e43d9834081c5882554089db6340955f944');
         } elseif ($promo == "GEA1G6 All") {
             $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214cbf968dd7794f323324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a68fa32040f5bd2ddc678a65850584e43d9834081c5882554cd59d94de6c8d1a4');
         } elseif ($promo == "GEA1G6 esp") {
