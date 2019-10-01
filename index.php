@@ -7,7 +7,7 @@
     <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
     <title>Planning</title>
-    <link id="stylesheet" rel="stylesheet" href="style.css">
+    <link id="stylesheet" rel="stylesheet" href="style black.css">
     <link rel="icon" type="image/png" href="image/iut-vannes2.png"/>
     <script src="script.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -224,6 +224,7 @@ if ($ret == false) {
     </div>
     <div class="contenu">
         <div id="grille">
+            <div class="border"></div>
             <div class="p-1 c-1"></div>
             <div class="p-1 c0">8h</div>
             <div class="p-1 c1">9h</div>
@@ -237,7 +238,6 @@ if ($ret == false) {
             <div class="p-1 c8">17h</div>
             <div class="p-1 c9">18h</div>
             <div class="p-1 c10"></div>
-            <div class="border"></div>
             <?php affichage(); ?>
         </div>
     </div>
