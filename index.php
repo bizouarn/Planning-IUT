@@ -7,13 +7,7 @@
     <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
     <title>Planning</title>
-    <?php
-    if (isset($_GET["white"])) {
-        echo "<link id=\"stylesheet\" rel=\"stylesheet\" href=\"style white.css\">";
-    } else {
-        echo "<link id=\"stylesheet\" rel=\"stylesheet\" href=\"style black.css\">";
-    }
-    ?>
+    <link id="stylesheet" href="style black.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="image/iut-vannes2.png"/>
     <script src="script.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -201,6 +195,7 @@ if ($ret == false) {
                 </form>
                 <button onclick="SaveTab()" class="styled-select blue semi-square">Sauvegarder</button>
             </form>
+                <button id="mode" onclick="ChangeMode()" class="styled-select blue semi-square">Sombre 🌙</button>
         </div>
         <div>
             <!--<div>

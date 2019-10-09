@@ -350,9 +350,9 @@ function testDataPost()
         } else {
             echo "
             <script>
-                post('annee',1);
+                post('annee',2);
                 post('dept','INFO');
-                post('group','A1');
+                post('group','D2');
                 post_url();
             </script>";
             $ret = true;
