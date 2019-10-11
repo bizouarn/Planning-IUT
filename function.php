@@ -424,7 +424,7 @@ function affichage()
         // compression jour/mois
         $Sjour = 0;
         compressionJM($jour, $mois, $annee, $Sjour);
-        if (intval($mois) >= 4) {
+        if (intval($mois) >= 4 && intval($mois)<11) {;
             $Hdécalage = 2;
         } else {
             $Hdécalage = 1;
@@ -493,7 +493,7 @@ function affichage()
         }
         echo "<div class='p" . $d . " c-1 " . $DcontenuP[$d] . " nonePC' style='order: " . ($d + 1) . "00000;grid-column: 1; '>" . $jourL[$Sjour] . ' ' . ($jour) . ' ' . $moisL[intval($mois)] . "</div>";
         $dateCara = "";
-        if (($jour) == date("j")) {
+        if (($jour) == date("j") && intval($mois) == date("m")) {
             $dateCara = "HASH";
         }
         if ($d < 5) {
