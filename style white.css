@@ -432,7 +432,7 @@ img.menu-b:hover {
     .border {
         grid-row: 2/51;
         grid-column: 1;
-        background-color: #242d32;
+        background-color: #3b6282;
     }
 
     .c-1 {
@@ -522,7 +522,7 @@ img.menu-b:hover {
         min-width: 225px;
         max-width: 280px;
         height: 100%;
-        background-color: #242d32;
+        background-color: #3b6282;
     }
 }
 

@@ -110,7 +110,19 @@ function SaveTab() {
     creerCookie("group", $_POST("group"), 120);
 }
 
-//actualisation du contenu de page. (non impémenter)
+function ChangeMode(){
+    if(document.getElementById("mode").innerHTML=="Sombre 🌙"){
+        document.getElementById("stylesheet").setAttribute("href", "style white.css");
+        document.getElementById("mode").innerHTML="Clair ☀️";
+    }
+    else{
+        document.getElementById("stylesheet").setAttribute("href", "style black.css");
+        document.getElementById("mode").innerHTML="Sombre 🌙";
+    }
+    //window.location.assign("./?white");
+}
+
+//actualisation du contenu de page. (non implémenter)
 function deleteContenu() {
     var item = document.getElementById("grille");
     item.parentNode.removeChild(item);
