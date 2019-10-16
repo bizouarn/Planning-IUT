@@ -392,14 +392,14 @@ function affichage()
         $jD = 0;
     }
     //set mode
-    $mode = $_POST['mode'];
-    if ($mode == "clair") {
-        echo "<script>
+    if (isset($_POST['mode'])) {
+        $mode = $_POST['mode'];
+        if ($mode == "clair") {
+            echo "<script>
                 document.getElementById(\"stylesheet\").setAttribute(\"href\", \"style white.css\");
                 document.getElementById(\"modeF\").innerHTML = \"Clair ☀️\";
             </script>";
-    } else {
-
+        }
     }
 
     $jour = date("j") + $jD + 1;
