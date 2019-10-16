@@ -108,7 +108,7 @@ function SaveTab() {
 }
 
 function ChangeMode() {
-    if (document.getElementById("mode").value == "sombre") {
+    if (document.getElementById("mode").value == "sombre"|document.getElementById("mode").value == "") {
         document.getElementById("stylesheet").setAttribute("href", "style white.css");
         document.getElementById("modeF").innerHTML = "Clair ☀️";
         post("mode","clair");
