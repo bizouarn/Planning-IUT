@@ -70,17 +70,11 @@ function clickMenu() {
 }
 
 //création de cookie pour enregistrer et lire le planning favory.
-function creerCookie(nom, valeur, jours) {
-// Le nombre de jours est spécifié
-    if (jours) {
-        var date = new Date();
-        // Converti le nombre de jour en millisecondes
-        date.setTime(date.getTime() + (jours * 24 * 60 * 60 * 1000));
-        var expire = "; expire=" + date.toGMTString();
-    }
-    // Aucune valeur de jours spécifiée
-    else var expire = "";
-    document.cookie = nom + "=" + valeur + expire + "; path=/";
+function creerCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
 function lireCookie(nom) {
@@ -110,14 +104,13 @@ function SaveTab() {
     creerCookie("group", $_POST("group"), 120);
 }
 
-function ChangeMode(){
-    if(document.getElementById("mode").innerHTML=="Sombre 🌙"){
+function ChangeMode() {
+    if (document.getElementById("mode").innerHTML == "Sombre 🌙") {
         document.getElementById("stylesheet").setAttribute("href", "style white.css");
-        document.getElementById("mode").innerHTML="Clair ☀️";
-    }
-    else{
+        document.getElementById("mode").innerHTML = "Clair ☀️";
+    } else {
         document.getElementById("stylesheet").setAttribute("href", "style black.css");
-        document.getElementById("mode").innerHTML="Sombre 🌙";
+        document.getElementById("mode").innerHTML = "Sombre 🌙";
     }
     //window.location.assign("./?white");
 }
@@ -133,14 +126,14 @@ function deleteContenu() {
 //changement semaine
 function semaine(i) {
     let dval = parseInt($_POST("D"));
-    if(dval==null){
-        dval=0;
+    if (dval == null) {
+        dval = 0;
     }
-    let val = parseInt(dval)+i;
-    if(i==0){
+    let val = parseInt(dval) + i;
+    if (i == 0) {
         val = 0;
     }
-    post("D",val);
+    post("D", val);
     post_url();
     return val;
 }
@@ -190,10 +183,12 @@ function removeElementsStyle(list) {
         list[i].removeAttribute("style");
     }
 }
+
 //générer requète post
-function post(id,value) {
-    document.getElementById(id).value=value;
+function post(id, value) {
+    document.getElementById(id).value = value;
 }
+
 function post_url(p) {
 //Création dynamique du formulaire
     document.getElementById("jsPost").submit();
