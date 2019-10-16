@@ -334,10 +334,11 @@ function testDataPost()
     }
     $promo = $dept . $annee . $group;
     if ($promo == "") {
-        $ret = true;
         if ($_COOKIE["mode"] != null) {
             $mode = $_COOKIE["mode"];
             echo "<script>post('mode','" . $mode . "');</script>";
+        } else {
+            echo "<script>post('mode','sombre');</script>";
         }
         if ($_COOKIE["annee"] != null && $_COOKIE["dept"] != null && $_COOKIE["group"] != null) {
             $annee = $_COOKIE["annee"];
