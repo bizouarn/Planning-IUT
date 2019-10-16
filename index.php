@@ -27,30 +27,31 @@
 <body>
 <form id="jsPost" method="post" style="display: none;">
     <?php if (isset($_POST['dept'])) {
-        echo "<input type='text' name='dept' id='dept' value='" . $_POST['dept'] . "'></input>";
+        echo "<input type='text' name='dept' id='dept' value='" . $_POST['dept'] . "'>";
     } else {
-        echo "<input type='text' name='dept' id='dept'></input>";
+        echo "<input type='text' name='dept' id='dept'>";
     } ?>
     <?php if (isset($_POST['annee'])) {
-        echo "<input type='text' name='annee' id='annee' value='" . $_POST['annee'] . "''></input>";
+        echo "<input type='text' name='annee' id='annee' value='" . $_POST['annee']."'>";
     } else {
-        echo "<input type='text' name='annee' id='annee'></input>";
+        echo "<input type='text' name='annee' id='annee'>";
     } ?>
     <?php if (isset($_POST['group'])) {
-        echo "<input type='text' name='group' id='group' value='" . $_POST['group'] . "''></input>";
+        echo "<input type='text' name='group' id='group' value='" . $_POST['group']."'>";
     } else {
-        echo "<input type='text' name='group' id='group'></input>";
+        echo "<input type='text' name='group' id='group'>";
     } ?>
     <?php if (isset($_POST['D'])) {
-        echo "<input type='number' name='D' id='D' value='" . $_POST['D'] . "''></input>";
+        echo "<input type='number' name='D' id='D' value='" . $_POST['D'] . "'>";
     } else {
-        echo "<input type='number' name='D' id='D' value='0'></input>";
+        echo "<input type='number' name='D' id='D' value='0'>";
     } ?>
-
-    <input type="text" name="white" id="white"><?php if (isset($_POST['white'])) {
-            echo $_POST['white'];
-        } ?></input>
-    <input type="submit">
+    <?php if (isset($_POST['mode'])) {
+        echo "<input type='text' name='mode' id='mode' value='" . $_POST['mode'] . "'>";
+    } else {
+        echo "<input type='text' name='mode' id='mode' value=''>";
+    }
+    ?>
 </form>
 <!-- loading page -->
 <div id="loader" class="loader"></div>
@@ -195,7 +196,7 @@ if ($ret == false) {
                 </form>
                 <button onclick="SaveTab()" class="styled-select blue semi-square">Sauvegarder</button>
             </form>
-                <button id="mode" onclick="ChangeMode()" class="styled-select blue semi-square">Sombre 🌙</button>
+                <button id="modeF" onclick="ChangeMode()" class="styled-select blue semi-square">Sombre 🌙</button>
         </div>
         <div>
             <!--<div>

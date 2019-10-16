@@ -99,18 +99,23 @@ function lireCookie(nom) {
 }
 
 function SaveTab() {
-    creerCookie("annee", $_POST("annee"), 120);
-    creerCookie("dept", $_POST("dept"), 120);
-    creerCookie("group", $_POST("group"), 120);
+    creerCookie("annee", document.getElementById("get3").value, 120);
+    creerCookie("dept", document.getElementById("get5").value, 120);
+    creerCookie("group", document.getElementById("get4").value, 120);
+    if(document.getElementById("mode").value!=null) {
+        creerCookie("mode", document.getElementById("mode").value, 120);
+    }
 }
 
 function ChangeMode() {
-    if (document.getElementById("mode").innerHTML == "Sombre 🌙") {
+    if (document.getElementById("mode").value == "sombre") {
         document.getElementById("stylesheet").setAttribute("href", "style white.css");
-        document.getElementById("mode").innerHTML = "Clair ☀️";
+        document.getElementById("modeF").innerHTML = "Clair ☀️";
+        post("mode","clair");
     } else {
         document.getElementById("stylesheet").setAttribute("href", "style black.css");
-        document.getElementById("mode").innerHTML = "Sombre 🌙";
+        document.getElementById("modeF").innerHTML = "Sombre 🌙";
+        post("mode","sombre");
     }
     //window.location.assign("./?white");
 }
@@ -186,7 +191,7 @@ function removeElementsStyle(list) {
 
 //générer requète post
 function post(id, value) {
-    document.getElementById(id).value = value;
+    document.getElementById(id).setAttribute("value",value);
 }
 
 function post_url(p) {

@@ -7,7 +7,7 @@ function getcalendar($promo)
         //test d'éxistance de fichier .ics en local sur le serveur et test de connexion avec le serveur de l'UBS.
         $fp = @fsockopen("planning.univ-ubs.fr", 80, $errno, $errstr, 30);
 
-        if ((file_exists("ics/$promo.ics") && ((date("F d Y H i", filemtime("ics/$promo.ics")) == date("F d Y H i")))) ||(file_exists("ics/$promo.ics") && !$fp)) {
+        if ((file_exists("ics/$promo.ics") && ((date("F d Y H i", filemtime("ics/$promo.ics")) == date("F d Y H i")))) || (file_exists("ics/$promo.ics") && !$fp)) {
             $calendrier = file_get_contents("ics/$promo.ics");
         } else {
             //planning INFO
@@ -335,6 +335,10 @@ function testDataPost()
     $promo = $dept . $annee . $group;
     if ($promo == "") {
         $ret = true;
+        if ($_COOKIE["mode"] != null) {
+            $mode = $_COOKIE["mode"];
+            echo "<script>post('mode','" . $mode . "');</script>";
+        }
         if ($_COOKIE["annee"] != null && $_COOKIE["dept"] != null && $_COOKIE["group"] != null) {
             $annee = $_COOKIE["annee"];
             $dept = $_COOKIE["dept"];
@@ -386,6 +390,17 @@ function affichage()
     } else {
         $jD = 0;
     }
+    //set mode
+    $mode = $_POST['mode'];
+    if ($mode == "clair") {
+        echo "<script>
+                document.getElementById(\"stylesheet\").setAttribute(\"href\", \"style white.css\");
+                document.getElementById(\"modeF\").innerHTML = \"Clair ☀️\";
+            </script>";
+    } else {
+
+    }
+
     $jour = date("j") + $jD + 1;
     $mois = date("n");
     $annee = date("Y");
@@ -400,14 +415,14 @@ function affichage()
 
     $calendrier = getcalendar($promo);
 
-    // Variable type info .ics
+// Variable type info .ics
     $regExpMatch = '/SUMMARY:(.*)/';
     $regExpDate = '/DTSTART:(.*)/';
     $regExpLoc = '/LOCATION:(.*)/';
     $regExpDesc = '/DESCRIPTION:(.*)/';
     $regExpStamp = '/DTEND:(.*)/';
 
-    // Variable info .ics
+// Variable info .ics
     $n = preg_match_all($regExpMatch, $calendrier, $matchTableau, PREG_PATTERN_ORDER);
     preg_match_all($regExpDate, $calendrier, $dateTableau, PREG_PATTERN_ORDER);
     preg_match_all($regExpLoc, $calendrier, $locTableau, PREG_PATTERN_ORDER);
@@ -424,7 +439,8 @@ function affichage()
         // compression jour/mois
         $Sjour = 0;
         compressionJM($jour, $mois, $annee, $Sjour);
-        if (intval($mois) >= 4 && intval($mois)<11) {;
+        if (intval($mois) >= 4 && intval($mois) < 11) {
+            ;
             $Hdécalage = 2;
         } else {
             $Hdécalage = 1;
@@ -464,7 +480,7 @@ function affichage()
                     echo $descTab[1];
                     if (isset($descTab[2])) {
                         if (strstr($descTab[2], '(Exporté le:')) {
-                           $descTab[2] = "";
+                            $descTab[2] = "";
                         }
                         echo " " . $descTab[2];
                     }
