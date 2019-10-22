@@ -9,8 +9,8 @@
     </div>
     <div class="contenu">
         <?php
-        if(isset($_GET['page'])){
-            include "panel/".$_GET['page'].".php";
+        if (isset($_GET['page'])) {
+            include "panel/" . $_GET['page'] . ".php";
         } else {
             include "panel/main.php";
         }

@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width"/>
     <title>Planning</title>
     <link id="stylesheet" rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="../image/iut-vannes2.png"/>
+    <link rel="icon" type="image/png" href="../ressources/image/iut-vannes2.png"/>
     <script src="script.js"></script>
 </head>
 <body>
 <?php
 session_start();
-if(!isset($_SESSION['id'])) {
+if (!isset($_SESSION['id'])) {
     include "login.php";
 } else {
     include "panel.php";

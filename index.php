@@ -7,9 +7,9 @@
     <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
     <title>Planning</title>
-    <link id="stylesheet" href="style black.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" type="image/png" href="image/iut-vannes2.png"/>
-    <script src="script.js"></script>
+    <link id="stylesheet" href="ressources/css/style black.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" type="image/png" href="ressources/image/iut-vannes2.png"/>
+    <script src="ressources/js/script.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQP7MZKTR7"></script>
     <script>
@@ -32,12 +32,12 @@
         echo "<input type='text' name='dept' id='dept'>";
     } ?>
     <?php if (isset($_POST['annee'])) {
-        echo "<input type='text' name='annee' id='annee' value='" . $_POST['annee']."'>";
+        echo "<input type='text' name='annee' id='annee' value='" . $_POST['annee'] . "'>";
     } else {
         echo "<input type='text' name='annee' id='annee'>";
     } ?>
     <?php if (isset($_POST['group'])) {
-        echo "<input type='text' name='group' id='group' value='" . $_POST['group']."'>";
+        echo "<input type='text' name='group' id='group' value='" . $_POST['group'] . "'>";
     } else {
         echo "<input type='text' name='group' id='group'>";
     } ?>
@@ -65,7 +65,7 @@
 <body id="body">
 <?php
 //link fichier contenant les fonction php
-require("function.php");
+require("ressources/php/function.php");
 //redirige par default vers planning 1A1
 $ret = testDataPost();
 if ($ret == false) {
@@ -75,7 +75,8 @@ if ($ret == false) {
 <div id="menuBlack" onclick="clickMenu()" style="display: none;"></div>
 <div id="menuL" style="display:none;">
     <div class="blue-bg">
-        <img class="menu-b menuL" src="image/menu_toggle.png" alt="erreur de chargement" onclick="clickMenu()">
+        <img class="menu-b menuL" src="ressources/image/menu_toggle.png" alt="erreur de chargement"
+             onclick="clickMenu()">
     </div>
     <center id="CmenuL">
         <div class="borderM">
@@ -196,7 +197,7 @@ if ($ret == false) {
                 </form>
                 <button onclick="SaveTab()" class="styled-select blue semi-square">Sauvegarder</button>
             </form>
-                <button id="modeF" onclick="ChangeMode()" class="styled-select blue semi-square">Sombre 🌙</button>
+            <button id="modeF" onclick="ChangeMode()" class="styled-select blue semi-square">Sombre 🌙</button>
         </div>
         <div>
             <!--<div>
@@ -220,7 +221,7 @@ if ($ret == false) {
 </div>
 <div id='main' class=main>
     <div class="menu">
-        <img class="menu-b" src="image/menu_toggle.png" alt="erreur de chargement" onclick="clickMenu()">
+        <img class="menu-b" src="ressources/image/menu_toggle.png" alt="erreur de chargement" onclick="clickMenu()">
         <div class="noneP">
             <button class="semaine left" onclick="semaine(-1);">
                 <

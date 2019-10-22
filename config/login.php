@@ -1,6 +1,6 @@
 <div class="login">
     <center>
-        <img src="../image/iut-vannes2.png">
+        <img src="../ressources/image/iut-vannes2.png">
         <h1>Planning IUT</h1>
     </center>
     <form method="post" action="VLogin.php">

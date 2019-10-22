@@ -78,9 +78,10 @@ body {
         box-sizing: border-box;
     }
 }
+
 /* CSS du Panel */
-@media  {
-    .main{
+@media {
+    .main {
         position: absolute;
         display: grid;
         grid-template-columns: 250px auto;
@@ -88,7 +89,7 @@ body {
         height: 100%;
     }
 
-    .title{
+    .title {
         width: 100%;
         height: 100%;
         grid-row: 1;
@@ -96,18 +97,19 @@ body {
         text-align: right;
     }
 
-    .title button{
+    .title button {
         color: white;
         background-color: #4580aa;
         border: none;
         height: 100%;
         font-size: 20px;
     }
-    .title button:hover{
+
+    .title button:hover {
         background-color: #4e8cbb;
     }
 
-    .homeClick{
+    .homeClick {
         color: white;
         padding-left: 15px;
         width: 100%;
@@ -117,19 +119,20 @@ body {
         background-color: #4580aa;
     }
 
-    .menu{
+    .menu {
         text-align: center;
         grid-row: 2/100;
         grid-column: 1;
         background-color: #242d32;
     }
-    .contenu{
+
+    .contenu {
         grid-column: 2;
         grid-row: 2;
         padding: 20px;
     }
 
-    .menu button{
+    .menu button {
         color: white;
         background-color: #242d32;
         border: none;
@@ -137,7 +140,8 @@ body {
         min-height: 50px;
         font-size: 20px;
     }
-    .menu button:hover{
+
+    .menu button:hover {
         background-color: #2e3b41;
     }
 }

@@ -1,3 +1,3 @@
-function redirection(url){
+function redirection(url) {
     location.assign(url);
 }

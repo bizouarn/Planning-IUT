@@ -2,7 +2,7 @@
 .loader {
     position: fixed;
     z-index: 9999;
-    background: url('image/icon-loader.webp') 50% 50% no-repeat;
+    background: url('../image/icon-loader.webp') 50% 50% no-repeat;
     background-color: black;
     top: 0px;
     left: 0px;
@@ -59,7 +59,7 @@ img.menu-b:hover {
     background-color: #092234;
 }
 
-#menuL{
+#menuL {
     z-index: 10;
     position: fixed;
     height: 100%;
@@ -67,6 +67,7 @@ img.menu-b:hover {
     background-color: rgba(18, 67, 104, 0.91);
     animation: animationMenu 500ms;
 }
+
 @keyframes animationMenu {
     0% {
         transform: translateX(-100%);
@@ -76,13 +77,13 @@ img.menu-b:hover {
     }
 }
 
-.blue-bg{
+.blue-bg {
     background-color: #4580aa;
     width: 100%;
     padding: 0.1px;
 }
 
-.credit{
+.credit {
     background-color: #151515;
     color: #818181;
     position: absolute;
@@ -91,7 +92,7 @@ img.menu-b:hover {
     width: 100%;
 }
 
-#menuBlack{
+#menuBlack {
     z-index: 3;
     bottom: 0px;
     top: 0px;
@@ -137,16 +138,18 @@ img.menu-b:hover {
     .main {
         display: initial;
     }
-    .grey-bg{
+
+    .grey-bg {
         margin-bottom: -4px;
     }
+
     #titre {
         margin: auto;
         text-align: center;
     }
 
     body {
-        background-image: url(image/portableBG.png);
+        background-image: url(../image/portableBG.png);
     }
 
     .c-1 {
@@ -250,16 +253,17 @@ img.menu-b:hover {
             font-size: 9px;
         }
     }
-    img.menu-b.menuL{
+    img.menu-b.menuL {
         margin: 5px;
     }
 }
 
 /* affichage pc */
 @media only screen and (min-width: 800px) {
-    .grey-bg{
+    .grey-bg {
         padding-bottom: 3px;
     }
+
     @media {
         .p0 {
             grid-column: 2;
@@ -377,7 +381,7 @@ img.menu-b:hover {
         padding: 0px;
     }
 
-    img.menu-b.menuL{
+    img.menu-b.menuL {
         margin: 5px;
     }
 

@@ -1,6 +1,6 @@
 <form>
     <?php
-    if(isset($_SESSION['id'])) {
+    if (isset($_SESSION['id'])) {
         if (isset($_POST['saveText']) && isset($_POST['file'])) {
             echo "<h1>Information Enregistrer</h1>";
             file_put_contents("data/" . $_POST['file'], $_POST['saveText']);
