@@ -396,7 +396,7 @@ function affichage()
         $mode = $_POST['mode'];
         if ($mode == "clair") {
             echo "<script>
-                document.getElementById(\"stylesheet\").setAttribute(\"href\", \"style white.css\");
+                document.getElementById(\"stylesheet\").setAttribute(\"href\", \"ressources/css/style white.css\");
                 document.getElementById(\"modeF\").innerHTML = \"Clair ☀️\";
             </script>";
         }
