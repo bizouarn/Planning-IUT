@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width"/>
     <title>Planning</title>
     <link id="stylesheet" href="ressources/css/style black.css" rel="stylesheet" type="text/css" />
+    <link id="stylesheet" href="ressources/css/banner.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="ressources/image/iut-vannes2.png"/>
     <script src="ressources/js/script.js"></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -265,6 +266,26 @@ if ($ret == false) {
             </script>
         </div>
     </div>
+    <div class="banner-consent-banner" id="banner">
+    <div class="banner-consent-banner__inner" id="banner">
+        <div class="banner-consent-banner__copy">
+        <div class="banner-consent-banner__header">CE SITE N'EST PLUS MAINTENU !</div>
+        <div class="banner-consent-banner__description">Utilisez le nouveau planning, plus moderne : <a href="https://planningiut.herokuapp.com">PlanningIUT</a></div>
+        <div class="banner-consent-banner__description">Mettez-le en favori. Le site fonctionne même quand l'ENT est down (sauvegardes auto) !</div>
+        <div class="banner-consent-banner__description"><small>Si votre planning est manquant, ne vous inquiétez pas, ça arrive !!</small></div>
+        </div>
+
+        <div class="banner-consent-banner__actions">
+            <a href="https://planningiut.herokuapp.com" class="banner-consent-banner__cta">
+                C'EST PARTI
+            </a>
+            <br/>
+            <span style="color: grey; cursor: pointer" onclick="close_banner()">
+                fermer
+             </span>
+        </div>
+    </div>
+    </div>
     <div class="contenu">
         <div id="grille">
             <div class="border"></div>
@@ -285,5 +306,12 @@ if ($ret == false) {
         </div>
     </div>
 </div>
+
+<script>
+function close_banner() {
+    document.getElementById("banner").hidden = true;
+}
+</script>
+
 </body>
 </html>
