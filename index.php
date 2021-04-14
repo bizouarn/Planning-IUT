@@ -7,24 +7,34 @@
     <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
     <title>Planning</title>
-    <link id="stylesheet" href="ressources/css/style black.css" rel="stylesheet" type="text/css"/>
+    <link id="stylesheet" href="ressources/css/style black.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="ressources/image/iut-vannes2.png"/>
     <script src="ressources/js/script.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQP7MZKTR7"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'G-CQP7MZKTR7');
-    </script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-CQP7MZKTR7"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'G-CQP7MZKTR7');
+	</script>
 </head>
 <body>
+<script>
+	var _paq = window._paq = window._paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.planning.bizouarn.fr"]);
+  _paq.push(["setDomains", ["*.planning.bizouarn.fr"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//matomo.bizouarn.fr/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '2']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.src='ressources/js/matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
 <form id="jsPost" method="post" style="display: none;">
     <?php if (isset($_POST['dept'])) {
         echo "<input type='text' name='dept' id='dept' value='" . $_POST['dept'] . "'>";
@@ -32,12 +42,12 @@
         echo "<input type='text' name='dept' id='dept'>";
     } ?>
     <?php if (isset($_POST['annee'])) {
-        echo "<input type='text' name='annee' id='annee' value='" . $_POST['annee'] . "'>";
+        echo "<input type='text' name='annee' id='annee' value='" . $_POST['annee']."'>";
     } else {
         echo "<input type='text' name='annee' id='annee'>";
     } ?>
     <?php if (isset($_POST['group'])) {
-        echo "<input type='text' name='group' id='group' value='" . $_POST['group'] . "'>";
+        echo "<input type='text' name='group' id='group' value='" . $_POST['group']."'>";
     } else {
         echo "<input type='text' name='group' id='group'>";
     } ?>
@@ -75,8 +85,7 @@ if ($ret == false) {
 <div id="menuBlack" onclick="clickMenu()" style="display: none;"></div>
 <div id="menuL" style="display:none;">
     <div class="blue-bg">
-        <img class="menu-b menuL" src="ressources/image/menu_toggle.png" alt="erreur de chargement"
-             onclick="clickMenu()">
+        <img class="menu-b menuL" src="ressources/image/menu_toggle.png" alt="erreur de chargement" onclick="clickMenu()">
     </div>
     <center id="CmenuL">
         <div class="borderM">
@@ -99,6 +108,8 @@ if ($ret == false) {
                             STID
                             <OPTION/>
                             TC
+                            <OPTION/>
+                            LP
                         </SELECT>
                         <SELECT id="get3" name="annee" class="styled-select blue semi-square"
                                 onchange="refreshMenu(true)">
@@ -191,13 +202,17 @@ if ($ret == false) {
                             G4.1
                             <OPTION class="selectTc1"/>
                             G4.2
+                            <OPTION class="selectLP"/>
+                            DLIS
+                            <OPTION class="selectLP"/>
+                            CYBER
                         </SELECT>
                     </div>
                     <button type="submit" class="styled-select blue semi-square">Valider</button>
                 </form>
                 <button onclick="SaveTab()" class="styled-select blue semi-square">Sauvegarder</button>
             </form>
-            <button id="modeF" onclick="ChangeMode()" class="styled-select blue semi-square">Sombre 🌙</button>
+                <button id="modeF" onclick="ChangeMode()" class="styled-select blue semi-square">Sombre 🌙</button>
         </div>
         <div>
             <!--<div>

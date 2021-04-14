@@ -150,6 +150,12 @@ function getcalendar($promo)
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214eb70783dab3ea8cfe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f104985a0a3f75ee8b61ec2973627c2eb073b43b00c8d695a723a8d3f4109b6629391');
             } elseif ($promo == "GEA2GMO 7 esp") {
                 $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021402fb25b122a21a76e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152aa9968683a1f104985a0a3f75ee8b61ec2973627c2eb073b43b00c8d695a723a8d3f4109b6629391');
+            } elseif ($promo == "LP1DLIS") {
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002141cce681f91850c4ae0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41fbcd12dfcc8a8c0e5c2973627c2eb073bd069ac5dd47c66c98d3f4109b6629391');
+            } elseif ($promo == "LP2DLIS") {
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e98ac653207f558ae0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41fbcd12dfcc8a8c0e5c2973627c2eb073bd069ac5dd47c66c98d3f4109b6629391');
+            } elseif ($promo == "LP1CYBER" || $promo == "LP2CYBER") {
+                $calendrier = file_get_contents('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002141cce1e81e8bf7b37fa37e64353c042d78108e2ec348924488192bcbbe409d97dd0f533a6f63751cccf716c784995bf6773baa010b830695046374e030f5b7360c3978b8a1c299ce8');
             } else $calendrier = null;
             file_put_contents("ics/$promo.ics", $calendrier);
         }
@@ -246,7 +252,7 @@ function getTitre()
 {
     //affichage mois annee menu sup
     if (isset($_POST["D"])) {
-        $jD = $_POST["D"] * 7 + 1;
+        $jD = htmlspecialchars($_POST["D"]) * 7 + 1;
     } else {
         $jD = 0;
     }
@@ -265,9 +271,9 @@ function getTitre()
 function getGroup()
 {
     if ($_POST['dept'] != null && $_POST["group"] != null && $_POST["annee"] != null) {
-        $dept = $_POST['dept'];
-        $group = $_POST["group"];
-        $annee = $_POST["annee"];
+        $dept = htmlspecialchars($_POST['dept']);
+        $group = htmlspecialchars($_POST["group"]);
+        $annee = htmlspecialchars($_POST["annee"]);
         return $dept . $annee . $group;
     } else {
         return "";
@@ -318,17 +324,17 @@ function testDataPost()
 {
     $ret = false;
     if (isset($_POST["dept"])) {
-        $dept = $_POST["dept"];
+        $dept = htmlspecialchars($_POST["dept"]);
     } else {
         $dept = "";
     }
     if (isset($_POST["group"])) {
-        $group = $_POST["group"];
+        $group = htmlspecialchars($_POST["group"]);
     } else {
         $group = "";
     }
     if (isset($_POST["annee"])) {
-        $annee = $_POST["annee"];
+        $annee = htmlspecialchars($_POST["annee"]);
     } else {
         $annee = "";
     }
@@ -370,24 +376,24 @@ function affichage()
 {
     // si aucune info GET: sortir
     if (isset($_POST["dept"])) {
-        $dept = $_POST["dept"];
+        $dept = htmlspecialchars($_POST["dept"]);
     } else {
         $dept = "";
     }
     if (isset($_POST["group"])) {
-        $group = $_POST["group"];
+        $group = htmlspecialchars($_POST["group"]);
     } else {
         $group = "";
     }
     if (isset($_POST["annee"])) {
-        $annee = $_POST["annee"];
+        $annee = htmlspecialchars($_POST["annee"]);
     } else {
         $annee = "";
     }
     $promo = $dept . $annee . $group;
     // récupère jD
     if (isset($_POST["D"])) {
-        $jD = $_POST["D"] * 7;
+        $jD = htmlspecialchars($_POST["D"]) * 7;
     } else {
         $jD = 0;
     }
@@ -440,8 +446,7 @@ function affichage()
         // compression jour/mois
         $Sjour = 0;
         compressionJM($jour, $mois, $annee, $Sjour);
-        if (intval($mois) >= 4 && intval($mois) < 11) {
-            ;
+        if ((intval($mois) >= 4 && intval($mois) < 10) || (intval($mois)===10 && intval($jour)<25)) {
             $Hdécalage = 2;
         } else {
             $Hdécalage = 1;

@@ -169,6 +169,11 @@ function refreshMenu(action) {
     } else {
         removeElementsStyle(document.getElementsByClassName("selectTc1"));
     }
+    if (!(newDept == "LP")) {
+        changeElementsStyle(document.getElementsByClassName("selectLP"), "display:none");
+    } else {
+        removeElementsStyle(document.getElementsByClassName("selectLP"));
+    }
     if (action) {
         if (oneActivation) {
             oneActivation = false;
