@@ -1,4 +1,4 @@
-# planningiut (Deprecated)
+# Planning-IUT (Deprecated)
 
 Un planning universitaire réalisé par @bizouarn en 2019.
 Application web (PHP), qui a pour but de simplifier la vie des étudiants à l’IUT de Vannes.
