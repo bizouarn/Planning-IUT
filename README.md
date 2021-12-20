@@ -1,6 +1,6 @@
 # Planning-IUT (Deprecated)
 
-Un planning universitaire réalisé par @bizouarn en 2019.
+Un planning universitaire réalisé par [@bizouarn](https://github.com/bizouarn) en 2019.
 Application web (PHP), qui a pour but de simplifier la vie des étudiants à l’IUT de Vannes.
 En affichant le planning des étudiants en temps réel, pour pallier les différents problèmes du planning original.
 
